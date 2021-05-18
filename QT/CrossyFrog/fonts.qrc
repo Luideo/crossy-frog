@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/8_bit_arcade/8-bit_In.ttf</file>
+        <file>res/8_bit_arcade/8-bit_Out.ttf</file>
+    </qresource>
+</RCC>
