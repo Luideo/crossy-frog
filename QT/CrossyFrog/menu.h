@@ -4,11 +4,15 @@
 #include <QWidget>
 #include "tools/includes.h"
 #include "tools/tools.h"
+#include "gameMode00.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
 QT_END_NAMESPACE
 
+///
+/// \brief The main class on startup
+///
 class Menu : public QWidget
 {
     Q_OBJECT
@@ -16,27 +20,81 @@ public:
     Menu(QWidget *parent = nullptr);
     ~Menu();
 
-    //PaintEvent method (paint all the elements of the widget)
+    ///
+    /// \brief paintEvent method (paint all the elements of the widget)
+    /// \param event
+    ///
     void paintEvent(QPaintEvent * event);
+    ///
+    /// \brief keyPressEvent method (call when a key is pressed)
+    /// \param event
+    ///
+    void keyPressEvent(QKeyEvent * event);
+    ///
+    /// \brief animatePlayPressed method (call wen the play button is pressed)
+    /// \param event
+    ///
+    void animatePlayPressed();
 
 private:
     Ui::Menu *ui;
-    //The main timer of the game
+    ///
+    /// \brief The Widget Game that will be display when the play button is clicked
+    ///
+    GameMode00 * game;
+    ///
+    /// \brief The main timer of the game
+    ///
+    ///
     QTimer * itsTimer;
-    //Width of the screen
+    ///
+    /// \brief Width of the screen
+    ///
     int WIDTH = 1200;
-    //Height of the screen
+    ///
+    /// \brief Height of the screen
+    ///
     int HEIGHT = 800;
-    //Offset of the playground(middle screen) X
+    ///
+    /// \brief Offset of the playground(middle screen) X
+    ///
     int OFFSETX = 158;
-    //Offset of the playground(middle screen) Y
+    ///
+    /// \brief Offset of the playground(middle screen) Y
+    ///
     int OFFSETY = 36;
-    //Width of the playgorund
+    ///
+    /// \brief Width of the playgorund
+    ///
     int WIDTHP = 884;
-    //Width of the playgorund
+    ///
+    /// \brief Width of the playgorund
+    ///
     int HEIGHTP = 728;
-    //The label that display the name of the game
-    QLabel *name;
+    ///
+    /// \brief Text of the menu
+    ///
+    QLabel * leave;
+    ///
+    /// \brief The index of the menu (0 to start)
+    ///
+    int index = 0;
+    ///
+    /// \brief This QLabel is here to make the background of the selected text white
+    ///
+    QLabel *bck;
+    ///
+    /// \brief This is the variable that say if we are currently animate the transition
+    ///
+    bool animationPlay=false;
+    ///
+    /// \brief This is the grass rect, used for the animation
+    ///
+    QRect grassRect = QRect(OFFSETX,OFFSETY+HEIGHTP-150,WIDTHP,150);
+    ///
+    /// \brief This is the second grass rect, used for the animation
+    ///
+    QRect grassRect2 = QRect(OFFSETX,OFFSETY+HEIGHTP-10,WIDTHP,10);
 
 private slots:
     ///

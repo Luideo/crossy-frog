@@ -28,6 +28,11 @@ public:
         if (Menu->objectName().isEmpty())
             Menu->setObjectName(QStringLiteral("Menu"));
         Menu->resize(1200, 800);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Menu->sizePolicy().hasHeightForWidth());
+        Menu->setSizePolicy(sizePolicy);
         Menu->setMinimumSize(QSize(1200, 800));
         Menu->setMaximumSize(QSize(1200, 800));
         Menu->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));

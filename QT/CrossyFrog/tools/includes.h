@@ -14,6 +14,7 @@
 #include <QPainter>
 #include <QFontDatabase>
 #include <QLabel>
+#include <QKeyEvent>
 #include "tools/tools.h"
 using namespace std;
 
