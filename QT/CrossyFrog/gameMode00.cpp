@@ -46,7 +46,7 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     //Connect the timer to the mainTimer method
     connect(itsTimer,SIGNAL(timeout()),this,SLOT(gameLoop()));
     //Start and set the timer to 15millis
-    itsTimer->start(1);
+    itsTimer->start(speedOfTheTimer);
 }
 
 GameMode00::~GameMode00()
