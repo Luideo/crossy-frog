@@ -15,6 +15,8 @@
 #include <QFontDatabase>
 #include <QLabel>
 #include <QKeyEvent>
+#include <QPushButton>
+#include <fstream>
 #include "tools/tools.h"
 using namespace std;
 

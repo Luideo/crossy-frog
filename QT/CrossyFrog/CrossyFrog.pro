@@ -9,21 +9,38 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bash.cpp \
     frog.cpp \
     gameMode00.cpp \
     main.cpp \
     menu.cpp \
-    player.cpp
+    player.cpp \
+    tools/allblocks.cpp \
+    tools/allgrounds.cpp \
+    tools/allitems.cpp \
+    tools/block.cpp \
+    tools/ground.cpp \
+    tools/item.cpp \
+    tools/patern.cpp
 
 HEADERS += \
+    bash.h \
     frog.h \
     gameMode00.h \
     menu.h \
     player.h \
+    tools/allblocks.h \
+    tools/allgrounds.h \
+    tools/allitems.h \
+    tools/block.h \
+    tools/ground.h \
     tools/includes.h \
+    tools/item.h \
+    tools/patern.h \
     tools/tools.h
 
 FORMS += \
+    bash.ui \
     gameMode00.ui \
     menu.ui
 

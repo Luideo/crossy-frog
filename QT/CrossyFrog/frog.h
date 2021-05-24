@@ -73,6 +73,11 @@ public:
     /// \param The rotation (int between 0-360)
     ///
     void setRotation(int value);
+    ///
+    /// \brief moveBottom method that move the frog 1px bott, called every tick
+    /// \param The speed in px
+    ///
+    void moveBottom(int speed);
 
 private:
     ///

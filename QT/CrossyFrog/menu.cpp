@@ -29,19 +29,14 @@ void Menu::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     //Create the painter
     QPainter * itsPainter = new QPainter(this);
-    //Set the color of the painter (the stroke)
-    itsPainter->setPen(Tools::COLOR_NIGHT());
     //Create the brush
     QBrush brush;
 
 
-    //Set the fill color of the brush
-    brush.setColor(Tools::COLOR_NIGHT());
+    //Set the type of the brush
     brush.setStyle(Qt::SolidPattern);
     //Set the brush of the pen
     itsPainter->setBrush(brush);
-    //Draw the blackground
-    itsPainter->drawRect(QRect(0,0,WIDTH,HEIGHT));
 
     //Change colors
     itsPainter->setPen(Tools::COLOR_CYANSKY());
@@ -159,6 +154,22 @@ void Menu::paintEvent(QPaintEvent *event)
         itsPainter->drawRect(grassRect2);
     }
 
+    //Draw the border of UI
+    //Change color
+    itsPainter->setPen(Tools::COLOR_NIGHT());
+    brush.setColor(Tools::COLOR_NIGHT());
+    //Reset the brush
+    itsPainter->setBrush(brush);
+    //Draw the 4 rect
+    //Left
+    itsPainter->drawRect(QRect(0,0,OFFSETX,HEIGHT));
+    //Right
+    itsPainter->drawRect(QRect(OFFSETX+WIDTHP,0,WIDTH-(OFFSETX+WIDTHP),HEIGHT));
+    //Up
+    itsPainter->drawRect(QRect(0,0,WIDTH,OFFSETY));
+    //Down
+    itsPainter->drawRect(QRect(0,OFFSETY+HEIGHTP,WIDTH,HEIGHT-(OFFSETY+HEIGHTP)));
+
     //End the painter
     itsPainter->end();
 }
@@ -166,7 +177,7 @@ void Menu::paintEvent(QPaintEvent *event)
 void Menu::keyPressEvent(QKeyEvent *event)
 {
     //Down
-    if(event->key() == Qt::Key_S){
+    if(event->key() == Qt::Key_S && !animationPlay){
         //+1 index to go down
         index++;
         //Reset to the first
@@ -175,7 +186,7 @@ void Menu::keyPressEvent(QKeyEvent *event)
         }
     }
     //Up
-    if(event->key() == Qt::Key_Z){
+    if(event->key() == Qt::Key_Z && !animationPlay){
         // -1 index to go up
         index--;
         //Reset to the last
@@ -184,7 +195,7 @@ void Menu::keyPressEvent(QKeyEvent *event)
         }
     }
     //Jump into the selected intem (play/settings/...)
-    if(event->key() == Qt::Key_Return){
+    if(event->key() == Qt::Key_Return && !animationPlay){
         switch (index) {
         case 0:
         {
@@ -216,7 +227,8 @@ void Menu::keyPressEvent(QKeyEvent *event)
 void Menu::animatePlayPressed()
 {
     //Launch new widget only if the anim is finished (rect on the top)
-    if(grassRect2.y()<=OFFSETY){
+    if(grassRect2.y()<=OFFSETY && animationPlay){
+        animationPlay = false;
         //Change the widget that displayed
         game = new GameMode00(parentWidget());
         //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs

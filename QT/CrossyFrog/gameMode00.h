@@ -5,6 +5,8 @@
 #include "tools/includes.h"
 #include "tools/tools.h"
 #include "player.h"
+#include "bash.h"
+#include "tools/patern.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class GameMode00; }
@@ -30,6 +32,66 @@ public:
     /// \param event
     ///
     void keyPressEvent(QKeyEvent * event);
+    ///
+    /// \brief this method verify if the move is possible (if it's in the playground)
+    /// \param The frog (to get his position)
+    /// \param The move on X
+    /// \param The move on Y
+    /// \return if the move is valid (true)
+    ///
+    bool validMove(Frog *frog,int moveX,int moveY);
+    ///
+    /// \brief getDisplayGrid
+    /// \return
+    ///
+    bool getDisplayGrid() const;
+    ///
+    /// \brief setDisplayGrid
+    /// \param value
+    ///
+    void setDisplayGrid(bool value);
+    ///
+    /// \brief getPaused
+    /// \return
+    ///
+    bool getPaused() const;
+    ///
+    /// \brief setPaused
+    /// \param value
+    ///
+    void setPaused(bool value);
+    ///
+    /// \brief interactElement method is call every tick and it's do the interaction between frog and element
+    ///
+    void interactElement(Frog *frog);
+    ///
+    /// \brief getDisplayUi
+    /// \return
+    ///
+    bool getDisplayUi() const;
+    ///
+    /// \brief setDisplayUi
+    /// \param value
+    ///
+    void setDisplayUi(bool value);
+    ///
+    /// \brief diplayUiDevTools method called on paint event if the boolean is on true to display a lot of tools on the playground
+    /// \param itsPainter
+    ///
+    void displayUiDevTools(QPainter *itsPainter);
+    ///
+    /// \brief this method restart the game from the beginning
+    ///
+    void restartGame();
+    ///
+    /// \brief getSizeCase
+    /// \return
+    ///
+    static int getSizeCase();
+    ///
+    /// \brief advancementSpeed is a method call every second that change the speed in function of the advancement
+    ///
+    void advancementSpeed();
 
 private:
     Ui::GameMode00 *ui;
@@ -65,11 +127,59 @@ private:
     ///
     /// \brief The size of a case on the playground
     ///
-    int sizeCase;
+    const static int sizeCase = 52;
     ///
     /// \brief Create the player of the game
     ///
     Player *player1;
+    ///
+    /// \brief Create the frog of the first player
+    ///
+    Frog *frog1;
+    ///
+    /// \brief The menu of the command for debug
+    ///
+    Bash *bash;
+    ///
+    /// \brief The 3 patern present in the game
+    ///
+    Patern *paterns[3];
+    ///
+    /// \brief State changed by Bash Class
+    ///
+    bool displayGrid=true;
+    ///
+    /// \brief If the game is paused, change with spacebar and bash
+    ///
+    bool paused=false;
+    ///
+    /// \brief If the game is started, can be change with spacebar (key press event)
+    ///
+    bool started=false;
+    ///
+    /// \brief If display the ui dev tools
+    ///
+    bool displayUi=true;
+    ///
+    /// \brief The variable speed is the number of pixel that move in a frame
+    ///
+    int speed=1;
+    ///
+    /// \brief adv is the advancement of the game, every second it increase by one
+    ///
+    int adv=0;
+    ///
+    /// \brief tick increase by one every tick of the timer, reset to 0 every seconds
+    ///
+    int tick=0;
+    ///
+    /// \brief speedOfTheTime its the time in millis between every tick
+    ///
+    int speedOfTheTimer=1;
+    ///
+    /// \brief Every 12 tick it move the frog (can be lower with the time)
+    ///
+    int speedGeneral=12;
 
 private slots:
     ///

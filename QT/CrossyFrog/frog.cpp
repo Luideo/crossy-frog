@@ -82,6 +82,11 @@ void Frog::setRotation(int value)
     }
 }
 
+void Frog::moveBottom(int speed)
+{
+    posY+=speed;
+}
+
 QImage Frog::getOriginalShape() const
 {
     return originalShape;
