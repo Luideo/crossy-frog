@@ -5,14 +5,15 @@ INPUT(
 ./debug\main.o
 ./debug\menu.o
 ./debug\player.o
+./debug\resources.o
+./debug\splash.o
 ./debug\allblocks.o
 ./debug\allgrounds.o
-./debug\allitems.o
 ./debug\block.o
 ./debug\ground.o
-./debug\item.o
 ./debug\patern.o
 ./debug\moc_bash.o
 ./debug\moc_gameMode00.o
 ./debug\moc_menu.o
+./debug\moc_splash.o
 );

@@ -20,7 +20,7 @@ class GameMode00 : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728);
+    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr);
     ~GameMode00();
     ///
     /// \brief paintEvent method (paint all the elements of the widget)
@@ -180,6 +180,14 @@ private:
     /// \brief Every 12 tick it move the frog (can be lower with the time)
     ///
     int speedGeneral=12;
+    ///
+    /// \brief atg is the allGround class generated at the begining
+    ///
+    AllGrounds *atg;
+    ///
+    /// \brief All the resources we need
+    ///
+    Resources * resources;
 
 private slots:
     ///

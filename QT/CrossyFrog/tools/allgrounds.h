@@ -7,7 +7,7 @@
 class AllGrounds
 {
 public:
-    AllGrounds();
+    AllGrounds(Resources *resources);
     ///
     /// \brief randGround method that return a ground randomly
     /// \return Random ground
@@ -24,6 +24,20 @@ private:
     /// \brief vector of all the Ground present in the game
     ///
     vector<Ground*> allGround;
+    ///
+    /// \brief Value of the timer /10 in millis
+    ///
+    unsigned long int tickTimer=0;
+    ///
+    /// \brief allBlocks
+    ///
+    AllBlocks *allBlocks;
+
+private slots:
+    ///
+    /// \brief this method is call by the timer every tick
+    ///
+    void tick();
 };
 
 #endif // ALLGROUNDS_H

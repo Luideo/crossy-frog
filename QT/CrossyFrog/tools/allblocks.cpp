@@ -1,17 +1,27 @@
 #include "allblocks.h"
 
-AllBlocks::AllBlocks()
+AllBlocks::AllBlocks(Resources *resources)
 {
+    //Set the resources
+    this->resources = resources;
+    qDebug() << "Creation des blocks";
+    //Create the blocks
+        dirt = new Block("dirt",true,resources);
+        grass = new Block("grass",true,resources);
+        water = new Block("water",false,resources);
 }
 
-Block AllBlocks::dirt(){
-    return Block("../CrossyFrog/res/blocks/dirt",true,"dirt");
+Block *AllBlocks::getDirt() const
+{
+    return dirt;
 }
 
-Block AllBlocks::grass(){
-    return Block("../CrossyFrog/res/blocks/grass",true,"grass");
+Block *AllBlocks::getGrass() const
+{
+    return grass;
 }
 
-Block AllBlocks::water(){
-    return Block("../CrossyFrog/res/blocks/water",false,"water");
+Block *AllBlocks::getWater() const
+{
+    return water;
 }

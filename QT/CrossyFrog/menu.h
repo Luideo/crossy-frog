@@ -17,7 +17,7 @@ class Menu : public QWidget
 {
     Q_OBJECT
 public:
-    Menu(QWidget *parent = nullptr);
+    Menu(QWidget *parent = nullptr,Resources *resources=nullptr);
     ~Menu();
 
     ///
@@ -95,6 +95,10 @@ private:
     /// \brief This is the second grass rect, used for the animation
     ///
     QRect grassRect2 = QRect(OFFSETX,OFFSETY+HEIGHTP-10,WIDTHP,10);
+    ///
+    /// \brief All the resources we need
+    ///
+    Resources *resources;
 
 private slots:
     ///

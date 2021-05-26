@@ -1,6 +1,6 @@
 #include "patern.h"
 
-Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP, int sizeCase)
+Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP, int sizeCase,AllGrounds *atg)
 {
     //Set all the size and posiiton
     this->posX = posX;
@@ -14,10 +14,8 @@ Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSE
     this->WIDTHP = WIDTHP;
     this->HEIGHTP = HEIGHTP;
     this->sizeCase = sizeCase;
-    //Set all the ground
-    AllGrounds *allsTheGround = new AllGrounds;
-    alls = allsTheGround;
-    //Get a random gorund
+    //Get a random ground
+    alls = atg;
     ground = alls->randGround();
 }
 

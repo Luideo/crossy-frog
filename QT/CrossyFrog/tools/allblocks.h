@@ -7,24 +7,45 @@
 class AllBlocks
 {
 public:
-    AllBlocks();
+    AllBlocks(Resources * resources);
 
+    ///
+    /// \brief getDirt
+    /// \return
+    ///
+    Block *getDirt() const;
+    ///
+    /// \brief getGrass
+    /// \return
+    ///
+    Block *getGrass() const;
+    ///
+    /// \brief getWater
+    /// \return
+    ///
+    Block *getWater() const;
+
+private:
+    ///
+    /// \brief all the resources we need
+    ///
+    Resources *resources;
     //Create all the blocks present in the game
     ///
     /// \brief dirt
     /// \return
     ///
-    static Block dirt();
+    Block *dirt;
     ///
     /// \brief grass
     /// \return
     ///
-    static Block grass();
+    Block *grass;
     ///
     /// \brief water
     /// \return
     ///
-    static Block water();
+    Block*water;
 };
 
 #endif // ALLBLOCKS_H

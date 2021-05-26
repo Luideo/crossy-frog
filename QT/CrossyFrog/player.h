@@ -7,7 +7,7 @@
 class Player
 {
 public:
-    Player(string name);
+    Player(string name,Resources *resources);
 
     ///
     /// \brief Get the name of the player
@@ -48,7 +48,7 @@ private:
     ///
     /// \brief The frog of the player
     ///
-    Frog *itsFrog = new Frog(52,52);
+    Frog *itsFrog;
     ///
     /// \brief The score of the player
     ///

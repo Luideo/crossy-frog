@@ -1,8 +1,9 @@
 #include "player.h"
 
-Player::Player(string name)
+Player::Player(string name,Resources *resources)
 {
     itsName = name;
+    new Frog(52,52,resources);
 }
 
 string Player::getItsName() const

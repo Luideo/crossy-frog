@@ -5,14 +5,15 @@ INPUT(
 ./release\main.o
 ./release\menu.o
 ./release\player.o
+./release\resources.o
+./release\splash.o
 ./release\allblocks.o
 ./release\allgrounds.o
-./release\allitems.o
 ./release\block.o
 ./release\ground.o
-./release\item.o
 ./release\patern.o
 ./release\moc_bash.o
 ./release\moc_gameMode00.o
 ./release\moc_menu.o
+./release\moc_splash.o
 );

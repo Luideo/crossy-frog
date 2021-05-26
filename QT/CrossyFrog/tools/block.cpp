@@ -1,11 +1,13 @@
 #include "block.h"
 #include "gameMode00.h"
 
-Block::Block(string imagePath, bool crossabilty,string name)
+Block::Block(string imageName, bool crossabilty, Resources *resources)
 {
+    qDebug() << "Creation de : " << QString::fromStdString(imageName);
+    //Assign the resources
+    this->resources = resources;
     //Create the image from the path
-    QImage bck;
-    bck.load(QString::fromStdString(imagePath));
+    QImage bck = resources->getImages().at(imageName);
     //Verify if its correctly loaded
     Q_ASSERT(!bck.isNull());
     //Resize it
@@ -14,8 +16,6 @@ Block::Block(string imagePath, bool crossabilty,string name)
     this->background = bck;
     //Set the crossabilty
     this->crossable  = crossabilty;
-    //Set the name
-    this->name = name;
 }
 
 QImage Block::getBackground() const

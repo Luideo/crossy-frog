@@ -7,7 +7,7 @@
 class Ground
 {
 public:
-    Ground(string path);
+    Ground(string path,AllBlocks *allBlocks);
 
     ///
     /// \brief Get the blocks
@@ -31,6 +31,10 @@ private:
     /// \brief All the blocks in the ground
     ///
     vector<vector<Block*>> blocks;
+    ///
+    /// \brief allBlocks
+    ///
+    AllBlocks *allBlocks;
 };
 
 #endif // GROUND_H

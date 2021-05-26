@@ -1,18 +1,23 @@
 #include "gameMode00.h"
 #include "ui_gameMode00.h"
 
-GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP) :
+GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources) :
     QWidget(parent),
     ui(new Ui::GameMode00)
 {
     //Display the bash
     //Creation of the bash widget
     bash = new Bash(parentWidget(),this);
+    //Change the name
+    bash->setWindowTitle("Bash");
     //Show the bash
     bash->show();
 
     //Setup the interface of the widget
     ui->setupUi(this);
+
+    //Set the resources
+    this->resources = resources;
 
     //Set the value passed
     this->WIDTH = WIDTH;
@@ -23,8 +28,8 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     this->HEIGHTP = HEIGHTP;
 
     //Create the player and his frog (1 player cause we're in solo)
-    player1 = new Player("default1");
-    frog1 = new Frog(sizeCase,sizeCase);
+    player1 = new Player("default1",resources);
+    frog1 = new Frog(sizeCase,sizeCase,resources);
     //Set the basic position
     // X
     frog1->setPosX(OFFSETX+((WIDTHP/sizeCase/2)*sizeCase)); //Center on the X axe
@@ -32,10 +37,12 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     frog1->setPosY(OFFSETY+HEIGHTP-frog1->getWidth()-sizeCase*3);
     // Set the frog the the player
     player1->setItsFrog(frog1);
+    //Create all ground class
+    atg = new AllGrounds(resources);
     //Create the 3 parterns
-    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2);
-    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2);
-    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2);
+    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
+    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
+    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
 
     //Just set a basic dirt ground for the first (default ground)
     paterns[1]->defaultGround();
@@ -289,8 +296,8 @@ void GameMode00::displayUiDevTools(QPainter *itsPainter)
 void GameMode00::restartGame()
 {
     //Create the player and his frog (1 player cause we're in solo)
-    player1 = new Player("default1");
-    frog1 = new Frog(sizeCase,sizeCase);
+    player1 = new Player("default1",resources);
+    frog1 = new Frog(sizeCase,sizeCase,resources);
     //Set the basic position
     // X
     frog1->setPosX(OFFSETX+((WIDTHP/sizeCase/2)*sizeCase)); //Center on the X axe
@@ -299,10 +306,14 @@ void GameMode00::restartGame()
     // Set the frog the the player
     player1->setItsFrog(frog1);
 
+    //Delete olds paterns
+    for(int i =0; i < 3 ; ++i){
+        paterns[i]->~Patern();
+    }
     //Create the 3 parterns
-    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2);
-    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2);
-    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2);
+    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
+    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
+    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
 
     //Set the default ground for the first
     paterns[1]->defaultGround();
@@ -324,8 +335,8 @@ int GameMode00::getSizeCase()
 
 void GameMode00::advancementSpeed()
 {
-    if(adv%20==0 && speedGeneral!=1){
-        speedGeneral-=5;
+    if(adv%5==0 && speedGeneral!=1){
+        speedGeneral-=1;
     }
 }
 
@@ -342,7 +353,7 @@ void GameMode00::gameLoop()
         advancementSpeed();
     }
     //Every speed
-   // if(tick%1==0){
+    if(tick%(speedGeneral/speedOfTheTimer)==0){
         if(!paused && started){
             //Move all the paterns
             for(auto i : paterns){
@@ -355,5 +366,5 @@ void GameMode00::gameLoop()
             //Repaint
             repaint();
         }
-  //  }
+    }
 }

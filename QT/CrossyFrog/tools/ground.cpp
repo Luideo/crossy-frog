@@ -1,8 +1,10 @@
 #include "ground.h"
 
-Ground::Ground(string path)
+Ground::Ground(string path,AllBlocks *allBlocks)
 {
-
+    qDebug() << "Chargement d'un ground";
+    //Initialize allBlocks
+    this->allBlocks = allBlocks;
     //Create the variable that load the file
     ifstream load;
     //Open the file
@@ -27,42 +29,6 @@ Ground::Ground(string path)
     }  catch (QString e) {
         qDebug() << e;
     }
-    /*
-    //Create the ground 17*7
-    //Create line x
-    vector<Block*> line;
-    //Push the 17blocks
-    line.push_back(water);
-    line.push_back(dirt);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    line.push_back(grass);
-    //Push the line in blocks
-    blocks.push_back(line);
-    //Set all Grass
-    line.at(0) = grass;
-    line.at(1) = grass;
-
-    //Push all the other lines
-    blocks.push_back(line);
-    blocks.push_back(line);
-    blocks.push_back(line);
-    blocks.push_back(line);
-    blocks.push_back(line);
-    blocks.push_back(line);
-    */
 }
 
 vector<vector<Block*>> Ground::getBlocks() const
@@ -80,11 +46,11 @@ vector<Block *> Ground::stringToBlock(vector<string> vec)
     vector<Block *> finalVector; //Final vector to return
     for(vector<string>::iterator it = vec.begin(); it !=vec.end(); it++){ //Browse the vector and push the good block
         if(*it=="W"){
-            finalVector.push_back(new Block(AllBlocks::water()));
+            finalVector.push_back(new Block(*allBlocks->getWater()));
         }else if(*it=="G"){
-            finalVector.push_back(new Block(AllBlocks::grass()));
+            finalVector.push_back(new Block(*allBlocks->getGrass()));
         }else if(*it=="D"){
-            finalVector.push_back(new Block(AllBlocks::dirt()));
+            finalVector.push_back(new Block(*allBlocks->getDirt()));
         }
     }
     return finalVector;

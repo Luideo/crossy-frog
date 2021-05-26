@@ -16,6 +16,8 @@
 #include <QLabel>
 #include <QKeyEvent>
 #include <QPushButton>
+#include <QElapsedTimer>
+#include <map>
 #include <fstream>
 #include "tools/tools.h"
 using namespace std;

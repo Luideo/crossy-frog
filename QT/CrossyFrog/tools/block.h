@@ -3,10 +3,12 @@
 
 #include "tools/includes.h"
 
+class Resources;
+
 class Block
 {
 public:
-    Block(string imagePath,bool crossabilty,string name);
+    Block(string imageName,bool crossabilty,Resources * resources);
 
     ///
     /// \brief Get the Background
@@ -80,6 +82,10 @@ private:
     /// \brief posY update every paint event
     ///
     int posY=0;
+    ///
+    /// \brief all the resources we need
+    ///
+    Resources *resources;
 };
 
 #endif // BLOCK_H

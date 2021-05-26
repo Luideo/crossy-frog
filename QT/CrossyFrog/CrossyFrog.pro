@@ -15,12 +15,12 @@ SOURCES += \
     main.cpp \
     menu.cpp \
     player.cpp \
+    resources.cpp \
+    splash.cpp \
     tools/allblocks.cpp \
     tools/allgrounds.cpp \
-    tools/allitems.cpp \
     tools/block.cpp \
     tools/ground.cpp \
-    tools/item.cpp \
     tools/patern.cpp
 
 HEADERS += \
@@ -29,20 +29,21 @@ HEADERS += \
     gameMode00.h \
     menu.h \
     player.h \
+    resources.h \
+    splash.h \
     tools/allblocks.h \
     tools/allgrounds.h \
-    tools/allitems.h \
     tools/block.h \
     tools/ground.h \
     tools/includes.h \
-    tools/item.h \
     tools/patern.h \
     tools/tools.h
 
 FORMS += \
     bash.ui \
     gameMode00.ui \
-    menu.ui
+    menu.ui \
+    splash.ui
 
 TRANSLATIONS += \
     CrossyFrog_en_150.ts

@@ -2,11 +2,12 @@
 #define FROG_H
 
 #include "tools/includes.h"
+#include "resources.h"
 
 class Frog
 {
 public:
-    Frog(int width,int height);
+    Frog(int width,int height,Resources *resources);
 
     ///
     /// \brief Get the shape of the frog (its an Image)

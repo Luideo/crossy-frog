@@ -3,12 +3,11 @@
 
 #include "tools/includes.h"
 #include "tools/allgrounds.h"
-#include "tools/item.h"
 
 class Patern
 {
 public:
-    Patern(int posX,int posY,int width,int height,int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,int sizeCase = 52);
+    Patern(int posX,int posY,int width,int height,int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,int sizeCase,AllGrounds *atg);
 
     ///
     /// \brief generate a random ground
@@ -58,10 +57,6 @@ private:
     /// \brief Class of all the ground present in the game
     ///
     AllGrounds *alls;
-    ///
-    /// \brief All the items present in the patern
-    ///
-    vector<Item> items;
     ///
     /// \brief posX of the patern (ATTENTION! DOSENT PUT OFFSET)
     ///

@@ -1,12 +1,15 @@
 #include "menu.h"
 #include "ui_menu.h"
 
-Menu::Menu(QWidget *parent)
+Menu::Menu(QWidget *parent,Resources *resources)
     : QWidget(parent)
     , ui(new Ui::Menu)
 {
     //Setup the interface of the widget
     ui->setupUi(this);
+
+    //Set the var resources
+    this->resources = resources;
 
 
     //Timer of the menu, each 10millis it call mainTimer (private slots method)
@@ -230,7 +233,7 @@ void Menu::animatePlayPressed()
     if(grassRect2.y()<=OFFSETY && animationPlay){
         animationPlay = false;
         //Change the widget that displayed
-        game = new GameMode00(parentWidget());
+        game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
         //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
         game->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         //Show the current widget (game)
