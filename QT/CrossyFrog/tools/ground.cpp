@@ -22,7 +22,7 @@ Ground::Ground(string path,AllBlocks *allBlocks)
             //Separate the different blocks
             vector<string> elements = Tools::split(line,' ');
             //transform elements to block, GF for good format
-            vector<Block*> elementsGF = stringToBlock(elements);
+            vector<Block> elementsGF = stringToBlock(elements);
             //Push it to t¨final vector
             blocks.push_back(elementsGF);
         }while(!load.eof());
@@ -31,26 +31,31 @@ Ground::Ground(string path,AllBlocks *allBlocks)
     }
 }
 
-vector<vector<Block*>> Ground::getBlocks() const
+Ground::Ground()
 {
-    return blocks;
+
 }
 
-void Ground::setBlocks(const vector<vector<Block*>> &value)
+vector<vector<Block>> *Ground::getBlocks()
+{
+    return &blocks;
+}
+
+void Ground::setBlocks(const vector<vector<Block>> &value)
 {
     blocks = value;
 }
 
-vector<Block *> Ground::stringToBlock(vector<string> vec)
+vector<Block> Ground::stringToBlock(vector<string> vec)
 {
-    vector<Block *> finalVector; //Final vector to return
+    vector<Block> finalVector; //Final vector to return
     for(vector<string>::iterator it = vec.begin(); it !=vec.end(); it++){ //Browse the vector and push the good block
         if(*it=="W"){
-            finalVector.push_back(new Block(*allBlocks->getWater()));
+            finalVector.push_back(*allBlocks->getWater());
         }else if(*it=="G"){
-            finalVector.push_back(new Block(*allBlocks->getGrass()));
+            finalVector.push_back(*allBlocks->getGrass());
         }else if(*it=="D"){
-            finalVector.push_back(new Block(*allBlocks->getDirt()));
+            finalVector.push_back(*allBlocks->getDirt());
         }
     }
     return finalVector;

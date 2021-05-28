@@ -8,29 +8,30 @@ class Ground
 {
 public:
     Ground(string path,AllBlocks *allBlocks);
+    Ground();
 
     ///
     /// \brief Get the blocks
     /// \return vector<Block>
     ///
-    vector<vector<Block*>> getBlocks() const;
+    vector<vector<Block>> *getBlocks();
     ///
     /// \brief Get the blocks
     /// \param vector<Block>
     ///
-    void setBlocks(const vector<vector<Block*>> &value);
+    void setBlocks(const vector<vector<Block>> &value);
     ///
     /// \brief stringToBlock
     /// \param vec
     /// \return
     ///
-    vector<Block *> stringToBlock(vector<string> vec);
+    vector<Block> stringToBlock(vector<string> vec);
 
 private:
     ///
     /// \brief All the blocks in the ground
     ///
-    vector<vector<Block*>> blocks;
+    vector<vector<Block>> blocks;
     ///
     /// \brief allBlocks
     ///

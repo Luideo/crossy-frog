@@ -1,6 +1,6 @@
 #include "patern.h"
 
-Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP, int sizeCase,AllGrounds *atg)
+Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP, int sizeCase,AllGrounds atg,string name)
 {
     //Set all the size and posiiton
     this->posX = posX;
@@ -8,25 +8,28 @@ Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSE
     this->width = width;
     this->height = height;
     //Set the value passed
-
+    this->name = name;
     this->OFFSETX = OFFSETX;
     this->OFFSETY = OFFSETY;
     this->WIDTHP = WIDTHP;
     this->HEIGHTP = HEIGHTP;
     this->sizeCase = sizeCase;
-    //Get a random ground
-    alls = atg;
-    ground = alls->randGround();
+    //Assign not by reference to avoid collision problems
+    this->alls = atg;
+    //Assign a random ground
+    ground = new Ground(alls.randGround());
 }
 
 void Patern::randGround()
 {
-    ground = alls->randGround();
+    //Assign a random ground
+    ground = new Ground(alls.randGround());
 }
 
 void Patern::defaultGround()
 {
-    ground = alls->defaultGround();
+    //Assign the ground by default
+    ground = new Ground(alls.defaultGround());
 }
 
 void Patern::draw(QPainter *itsPainter)
@@ -34,12 +37,13 @@ void Patern::draw(QPainter *itsPainter)
     //Draw all the blocks (in the vector read y then x not x then y)
     for(int x=0; x<17;++x){
         for(int y=0;y<7;++y){
-            itsPainter->drawImage((x*sizeCase)+OFFSETX+posX,(y*sizeCase)+OFFSETY+posY,ground->getBlocks().at(y).at(x)->getBackground());
+            itsPainter->drawImage((x*sizeCase)+OFFSETX+posX,(y*sizeCase)+OFFSETY+posY,ground->getBlocks()->at(y).at(x).getBackground());
             //Set the pos of the block (the only use is for the interaction element method
-            ground->getBlocks().at(y).at(x)->setPosX(x*sizeCase+OFFSETX+posX);
-            ground->getBlocks().at(y).at(x)->setPosY(y*sizeCase+OFFSETY+posY);
+            ground->getBlocks()->at(y).at(x).setPosX(x*sizeCase+OFFSETX+posX);
+            ground->getBlocks()->at(y).at(x).setPosY(y*sizeCase+OFFSETY+posY);
         }
     }
+    //qDebug() << "Block : " << ground->getBlocks()->at(0).at(0).getPosY();
 }
 
 void Patern::drawGrid(QPainter *itsPainter)
@@ -59,13 +63,18 @@ void Patern::drawGrid(QPainter *itsPainter)
     itsPainter->drawLine(OFFSETX+WIDTHP+posX-2,OFFSETY+posY-2,OFFSETX+posX+WIDTHP-2,OFFSETY+HEIGHTP/2+posY-2);
     //Bottom
     itsPainter->drawLine(OFFSETX+posX,OFFSETY+posY+HEIGHTP/2,OFFSETX+posX+WIDTHP,OFFSETY+HEIGHTP/2+posY);
+    //Draw the patern name and font size
+    QFont font = itsPainter->font();
+    font.setPointSize(15);
+    itsPainter->setFont(font);
+    itsPainter->drawText(OFFSETX+posX+5,OFFSETY+posY+20,QString::fromStdString(name));
 
     //Draw red on non crossable block
     //Draw all the blocks (in the vector read y then x not x then y)
     for(int x=0; x<17;++x){
         for(int y=0;y<7;++y){
             //Non crossable => red
-            if(ground->getBlocks().at(y).at(x)->getCrossable() == false){
+            if(ground->getBlocks()->at(y).at(x).getCrossable() == false){
                 //Change the color and the opacity
                 QColor c = Tools::COLOR_RED();
                 c.setAlpha(100);
@@ -76,9 +85,10 @@ void Patern::drawGrid(QPainter *itsPainter)
                 itsPainter->setBrush(b);
                 //Draw red rectangle on it
                 itsPainter->drawRect(QRect((x*sizeCase)+OFFSETX+posX,(y*sizeCase)+OFFSETY+posY,sizeCase,sizeCase));
+                //qDebug() << "RED : " << QString::fromStdString(to_string(x*sizeCase+OFFSETX+posX))<< "," << QString::fromStdString(to_string(y*sizeCase+OFFSETY+posY));
             }
             //Crossable => green
-            if(ground->getBlocks().at(y).at(x)->getCrossable() == true){
+            if(ground->getBlocks()->at(y).at(x).getCrossable() == true){
                 //Change the color and the opacity
                 QColor c = Tools::COLOR_GREEN();
                 c.setAlpha(100);
@@ -132,7 +142,12 @@ void Patern::moveBottom(int speed)
     }
 }
 
-Ground* Patern::getGround() const
+Ground *Patern::getGround() const
 {
     return ground;
+}
+
+string Patern::getName() const
+{
+    return name;
 }

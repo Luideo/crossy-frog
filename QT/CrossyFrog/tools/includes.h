@@ -17,6 +17,7 @@
 #include <QKeyEvent>
 #include <QPushButton>
 #include <QElapsedTimer>
+#include <QPixmap>
 #include <map>
 #include <fstream>
 #include "tools/tools.h"

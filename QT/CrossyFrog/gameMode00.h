@@ -147,7 +147,7 @@ private:
     ///
     /// \brief State changed by Bash Class
     ///
-    bool displayGrid=true;
+    bool displayGrid=false;
     ///
     /// \brief If the game is paused, change with spacebar and bash
     ///
@@ -173,13 +173,21 @@ private:
     ///
     int tick=0;
     ///
+    /// \brief tickSpeed is the same as tick just it reset every move of the gameLoop
+    ///
+    int tickSpeed=0;
+    ///
+    /// \brief tickRepaint is the same as tick just it reset every 16ms (60fps appr.)
+    ///
+    int tickRepaint=0;
+    ///
     /// \brief speedOfTheTime its the time in millis between every tick
     ///
     int speedOfTheTimer=1;
     ///
     /// \brief Every 12 tick it move the frog (can be lower with the time)
     ///
-    int speedGeneral=12;
+    int speedGeneral=1;
     ///
     /// \brief atg is the allGround class generated at the begining
     ///
@@ -188,6 +196,10 @@ private:
     /// \brief All the resources we need
     ///
     Resources * resources;
+    ///
+    /// \brief lastElapsed equals to the time it tooks to the game Loop to do the cycle
+    ///
+    int lastElapsed=0;
 
 private slots:
     ///

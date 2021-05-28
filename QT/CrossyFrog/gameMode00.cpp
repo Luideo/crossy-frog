@@ -40,9 +40,9 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     //Create all ground class
     atg = new AllGrounds(resources);
     //Create the 3 parterns
-    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
-    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
-    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
+    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern1");
+    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern2");
+    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern3");
 
     //Just set a basic dirt ground for the first (default ground)
     paterns[1]->defaultGround();
@@ -208,7 +208,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
 bool GameMode00::validMove(Frog *frog, int moveX, int moveY)
 {
     if(frog->getPosX()+moveX+frog->getWidth() > OFFSETX+WIDTHP || frog->getPosX()+moveX < OFFSETX //Verify on the X axis
-            || frog->getPosY()+moveY >= OFFSETY+HEIGHTP || frog->getPosY()+moveY < OFFSETY){ // Verify on the Y axis
+            || frog->getPosY()+moveY >= OFFSETY+HEIGHTP || frog->getPosY()+moveY < OFFSETY-sizeCase){ // Verify on the Y axis
         return false;
     }
     return true;
@@ -240,30 +240,34 @@ void GameMode00::interactElement(Frog *frog)
     for(int index=0; index<3;index++){//In a pattern (3 is the number of patern)
         for(int x=0; x<17; ++x){ //Column of block
             for(int y=0; y<7; ++y){ //Line of block
-                Block *block = paterns[index]->getGround()->getBlocks().at(y).at(x); //Create a local block to simplify the code
+                Block block = paterns[index]->getGround()->getBlocks()->at(y).at(x); //Create a local block to simplify the code
                 /*
-                if(block->getCrossable()==false){
-                    qDebug() << "block : " << block->getPosX() << " | " << block->getPosY();
+                if(block.getCrossable()==false){
+                    qDebug() << "name : " << QString::fromStdString(paterns[index]->getName()) << " | block : " << block.getPosX() << " | " << block.getPosY() << " | adresse : " << paterns[index]->getGround();
                 }
                 */
                 //Verify if the frog is not in a non crossable type
-                if(frog->getPosX()== block->getPosX() && //Check the X pos
-                        frog->getPosY()== 1+block->getPosY() && //Check the Y pos (+1 is because of the historical size of a rect)
-                        block->getCrossable()==false){ //Check if it's non crossable
-                    //Repaint befor restart
+                if(frog->getPosX()== block.getPosX() && //Check the X pos
+                        frog->getPosY()== block.getPosY() && //Check the Y pos
+                        block.getCrossable()==false){ //Check if it's non crossable
+                    //Repaint before restart
                     repaint();
                     //Restart the game
                     restartGame();
+                    //Repaint after restart
+                    repaint();
                 }
             }
         }
     }
     //Verify that the frog is not out of map
     if(frog->getPosY()>OFFSETY+HEIGHTP){
-        //Repaint befor restart
+        //Repaint before restart
         repaint();
         //Restart the game
         restartGame();
+        //Repaint after restart
+        repaint();
     }
 }
 
@@ -311,9 +315,9 @@ void GameMode00::restartGame()
         paterns[i]->~Patern();
     }
     //Create the 3 parterns
-    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
-    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
-    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,atg);
+    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern1");
+    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern2");
+    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern3");
 
     //Set the default ground for the first
     paterns[1]->defaultGround();
@@ -322,6 +326,9 @@ void GameMode00::restartGame()
     speed=1;
     adv=0;
     tick=0;
+    tickSpeed=0;
+    tickRepaint=0;
+    speedGeneral=1;
 
     //Set started and paused on default value
     started=false;
@@ -335,36 +342,48 @@ int GameMode00::getSizeCase()
 
 void GameMode00::advancementSpeed()
 {
-    if(adv%5==0 && speedGeneral!=1){
-        speedGeneral-=1;
+    if(adv%5==0 && speedGeneral!=14){
+        speedGeneral+=1;
     }
 }
 
 void GameMode00::gameLoop()
 {
-    //Icrease tick value
-    tick++;
-    //Every second
-    if(tick==(1000/speedOfTheTimer)){
-        tick=0;
-        //Increase adv value
-        adv++;
-        //Change the speed in function of advancement
-        advancementSpeed();
-    }
-    //Every speed
-    if(tick%(speedGeneral/speedOfTheTimer)==0){
-        if(!paused && started){
+    //If the game is not paused or not started
+    if(!paused && started){
+        //Icrease tick value
+        tick++;
+        tickSpeed++;
+        tickRepaint++;
+        //Every second
+        if(tick>=(1000/(speedOfTheTimer))){ //
+            tick=0;
+            //Increase adv value
+            adv++;
+            //Change the speed in function of advancement
+            advancementSpeed();
+        }
+        //Repaint every 16ms (60fps)
+        if(tickRepaint%16==0){
+            tickRepaint=0;
+            //Set a chrono that count elapsed time
+            QElapsedTimer chrono;
+            chrono.start();
+            //Repaint (before interact element to have posX and posY up to date)
+            repaint();
+            //Do the interaction just after the repaint
+            interactElement(frog1);
+            qDebug() << "Repaint took " << chrono.elapsed() << "ms";
+        }
+        //Every speed
+        if((tickSpeed+speedGeneral)%15==0){
+            tickSpeed=0;
             //Move all the paterns
             for(auto i : paterns){
                 i->moveBottom(speed);
             }
             //Move the frog
             frog1->moveBottom(speed);
-            //Do the interaction
-            interactElement(frog1);
-            //Repaint
-            repaint();
         }
     }
 }

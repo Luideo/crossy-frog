@@ -7,7 +7,7 @@
 class Patern
 {
 public:
-    Patern(int posX,int posY,int width,int height,int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,int sizeCase,AllGrounds *atg);
+    Patern(int posX,int posY,int width,int height,int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,int sizeCase,AllGrounds atg,string name);
 
     ///
     /// \brief generate a random ground
@@ -47,16 +47,21 @@ public:
     /// \return the ground
     ///
     Ground *getGround() const;
+    ///
+    /// \brief getName
+    /// \return
+    ///
+    string getName() const;
 
 private:
     ///
-    /// \brief A ground its a composition of blocks where the frog will run
+    /// \brief A ground its a composition of blocks where the frog will run (not a pointer cause of collision problems)
     ///
     Ground *ground;
     ///
     /// \brief Class of all the ground present in the game
     ///
-    AllGrounds *alls;
+    AllGrounds alls;
     ///
     /// \brief posX of the patern (ATTENTION! DOSENT PUT OFFSET)
     ///
@@ -93,6 +98,10 @@ private:
     /// \brief The size of a case on the playground
     ///
     int sizeCase;
+    ///
+    /// \brief name of the patern
+    ///
+    string name;
 };
 
 #endif // PATERN_H

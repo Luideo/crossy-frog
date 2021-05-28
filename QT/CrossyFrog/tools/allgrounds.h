@@ -8,16 +8,18 @@ class AllGrounds
 {
 public:
     AllGrounds(Resources *resources);
+    AllGrounds();
+
     ///
     /// \brief randGround method that return a ground randomly
     /// \return Random ground
     ///
-    Ground *randGround();
+    Ground randGround();
     ///
     /// \brief This method return the default ground (avoid water for the first for example)
     /// \return Default Ground
     ///
-    Ground *defaultGround();
+    Ground defaultGround();
 
 private:
     ///

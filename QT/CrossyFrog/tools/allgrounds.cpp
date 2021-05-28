@@ -19,16 +19,21 @@ AllGrounds::AllGrounds(Resources * resources)
     qDebug() << "Chargement des maps en : " << timer->elapsed() << "ms";
 }
 
-Ground *AllGrounds::randGround()
+AllGrounds::AllGrounds()
 {
-    //Return random ground in the vector of ground
-    return allGround.at(rand()%allGround.size());
+
 }
 
-Ground *AllGrounds::defaultGround()
+Ground AllGrounds::randGround()
+{
+    //Return random ground in the vector of ground
+    return *allGround.at(rand()%allGround.size());
+}
+
+Ground AllGrounds::defaultGround()
 {
     //Return the default ground
-    return allGround.at(0);
+    return *allGround.at(0);
 }
 
 void AllGrounds::tick()
