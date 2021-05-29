@@ -79,6 +79,16 @@ public:
     /// \param The speed in px
     ///
     void moveBottom(int speed);
+    ///
+    /// \brief getInvicible
+    /// \return
+    ///
+    bool getInvicible() const;
+    ///
+    /// \brief setInvicible
+    /// \param value
+    ///
+    void setInvicible(bool value);
 
 private:
     ///
@@ -109,6 +119,10 @@ private:
     /// \brief The current rotation of the frog, start at 0
     ///
     int rotation=0;
+    ///
+    /// \brief If the frog is invicible
+    ///
+    bool invicible=false;
 };
 
 #endif // FROG_H

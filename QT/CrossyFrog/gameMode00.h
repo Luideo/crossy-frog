@@ -92,6 +92,16 @@ public:
     /// \brief advancementSpeed is a method call every second that change the speed in function of the advancement
     ///
     void advancementSpeed();
+    ///
+    /// \brief getPlayer1
+    /// \return
+    ///
+    Player *getPlayer1() const;
+    ///
+    /// \brief setPlayer1
+    /// \param value
+    ///
+    void setPlayer1(Player *value);
 
 private:
     Ui::GameMode00 *ui;
@@ -159,7 +169,7 @@ private:
     ///
     /// \brief If display the ui dev tools
     ///
-    bool displayUi=true;
+    bool displayUi=false;
     ///
     /// \brief The variable speed is the number of pixel that move in a frame
     ///
@@ -187,7 +197,7 @@ private:
     ///
     /// \brief Every 12 tick it move the frog (can be lower with the time)
     ///
-    int speedGeneral=1;
+    int speedGeneral=10;
     ///
     /// \brief atg is the allGround class generated at the begining
     ///

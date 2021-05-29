@@ -13,12 +13,12 @@ string Player::getItsName() const
 
 int Player::getItsScore() const
 {
-    return itsScore;
+    return itsMaxScore;
 }
 
 void Player::setItsScore(int value)
 {
-    itsScore = value;
+    itsMaxScore = value;
 }
 
 Frog *Player::getItsFrog() const
@@ -29,6 +29,24 @@ Frog *Player::getItsFrog() const
 void Player::setItsFrog(Frog *value)
 {
     itsFrog = value;
+}
+
+int Player::getItsMaxScore() const
+{
+    return itsMaxScore;
+}
+
+void Player::goUp()
+{
+    if(itsScore==itsMaxScore){ //If the both scores are equal we can up the max score
+        itsMaxScore++;
+    }//Otherwise it mean that the frog have gone down so we have to retablish the normal score before the best score
+    itsScore++;
+}
+
+void Player::goDown()
+{
+    itsScore--;
 }
 
 void Player::setItsName(const string &value)

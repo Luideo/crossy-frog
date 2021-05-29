@@ -92,6 +92,19 @@ void GameMode00::paintEvent(QPaintEvent *event)
     //Frog
     itsPainter->drawImage(player1->getItsFrog()->getPosX(),player1->getItsFrog()->getPosY(),player1->getItsFrog()->getShape());
 
+    //Change the size and the font of the painter
+    QFont original = itsPainter->font();
+    QFont font = itsPainter->font();
+    font.setFamily("8-bit Arcade In");
+    font.setPointSize(40);
+    itsPainter->setFont(font);
+    //Change the color
+    itsPainter->setPen(Tools::COLOR_WHITE());
+    //Display the score
+    itsPainter->drawText(QRect(OFFSETX+5,OFFSETY+5,200,50),QString::number(player1->getItsMaxScore()),QTextOption(Qt::AlignLeft));
+    //Reset the original font
+    itsPainter->setFont(original);
+
     //Bash commands
     //Command tha display the grid on the screen
     if(displayGrid){
@@ -144,6 +157,8 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             if(validMove(player1->getItsFrog(),0,-sizeCase)){
                 //Move the frog
                 player1->getItsFrog()->setPosY(player1->getItsFrog()->getPosY()-sizeCase);
+                //Set the score
+                player1->goUp();
             }
             //Change the rotate params
             player1->getItsFrog()->setRotation(0);
@@ -176,6 +191,8 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             if(validMove(player1->getItsFrog(),0,+sizeCase)){
                 //Move the frog
                 player1->getItsFrog()->setPosY(player1->getItsFrog()->getPosY()+sizeCase);
+                //Set the score
+                player1->goDown();
             }
             //Change the rotate params
             player1->getItsFrog()->setRotation(180);
@@ -249,7 +266,8 @@ void GameMode00::interactElement(Frog *frog)
                 //Verify if the frog is not in a non crossable type
                 if(frog->getPosX()== block.getPosX() && //Check the X pos
                         frog->getPosY()== block.getPosY() && //Check the Y pos
-                        block.getCrossable()==false){ //Check if it's non crossable
+                        block.getCrossable()==false && //Check if it's non crossable
+                        player1->getItsFrog()->getInvicible() == false){ //Check if the frog is not invincible
                     //Repaint before restart
                     repaint();
                     //Restart the game
@@ -260,14 +278,21 @@ void GameMode00::interactElement(Frog *frog)
             }
         }
     }
-    //Verify that the frog is not out of map
+    //Verify that the frog is not out of map, if it's invincible the replace it
     if(frog->getPosY()>OFFSETY+HEIGHTP){
-        //Repaint before restart
-        repaint();
-        //Restart the game
-        restartGame();
-        //Repaint after restart
-        repaint();
+        if(player1->getItsFrog()->getInvicible() == false){
+            //Repaint before restart
+            repaint();
+            //Restart the game
+            restartGame();
+            //Repaint after restart
+            repaint();
+        }else{
+            //Change it's posY
+            player1->getItsFrog()->setPosY(player1->getItsFrog()->getPosY()-sizeCase);
+            //Then repaint
+            repaint();
+        }
     }
 }
 
@@ -294,7 +319,8 @@ void GameMode00::displayUiDevTools(QPainter *itsPainter)
     itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+15+5,190,15),"frog1-pos-y:"+QString::fromStdString(to_string(frog1->getPosY())),QTextOption(Qt::AlignRight));
     itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+2*15+5,190,15),"advancement:"+QString::fromStdString(to_string(adv)),QTextOption(Qt::AlignRight));
     itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+3*15+5,190,15),"speed:"+QString::fromStdString(to_string(speed)),QTextOption(Qt::AlignRight));
-    itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+4*15+5,190,15),"speedGeneral:"+QString::fromStdString(to_string(speedGeneral)),QTextOption(Qt::AlignRight));
+    itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+4*15+5,190,15),"speedGeneral:"+QString::fromStdString(to_string(speedGeneral))+"%",QTextOption(Qt::AlignRight));
+    itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+5*15+5,190,15),"invincible:"+QString::fromStdString(to_string(player1->getItsFrog()->getInvicible())),QTextOption(Qt::AlignRight));
 }
 
 void GameMode00::restartGame()
@@ -328,7 +354,7 @@ void GameMode00::restartGame()
     tick=0;
     tickSpeed=0;
     tickRepaint=0;
-    speedGeneral=1;
+    speedGeneral=10;
 
     //Set started and paused on default value
     started=false;
@@ -342,19 +368,25 @@ int GameMode00::getSizeCase()
 
 void GameMode00::advancementSpeed()
 {
-    if(adv%5==0 && speedGeneral!=14){
+    if(adv%12==0 && speedGeneral!=99){ //Every 20sec
         speedGeneral+=1;
     }
+}
+
+Player *GameMode00::getPlayer1() const
+{
+    return player1;
+}
+
+void GameMode00::setPlayer1(Player *value)
+{
+    player1 = value;
 }
 
 void GameMode00::gameLoop()
 {
     //If the game is not paused or not started
     if(!paused && started){
-        //Icrease tick value
-        tick++;
-        tickSpeed++;
-        tickRepaint++;
         //Every second
         if(tick>=(1000/(speedOfTheTimer))){ //
             tick=0;
@@ -373,10 +405,10 @@ void GameMode00::gameLoop()
             repaint();
             //Do the interaction just after the repaint
             interactElement(frog1);
-            qDebug() << "Repaint took " << chrono.elapsed() << "ms";
+            //qDebug() << "Repaint took " << chrono.elapsed() << "ms";
         }
         //Every speed
-        if((tickSpeed+speedGeneral)%15==0){
+        if(tickSpeed>=100/(double)speedGeneral){
             tickSpeed=0;
             //Move all the paterns
             for(auto i : paterns){
@@ -385,5 +417,9 @@ void GameMode00::gameLoop()
             //Move the frog
             frog1->moveBottom(speed);
         }
+        //Icrease tick value
+        tick++;
+        tickSpeed++;
+        tickRepaint++;
     }
 }

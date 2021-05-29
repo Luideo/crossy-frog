@@ -24,7 +24,7 @@ Splash::Splash(QWidget *parent) :
     //Loading all the resources
     resources = new Resources();
 
-    qDebug() << "Chargement des ressources en : " << timer->elapsed() << "ms";
+    //qDebug() << "Chargement des ressources en : " << timer->elapsed() << "ms";
 
     //Creation of the menu widget
     Menu *menu = new Menu(parentWidget(),resources);

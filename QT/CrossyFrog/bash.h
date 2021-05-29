@@ -26,9 +26,22 @@ private:
     GameMode00 *w;
 
 private slots:
+    ///
+    /// \brief alternate the display of the grid
+    ///
     void displayGrid();
+    ///
+    /// \brief alternate the game pause or not
+    ///
     void pauseGame();
+    ///
+    /// \brief alternate the display of the Ui info
+    ///
     void displayUi();
+    ///
+    /// \brief alternate the invincibality of the frogs
+    ///
+    void invincibleFrog();
 };
 
 #endif // BASH_H

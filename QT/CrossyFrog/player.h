@@ -39,6 +39,19 @@ public:
     /// \param *Frog
     ///
     void setItsFrog(Frog *value);
+    ///
+    /// \brief getItsMaxScore
+    /// \return
+    ///
+    int getItsMaxScore() const;
+    ///
+    /// \brief goUp method called when the frog go up
+    ///
+    void goUp();
+    ///
+    /// \brief goDown method called when the frog go down
+    ///
+    void goDown();
 
 private:
     ///
@@ -51,6 +64,10 @@ private:
     Frog *itsFrog;
     ///
     /// \brief The score of the player
+    ///
+    int itsMaxScore=0;
+    ///
+    /// \brief itsScore official (go down 1 do -1 on the score)
     ///
     int itsScore=0;
 };

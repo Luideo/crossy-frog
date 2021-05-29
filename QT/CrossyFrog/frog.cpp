@@ -84,6 +84,16 @@ void Frog::moveBottom(int speed)
     posY+=speed;
 }
 
+bool Frog::getInvicible() const
+{
+    return invicible;
+}
+
+void Frog::setInvicible(bool value)
+{
+    invicible = value;
+}
+
 QImage Frog::getOriginalShape() const
 {
     return originalShape;
