@@ -30,6 +30,7 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     //Create the player and his frog (1 player cause we're in solo)
     player1 = new Player("default1",resources);
     frog1 = new Frog(sizeCase,sizeCase,resources);
+
     //Set the basic position
     // X
     frog1->setPosX(OFFSETX+((WIDTHP/sizeCase/2)*sizeCase)); //Center on the X axe
