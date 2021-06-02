@@ -1,6 +1,8 @@
 #include "menu.h"
 #include "ui_menu.h"
 
+#include "splash.h"
+
 Menu::Menu(QWidget *parent,Resources *resources)
     : QWidget(parent)
     , ui(new Ui::Menu)
@@ -18,6 +20,7 @@ Menu::Menu(QWidget *parent,Resources *resources)
     connect(itsTimer,SIGNAL(timeout()),this,SLOT(mainTimer()));
     //Start and set the timer to 10millis
     itsTimer->start(10);
+
 }
 
 Menu::~Menu()

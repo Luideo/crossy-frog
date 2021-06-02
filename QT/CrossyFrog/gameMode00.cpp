@@ -290,6 +290,8 @@ void GameMode00::interactElement(Frog *frog)
         }else{
             //Change it's posY
             player1->getItsFrog()->setPosY(player1->getItsFrog()->getPosY()-sizeCase);
+            //Set the score
+            player1->goUp();
             //Then repaint
             repaint();
         }
@@ -368,7 +370,7 @@ int GameMode00::getSizeCase()
 
 void GameMode00::advancementSpeed()
 {
-    if(adv%12==0 && speedGeneral!=99){ //Every 20sec
+    if(adv%12==0 && speedGeneral!=99){ //Every 12sec
         speedGeneral+=1;
     }
 }

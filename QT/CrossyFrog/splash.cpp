@@ -25,16 +25,15 @@ Splash::Splash(QWidget *parent) :
     resources = new Resources();
 
     //qDebug() << "Chargement des ressources en : " << timer->elapsed() << "ms";
-
+    //Wen the splash is loaded set the menu
     //Creation of the menu widget
-    Menu *menu = new Menu(parentWidget(),resources);
+    Menu *menu = new Menu;
     //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
     menu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-
-    //Show the current widget (menu)
+    //Show the menu
     menu->show();
 
-    //Delete this
+    //Delete the parent widget
     this->deleteLater();
 }
 

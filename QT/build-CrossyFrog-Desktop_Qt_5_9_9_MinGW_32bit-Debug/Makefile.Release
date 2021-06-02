@@ -280,6 +280,7 @@ release/moc_bash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/bash.h \
@@ -412,6 +413,7 @@ release/moc_gameMode00.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/player.h \
@@ -553,6 +555,7 @@ release/moc_menu.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/gameMode00.h \
@@ -695,6 +698,7 @@ release/moc_splash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/menu.h \
@@ -872,6 +876,7 @@ release/bash.o: ../CrossyFrog/bash.cpp ../CrossyFrog/bash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		ui_bash.h \
@@ -1046,6 +1051,7 @@ release/frog.o: ../CrossyFrog/frog.cpp ../CrossyFrog/frog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/resources.h
@@ -1177,6 +1183,7 @@ release/gameMode00.o: ../CrossyFrog/gameMode00.cpp ../CrossyFrog/gameMode00.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/player.h \
@@ -1347,6 +1354,7 @@ release/main.o: ../CrossyFrog/main.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/menu.h \
@@ -1495,6 +1503,7 @@ release/menu.o: ../CrossyFrog/menu.cpp ../CrossyFrog/menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/gameMode00.h \
@@ -1538,7 +1547,8 @@ release/menu.o: ../CrossyFrog/menu.cpp ../CrossyFrog/menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		../CrossyFrog/splash.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\menu.o ..\CrossyFrog\menu.cpp
 
 release/player.o: ../CrossyFrog/player.cpp ../CrossyFrog/player.h \
@@ -1666,6 +1676,7 @@ release/player.o: ../CrossyFrog/player.cpp ../CrossyFrog/player.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/frog.h \
@@ -1797,6 +1808,7 @@ release/resources.o: ../CrossyFrog/resources.cpp ../CrossyFrog/resources.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\resources.o ..\CrossyFrog\resources.cpp
@@ -1927,6 +1939,7 @@ release/splash.o: ../CrossyFrog/splash.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/menu.h \
@@ -1940,7 +1953,37 @@ release/splash.o: ../CrossyFrog/splash.cpp ../CrossyFrog/splash.h \
 		../CrossyFrog/tools/ground.h \
 		../CrossyFrog/tools/allblocks.h \
 		../CrossyFrog/tools/block.h \
-		ui_splash.h
+		ui_splash.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qregularexpression.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qslider.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\splash.o ..\CrossyFrog\splash.cpp
 
 release/allblocks.o: ../CrossyFrog/tools/allblocks.cpp ../CrossyFrog/tools/allblocks.h \
@@ -2068,6 +2111,7 @@ release/allblocks.o: ../CrossyFrog/tools/allblocks.cpp ../CrossyFrog/tools/allbl
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/tools/block.h
@@ -2198,6 +2242,7 @@ release/allgrounds.o: ../CrossyFrog/tools/allgrounds.cpp ../CrossyFrog/tools/all
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/tools/ground.h \
@@ -2330,6 +2375,7 @@ release/block.o: ../CrossyFrog/tools/block.cpp ../CrossyFrog/tools/block.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/gameMode00.h \
@@ -2469,6 +2515,7 @@ release/ground.o: ../CrossyFrog/tools/ground.cpp ../CrossyFrog/tools/ground.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/tools/allblocks.h \
@@ -2600,6 +2647,7 @@ release/patern.o: ../CrossyFrog/tools/patern.cpp ../CrossyFrog/tools/patern.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		../CrossyFrog/tools/allgrounds.h \

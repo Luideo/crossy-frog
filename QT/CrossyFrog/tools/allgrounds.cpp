@@ -16,6 +16,8 @@ AllGrounds::AllGrounds(Resources * resources)
     allGround.push_back(g3);
     Ground *g4 = new Ground("../CrossyFrog/res/ground/g4.txt",allBlocks);
     allGround.push_back(g4);
+    Ground *g5 = new Ground("../CrossyFrog/res/ground/g5.txt",allBlocks);
+    allGround.push_back(g5);
     qDebug() << "Chargement des maps en : " << timer->elapsed() << "ms";
 }
 

@@ -10,6 +10,8 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
 QT_END_NAMESPACE
 
+class Splash;
+
 ///
 /// \brief The main class on startup
 ///

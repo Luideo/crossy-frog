@@ -10,6 +10,8 @@ namespace Ui {
 class Splash;
 }
 
+class MainWindow;
+
 class Splash : public QWidget
 {
     Q_OBJECT
