@@ -41,9 +41,9 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     //Create all ground class
     atg = new AllGrounds(resources);
     //Create the 3 parterns
-    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern1");
-    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern2");
-    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern3");
+    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern1",resources);
+    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern2",resources);
+    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern3",resources);
 
     //Just set a basic dirt ground for the first (default ground)
     paterns[1]->defaultGround();
@@ -255,6 +255,7 @@ void GameMode00::setPaused(bool value)
 void GameMode00::interactElement(Frog *frog)
 {
     //Verify that the case is crossable
+    bool crossable = true;
     for(int index=0; index<3;index++){//In a pattern (3 is the number of patern)
         for(int x=0; x<17; ++x){ //Column of block
             for(int y=0; y<7; ++y){ //Line of block
@@ -269,15 +270,26 @@ void GameMode00::interactElement(Frog *frog)
                         frog->getPosY()== block.getPosY() && //Check the Y pos
                         block.getCrossable()==false && //Check if it's non crossable
                         player1->getItsFrog()->getInvicible() == false){ //Check if the frog is not invincible
-                    //Repaint before restart
-                    repaint();
-                    //Restart the game
-                    restartGame();
-                    //Repaint after restart
-                    repaint();
+                crossable = false;
                 }
             }
         }
+        //Check all the items
+        for(auto i : paterns[index]->getAllItems()){
+            //Now check the items
+            if((frog->getPosX() > i->getItsPosx() && frog->getPosX() < i->getItsPosx()+i->getItsBackground().size().width())
+                    || (frog->getPosX()+frog->getWidth() > i->getItsPosx() && frog->getPosX()+frog->getWidth() < i->getItsPosx()+i->getItsBackground().size().width())){
+                crossable = true;
+            }
+        }
+    }
+    if(!crossable){
+        //Repaint before restart
+        repaint();
+        //Restart the game
+        restartGame();
+        //Repaint after restart
+        repaint();
     }
     //Verify that the frog is not out of map, if it's invincible the replace it
     if(frog->getPosY()>OFFSETY+HEIGHTP){
@@ -344,9 +356,9 @@ void GameMode00::restartGame()
         paterns[i]->~Patern();
     }
     //Create the 3 parterns
-    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern1");
-    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern2");
-    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern3");
+    paterns[0] = new Patern(0,0,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern1",resources);
+    paterns[1] = new Patern(0,HEIGHTP/2,WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern2",resources);
+    paterns[2] = new Patern(0,-(HEIGHTP/2),WIDTHP,HEIGHTP/2,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,sizeCase,*atg,"patern3",resources);
 
     //Set the default ground for the first
     paterns[1]->defaultGround();
@@ -419,6 +431,13 @@ void GameMode00::gameLoop()
             }
             //Move the frog
             frog1->moveBottom(speed);
+            //Browse paterns
+            for(auto p : paterns){
+                //Browse all items
+                for(auto i : p->getAllItems()){
+                    i->moveFrame();
+                }
+            }
         }
         //Icrease tick value
         tick++;

@@ -50,6 +50,10 @@ private:
     ///
     QTimer * itsTimer;
     ///
+    /// \brief itsTimerA is the timer specified for the frog and cloud anim in background
+    ///
+    QTimer * itsTimerA;
+    ///
     /// \brief Width of the screen
     ///
     int WIDTH = 1200;
@@ -101,11 +105,35 @@ private:
     /// \brief All the resources we need
     ///
     Resources *resources;
+    ///
+    /// \brief frog in the background
+    ///
+    Frog *frog;
+    ///
+    /// \brief frogState 0 or 1(0 ground, 1 int the air)
+    ///
+    int frogState=0;
+    ///
+    /// \brief cloud in the background
+    ///
+    QImage *cloud;
+    ///
+    /// \brief cloudX pos
+    ///
+    int cloudX = 100;
+    ///
+    /// \brief timerAnimTick +1 every tick
+    ///
+    int timerAnimTick=0;
 
 private slots:
     ///
     /// \brief Private slots method call every 10millis (by the timer)
     ///
     void mainTimer();
+    ///
+    /// \brief animationtic
+    ///
+    void animationTick();
 };
 #endif // MENU_H

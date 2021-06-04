@@ -11,6 +11,7 @@ INPUT(
 ./debug\allgrounds.o
 ./debug\block.o
 ./debug\ground.o
+./debug\item.o
 ./debug\patern.o
 ./debug\moc_bash.o
 ./debug\moc_gameMode00.o

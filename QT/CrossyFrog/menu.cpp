@@ -13,6 +13,15 @@ Menu::Menu(QWidget *parent,Resources *resources)
     //Set the var resources
     this->resources = resources;
 
+    //Create the frog in the background
+    frog = new Frog(128,128,resources);
+    frog->setShape(resources->getImages().at("frogMenu1"));
+    frog->setPosX(0-128);
+    frog->setPosY(grassRect.y()-128);
+
+    //Set the cloud images
+    cloud= new QImage(resources->getImages().at("cloud"));
+
 
     //Timer of the menu, each 10millis it call mainTimer (private slots method)
     itsTimer = new QTimer();
@@ -20,6 +29,13 @@ Menu::Menu(QWidget *parent,Resources *resources)
     connect(itsTimer,SIGNAL(timeout()),this,SLOT(mainTimer()));
     //Start and set the timer to 10millis
     itsTimer->start(10);
+
+    //Timer of the menu, each 10millis it call mainTimer (private slots method)
+    itsTimerA = new QTimer();
+    //Connect the timer to the mainTimer method
+    connect(itsTimerA,SIGNAL(timeout()),this,SLOT(animationTick()));
+    //Start and set the timer to 10millis
+    itsTimerA->start(20);
 
 }
 
@@ -52,6 +68,10 @@ void Menu::paintEvent(QPaintEvent *event)
     //Draw the playground rect
     itsPainter->drawRect(QRect(OFFSETX,OFFSETY,WIDTHP,HEIGHTP));
 
+    //Draw the background animated frog
+    itsPainter->drawImage(frog->getPosX(),frog->getPosY(),frog->getShape());
+    //Draw background animated cloud
+    itsPainter->drawImage(cloudX,100,*cloud);
 
     //Draw the ui
     //Change colors
@@ -146,7 +166,6 @@ void Menu::paintEvent(QPaintEvent *event)
         itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
     }
     }
-
 
     //Draw the rect of the animation on the other text then (just if the variable animate is on true)
     if(animationPlay){
@@ -274,5 +293,36 @@ void Menu::mainTimer()
 {
     //Repaint the UI (call the paintEvent method)
     repaint();
+}
+
+void Menu::animationTick(){
+    timerAnimTick++;
+    //Change the frog state and position
+    if(timerAnimTick%7==0){
+        timerAnimTick=0;
+        if(frogState==0){
+            frogState=1;
+            frog->setPosX(frog->getPosX()+55);
+            frog->setPosY(frog->getPosY()-15);
+            frog->setShape(resources->getImages().at("frogMenu2"));
+            if(frog->getPosX()>WIDTH){
+                frog->setPosX(-(rand()%128+128));
+            }
+        }else if(frogState==1){
+            frogState=2;
+            frog->setPosX(frog->getPosX()+55);
+            frog->setPosY(frog->getPosY()+15);
+            frog->setShape(resources->getImages().at("frogMenu1"));
+        }else if(frogState == 2){
+            frogState=3;
+        }else if(frogState == 3){
+            frogState=0;
+        }
+    }
+    if(cloudX>WIDTH){
+        cloudX=0;
+    }else{
+    cloudX++;
+    }
 }
 

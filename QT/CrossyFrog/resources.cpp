@@ -39,6 +39,42 @@ Resources::Resources()
     images["water"]=water;
     //Increase the index
     index++;
+
+    //Both animation of frog at the menu selection
+    QImage frogMenu1;
+    frogMenu1.load("../CrossyFrog/res/Menu/1.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!frogMenu1.isNull());
+    frogMenu1 = frogMenu1.scaled(QSize(128,128));
+    images["frogMenu1"]=frogMenu1;
+    //Increase the index
+    index++;
+    QImage frogMenu2;
+    frogMenu2.load("../CrossyFrog/res/Menu/2.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!frogMenu2.isNull());
+    frogMenu2 = frogMenu2.scaled(QSize(128,128));
+    images["frogMenu2"]=frogMenu2;
+    //Increase the index
+    index++;
+    QImage cloud;
+    cloud.load("../CrossyFrog/res/Menu/cloud.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!cloud.isNull());
+    cloud = cloud.scaled(QSize(128,128));
+    images["cloud"]=cloud;
+    //Increase the index
+    index++;
+
+    //All items are loaded here
+    QImage woodLog;
+    woodLog.load("../CrossyFrog/res/Items/woodlog.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!woodLog.isNull());
+    woodLog = woodLog.scaled(QSize(104,52));
+    images["log"]=woodLog;
+    //Increase the index
+    index++;
 }
 
 map<string, QImage> Resources::getImages()

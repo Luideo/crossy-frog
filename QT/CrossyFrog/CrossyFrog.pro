@@ -21,6 +21,7 @@ SOURCES += \
     tools/allgrounds.cpp \
     tools/block.cpp \
     tools/ground.cpp \
+    tools/item.cpp \
     tools/patern.cpp
 
 HEADERS += \
@@ -36,6 +37,7 @@ HEADERS += \
     tools/block.h \
     tools/ground.h \
     tools/includes.h \
+    tools/item.h \
     tools/patern.h \
     tools/tools.h
 

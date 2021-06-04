@@ -11,6 +11,7 @@ INPUT(
 ./release\allgrounds.o
 ./release\block.o
 ./release\ground.o
+./release\item.o
 ./release\patern.o
 ./release\moc_bash.o
 ./release\moc_gameMode00.o
