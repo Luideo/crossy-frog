@@ -24,6 +24,11 @@ public:
     /// \return
     ///
     Block *getWater() const;
+    ///
+    /// \brief getRoad
+    /// \return
+    ///
+    Block *getRoad() const;
 
 private:
     ///
@@ -45,7 +50,11 @@ private:
     /// \brief water
     /// \return
     ///
-    Block*water;
+    Block *water;
+    ///
+    /// \brief road
+    ///
+    Block *road;
 };
 
 #endif // ALLBLOCKS_H

@@ -9,6 +9,7 @@ AllBlocks::AllBlocks(Resources *resources)
         dirt = new Block("dirt",true,resources);
         grass = new Block("grass",true,resources);
         water = new Block("water",false,resources);
+        road = new Block("road",true,resources);
 }
 
 Block *AllBlocks::getDirt() const
@@ -24,4 +25,9 @@ Block *AllBlocks::getGrass() const
 Block *AllBlocks::getWater() const
 {
     return water;
+}
+
+Block *AllBlocks::getRoad() const
+{
+    return road;
 }

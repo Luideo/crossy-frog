@@ -56,6 +56,8 @@ vector<Block> Ground::stringToBlock(vector<string> vec)
             finalVector.push_back(*allBlocks->getGrass());
         }else if(*it=="D"){
             finalVector.push_back(*allBlocks->getDirt());
+        }else if(*it=="R"){
+            finalVector.push_back(*allBlocks->getRoad());
         }
     }
     return finalVector;

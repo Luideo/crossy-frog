@@ -212,4 +212,36 @@ void Patern::setItems()
             allItems.push_back(log2);
         }
     }
+    //Car item / Train
+    for(int y=0;y<7;++y){
+        Block b = ground->getBlocks()->at(y).at(0);
+        bool needItem = true;
+        for(int x=0; x<17;++x){
+            if(ground->getBlocks()->at(y).at(x).getName() != b.getName()){
+                needItem=false;
+            }else{
+                //qDebug() << QString::fromStdString(ground->getBlocks()->at(y).at(x).getName());
+            }
+        }
+        //If the needItem still true that mean all the line is non crossable so we put an item on it
+        if(needItem){
+            //qDebug() << "Create item on this patern";
+            //Car
+            if(b.getName()=="road"){
+                //Load the image
+                QImage background = resources->getImages().at("car");
+                //Create the item
+                Item * car1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+                Item * car2 = new Item(abs(WIDTHP-car1->getItsPosx()),OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+                car1->setItsSpeedX(-2);
+                car2->setItsSpeedX(-2);
+                allItems.push_back(car1);
+                allItems.push_back(car2);
+            }
+            //Train
+            else if(b.getName()=="railway"){
+
+            }
+        }
+    }
 }

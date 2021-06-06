@@ -16,6 +16,8 @@ Block::Block(string imageName, bool crossabilty, Resources *resources)
     this->background = bck;
     //Set the crossabilty
     this->crossable  = crossabilty;
+    //Set the name
+    this->name = imageName;
 }
 
 QImage Block::getBackground() const

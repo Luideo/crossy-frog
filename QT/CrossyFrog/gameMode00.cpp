@@ -270,17 +270,26 @@ void GameMode00::interactElement(Frog *frog)
                         frog->getPosY()== block.getPosY() && //Check the Y pos
                         block.getCrossable()==false && //Check if it's non crossable
                         player1->getItsFrog()->getInvicible() == false){ //Check if the frog is not invincible
-                crossable = false;
+                    crossable = false;
                 }
             }
         }
         //Check all the items
+        int in =0;
         for(auto i : paterns[index]->getAllItems()){
+            //qDebug() << frog->getPosY() << " : " <<+paterns[index]->getPosY();
             //Now check the items
-            if((frog->getPosX() > i->getItsPosx() && frog->getPosX() < i->getItsPosx()+i->getItsBackground().size().width())
-                    || (frog->getPosX()+frog->getWidth() > i->getItsPosx() && frog->getPosX()+frog->getWidth() < i->getItsPosx()+i->getItsBackground().size().width())){
-                crossable = true;
+            if(((frog->getPosX() > i->getItsPosx() && frog->getPosX() < i->getItsPosx()+i->getItsBackground().size().width()) //for x
+                || (frog->getPosX()+frog->getWidth() > i->getItsPosx() && frog->getPosX()+frog->getWidth() < i->getItsPosx()+i->getItsBackground().size().width()))
+                    && (frog->getPosY()==i->getItsPosy()+paterns[index]->getPosY())){ //for y
+                //Only if the item is crossable
+                if(i->getItsCrossability()){
+                    crossable = true;
+                }else{
+                    crossable = false;
+                }
             }
+            in++;
         }
     }
     if(!crossable){
@@ -420,7 +429,7 @@ void GameMode00::gameLoop()
             repaint();
             //Do the interaction just after the repaint
             interactElement(frog1);
-            //qDebug() << "Repaint took " << chrono.elapsed() << "ms";
+            qDebug() << "Repaint took " << chrono.elapsed() << "ms";
         }
         //Every speed
         if(tickSpeed>=100/(double)speedGeneral){

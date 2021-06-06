@@ -39,6 +39,14 @@ Resources::Resources()
     images["water"]=water;
     //Increase the index
     index++;
+    //Road
+    QImage road;
+    road.load("../CrossyFrog/res/blocks/road.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!road.isNull());
+    images["road"]=road;
+    //Increase the index
+    index++;
 
     //Both animation of frog at the menu selection
     QImage frogMenu1;
@@ -73,6 +81,14 @@ Resources::Resources()
     Q_ASSERT(!woodLog.isNull());
     woodLog = woodLog.scaled(QSize(104,52));
     images["log"]=woodLog;
+    //Increase the index
+    index++;
+    QImage car;
+    car.load("../CrossyFrog/res/Items/car.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!car.isNull());
+    car = car.scaled(QSize(104,60));
+    images["car"]=car;
     //Increase the index
     index++;
 }
