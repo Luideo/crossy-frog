@@ -20,7 +20,7 @@ class GameMode00 : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr);
+    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChoosen=nullptr);
     ~GameMode00();
     ///
     /// \brief paintEvent method (paint all the elements of the widget)

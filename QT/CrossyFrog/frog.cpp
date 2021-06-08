@@ -7,7 +7,7 @@ Frog::Frog(int width, int height,Resources *resources)
     //Set the hight of the frog
     this->height = height;
     //Load the basic Image from files
-    QImage shape = resources->getImages().at("frog1");
+    QImage shape = resources->getImages().at("frogM");
     //Resize
     shape = shape.scaled(QSize(width,height));
     //Set the shape to the frog

@@ -4,7 +4,7 @@
 #include <QWidget>
 #include "tools/includes.h"
 #include "tools/tools.h"
-#include "gameMode00.h"
+#include "choosefrog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
@@ -41,9 +41,9 @@ public:
 private:
     Ui::Menu *ui;
     ///
-    /// \brief The Widget Game that will be display when the play button is clicked
+    /// \brief The Widget ChooseFrog that will be display when the play button is clicked
     ///
-    GameMode00 * game;
+    ChooseFrog * choose;
     ///
     /// \brief The main timer of the game
     ///

@@ -1,7 +1,7 @@
 #include "gameMode00.h"
 #include "ui_gameMode00.h"
 
-GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources) :
+GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChoosen) :
     QWidget(parent),
     ui(new Ui::GameMode00)
 {
@@ -292,7 +292,7 @@ void GameMode00::interactElement(Frog *frog)
             in++;
         }
     }
-    if(!crossable){
+    if(!crossable && player1->getItsFrog()->getInvicible() == false){
         //Repaint before restart
         repaint();
         //Restart the game

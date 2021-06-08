@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     bash.cpp \
+    choosefrog.cpp \
     frog.cpp \
     gameMode00.cpp \
     main.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     bash.h \
+    choosefrog.h \
     frog.h \
     gameMode00.h \
     menu.h \
@@ -43,6 +45,7 @@ HEADERS += \
 
 FORMS += \
     bash.ui \
+    choosefrog.ui \
     gameMode00.ui \
     menu.ui \
     splash.ui

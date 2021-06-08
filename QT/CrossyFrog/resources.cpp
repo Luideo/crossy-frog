@@ -6,11 +6,27 @@ Resources::Resources()
     index = 0;
 
     //Load frogs
-    QImage frog1;
-    frog1.load("../CrossyFrog/res/frog1.png");
+    QImage frogM;
+    frogM.load("../CrossyFrog/res/Frog/top/frogM.png");
     //Verify if the image is loaded
-    Q_ASSERT(!frog1.isNull());
-    images["frog1"]=frog1;
+    Q_ASSERT(!frogM.isNull());
+    images["frogM"]=frogM;
+    //Increase the index
+    index++;
+
+    //Load the front of the frog
+    QImage frogMF;
+    frogMF.load("../CrossyFrog/res/Frog/full/frogM.png");
+    //Verify if the image is loaded
+    Q_ASSERT(!frogMF.isNull());
+    images["frogMF"]=frogMF;
+    //Increase the index
+    index++;
+    QImage frogFF;
+    frogFF.load("../CrossyFrog/res/Frog/full/frogF.png");
+    //Verify if the image is loaded
+    Q_ASSERT(!frogFF.isNull());
+    images["frogFF"]=frogFF;
     //Increase the index
     index++;
 
@@ -25,7 +41,7 @@ Resources::Resources()
     index++;
     //Grass
     QImage grass;
-    grass.load("../CrossyFrog/res/blocks/grass");
+    grass.load("../CrossyFrog/res/blocks/grass1");
     //Verify if the image is correctly loaded
     Q_ASSERT(!grass.isNull());
     images["grass"]=grass;

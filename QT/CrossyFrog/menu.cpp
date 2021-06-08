@@ -254,19 +254,22 @@ void Menu::animatePlayPressed()
     //Launch new widget only if the anim is finished (rect on the top)
     if(grassRect2.y()<=OFFSETY && animationPlay){
         animationPlay = false;
+        //Change to the selection of the frog widget
         //Change the widget that displayed
-        game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
+        choose = new ChooseFrog(parentWidget(),0,WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
         //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
-        game->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         //Show the current widget (game)
-        game->show();
+        choose->show();
         //Delete this widget after calling the other
         this->deleteLater();
+
     }else{ //Else animate the rect (firstly goDown and after Go up)
         if(grassRect.y()<OFFSETY+HEIGHTP-50){ //Down the first rectangle 1px per 1px
-            //Set the pos of the two rects
+            //Set the pos of the two rects and the frog
             grassRect.setY(grassRect.y()+2);
             grassRect2.setY(grassRect.y());
+            frog->setPosY(frog->getPosY()+2);
         }else{ //When the first put the second up
             //Up the pos of the second rect
             //Do an interpolator accelerator move
@@ -274,14 +277,19 @@ void Menu::animatePlayPressed()
             int basis=4;
             if(grassRect2.y()>650){
                 grassRect2.setY(grassRect2.y()-(basis));
+                               frog->setPosY(frog->getPosY()-(basis));
             }else if(grassRect2.y()>500){
                 grassRect2.setY(grassRect2.y()-(basis+1));
+                          frog->setPosY(frog->getPosY()-(basis+1));
             }else if(grassRect2.y()>350){
                 grassRect2.setY(grassRect2.y()-(basis+2));
+                               frog->setPosY(frog->getPosY()-(basis+2));
             }else if(grassRect2.y()>200){
                 grassRect2.setY(grassRect2.y()-(basis+3));
+                               frog->setPosY(frog->getPosY()-(basis+3));
             }else{
                 grassRect2.setY(grassRect2.y()-(basis+4));
+                               frog->setPosY(frog->getPosY()-(basis+4));
             }
             grassRect2.setHeight(grassRect2.height());
         }
