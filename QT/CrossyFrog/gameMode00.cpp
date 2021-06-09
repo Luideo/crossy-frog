@@ -116,6 +116,10 @@ void GameMode00::paintEvent(QPaintEvent *event)
     if(displayUi){
         displayUiDevTools(itsPainter);
     }
+    //Draw the game over screen
+    if(partyFinished){
+        drawPartyFinished(itsPainter);
+    }
 
     //Draw the border of UI
     //Change color
@@ -151,7 +155,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
         }
     }
     //Verifiy that's not in pause or not started
-    if(!paused && started){
+    if(!paused && started && !partyFinished){
         //Go Up
         if(event->key() == Qt::Key_Z  && event->isAutoRepeat()==false){ //Z Pressed and not maintained
             //Is a valide move
@@ -295,20 +299,26 @@ void GameMode00::interactElement(Frog *frog)
     if(!crossable && player1->getItsFrog()->getInvicible() == false){
         //Repaint before restart
         repaint();
+        partyFinished=true;
+        /*
         //Restart the game
         restartGame();
         //Repaint after restart
         repaint();
+        */
     }
     //Verify that the frog is not out of map, if it's invincible the replace it
     if(frog->getPosY()>OFFSETY+HEIGHTP){
         if(player1->getItsFrog()->getInvicible() == false){
             //Repaint before restart
             repaint();
+            partyFinished=true;
+            /*
             //Restart the game
             restartGame();
             //Repaint after restart
             repaint();
+            */
         }else{
             //Change it's posY
             player1->getItsFrog()->setPosY(player1->getItsFrog()->getPosY()-sizeCase);
@@ -345,6 +355,7 @@ void GameMode00::displayUiDevTools(QPainter *itsPainter)
     itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+3*15+5,190,15),"speed:"+QString::fromStdString(to_string(speed)),QTextOption(Qt::AlignRight));
     itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+4*15+5,190,15),"speedGeneral:"+QString::fromStdString(to_string(speedGeneral))+"%",QTextOption(Qt::AlignRight));
     itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+5*15+5,190,15),"invincible:"+QString::fromStdString(to_string(player1->getItsFrog()->getInvicible())),QTextOption(Qt::AlignRight));
+    itsPainter->drawText(QRect(OFFSETX+WIDTHP-200,OFFSETY+10+6*15+5,190,15),"partyFinished:"+QString::fromStdString(to_string(partyFinished)),QTextOption(Qt::AlignRight));
 }
 
 void GameMode00::restartGame()
@@ -407,10 +418,66 @@ void GameMode00::setPlayer1(Player *value)
     player1 = value;
 }
 
+void GameMode00::drawPartyFinished(QPainter *itsPainter)
+{
+    //Create the 50% transparent Black color and set it to the painter
+    QColor black50 = Tools::COLOR_BLACK();
+    black50.setAlpha(255/2);
+    itsPainter->setPen(black50);
+    QBrush b = itsPainter->brush();
+    QBrush bef = itsPainter->brush();
+    b.setColor(black50);
+    itsPainter->setBrush(b);
+
+    //Draw the black50 rect on bg
+    itsPainter->drawRect(OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+
+    //Reset the default brush
+    itsPainter->setBrush(bef);
+
+    //Set the font and size
+    //Set the font
+    QFont fontIn;
+    fontIn.setFamily("8-bit Arcade In");
+    fontIn.setPointSize(60);
+    QFont fontOut;
+    fontOut.setFamily("8-bit Arcade Out");
+    fontOut.setPointSize(60);
+    itsPainter->setFont(fontIn);
+    b = itsPainter->brush();
+    b.setColor(Tools::COLOR_WHITE());
+    itsPainter->setBrush(b);
+    itsPainter->setPen(Tools::COLOR_WHITE());
+    //Draw the game over text
+    itsPainter->drawText(QRect(OFFSETX,OFFSETY+30,WIDTHP,200),"Game Over",QTextOption(Qt::AlignCenter));
+    //Draw the score
+    itsPainter->drawText(QRect(OFFSETX,OFFSETY+260,WIDTHP,150),QString::number(player1->getItsScore()),QTextOption(Qt::AlignCenter));
+    //Draw black on it
+    itsPainter->setFont(fontOut);
+    b = itsPainter->brush();
+    b.setColor(Tools::COLOR_BLACK());
+    itsPainter->setBrush(b);
+    itsPainter->setPen(Tools::COLOR_BLACK());
+    //Draw the game over text
+    itsPainter->drawText(QRect(OFFSETX,OFFSETY+30,WIDTHP,200),"Game Over",QTextOption(Qt::AlignCenter));
+}
+
 void GameMode00::gameLoop()
 {
+    //Repaint every 16ms (60fps)
+    if(tickRepaint%16==0){
+        tickRepaint=0;
+        //Set a chrono that count elapsed time
+        QElapsedTimer chrono;
+        chrono.start();
+        //Repaint (before interact element to have posX and posY up to date)
+        repaint();
+        //Do the interaction just after the repaint
+        interactElement(frog1);
+        qDebug() << "Repaint took " << chrono.elapsed() << "ms";
+    }
     //If the game is not paused or not started
-    if(!paused && started){
+    if(!paused && started && !partyFinished){
         //Every second
         if(tick>=(1000/(speedOfTheTimer))){ //
             tick=0;
@@ -418,18 +485,6 @@ void GameMode00::gameLoop()
             adv++;
             //Change the speed in function of advancement
             advancementSpeed();
-        }
-        //Repaint every 16ms (60fps)
-        if(tickRepaint%16==0){
-            tickRepaint=0;
-            //Set a chrono that count elapsed time
-            QElapsedTimer chrono;
-            chrono.start();
-            //Repaint (before interact element to have posX and posY up to date)
-            repaint();
-            //Do the interaction just after the repaint
-            interactElement(frog1);
-            qDebug() << "Repaint took " << chrono.elapsed() << "ms";
         }
         //Every speed
         if(tickSpeed>=100/(double)speedGeneral){
@@ -451,6 +506,6 @@ void GameMode00::gameLoop()
         //Icrease tick value
         tick++;
         tickSpeed++;
-        tickRepaint++;
     }
+    tickRepaint++;
 }

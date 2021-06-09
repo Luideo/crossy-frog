@@ -89,7 +89,7 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
     //Paint all the frog at the good pos
     //At the center
     //Set the dimension
-    qDebug() << index;
+    //qDebug() << index;
     QImage currentImage = allFrontFrogs.at(index)->scaled(QSize(350,350));
     itsPainter->drawImage((WIDTHP-currentImage.width())/2+OFFSETX,(HEIGHTP-currentImage.height())/2+OFFSETY,currentImage);
     //Draw the image at the right
@@ -148,8 +148,17 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
             index=allFrontFrogs.size()-1;
         }
     }
-    if(event->key() == Qt::Key_Enter){
-
+    if(event->key() == Qt::Key_Return){
+        //When the frog is choosen switch to the game
+        QImage * firstFrog = allFrontFrogs.at(index);
+        //Change the widget that displayed
+        game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources,firstFrog);
+        //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
+        game->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        //Show the current widget (game)
+        game->show();
+        //Delete this widget after calling the other
+        this->deleteLater();
     }
 }
 

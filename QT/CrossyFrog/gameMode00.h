@@ -102,6 +102,11 @@ public:
     /// \param value
     ///
     void setPlayer1(Player *value);
+    ///
+    /// \brief drawPartyFinished screen with score etc etc
+    /// \param itsPainter
+    ///
+    void drawPartyFinished(QPainter * itsPainter);
 
 private:
     Ui::GameMode00 *ui;
@@ -210,6 +215,10 @@ private:
     /// \brief lastElapsed equals to the time it tooks to the game Loop to do the cycle
     ///
     int lastElapsed=0;
+    ///
+    /// \brief partyFinished
+    ///
+    bool partyFinished=false;
 
 private slots:
     ///
