@@ -45,7 +45,7 @@ private:
     /// \brief grass
     /// \return
     ///
-    Block *grass;
+    vector<Block *> grass;
     ///
     /// \brief water
     /// \return

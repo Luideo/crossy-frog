@@ -53,12 +53,33 @@ Resources::Resources()
     images["dirt"]=dirt;
     //Increase the index
     index++;
-    //Grass
-    QImage grass;
-    grass.load("../CrossyFrog/res/blocks/grass1");
+    //Grasses
+    QImage grass1;
+    grass1.load("../CrossyFrog/res/blocks/grass1");
     //Verify if the image is correctly loaded
-    Q_ASSERT(!grass.isNull());
-    images["grass"]=grass;
+    Q_ASSERT(!grass1.isNull());
+    images["grass1"]=grass1;
+    //Increase the index
+    index++;
+    QImage grass2;
+    grass2.load("../CrossyFrog/res/blocks/grass2");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!grass2.isNull());
+    images["grass2"]=grass2;
+    //Increase the index
+    index++;
+    QImage grass3;
+    grass3.load("../CrossyFrog/res/blocks/grass3");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!grass3.isNull());
+    images["grass3"]=grass3;
+    //Increase the index
+    index++;
+    QImage grass4;
+    grass4.load("../CrossyFrog/res/blocks/grass4");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!grass4.isNull());
+    images["grass4"]=grass4;
     //Increase the index
     index++;
     //Water
