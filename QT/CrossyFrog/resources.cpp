@@ -13,6 +13,20 @@ Resources::Resources()
     images["frogM"]=frogM;
     //Increase the index
     index++;
+    QImage frogF;
+    frogF.load("../CrossyFrog/res/Frog/top/frogF.png");
+    //Verify if the image is loaded
+    Q_ASSERT(!frogF.isNull());
+    images["frogF"]=frogF;
+    //Increase the index
+    index++;
+    QImage frogN;
+    frogN.load("../CrossyFrog/res/Frog/top/frogN.png");
+    //Verify if the image is loaded
+    Q_ASSERT(!frogN.isNull());
+    images["frogN"]=frogN;
+    //Increase the index
+    index++;
 
     //Load the front of the frog
     QImage frogMF;

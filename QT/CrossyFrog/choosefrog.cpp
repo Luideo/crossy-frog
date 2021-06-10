@@ -27,6 +27,15 @@ ChooseFrog::ChooseFrog(QWidget *parent,int numGame, int WIDTH, int HEIGHT, int O
     allFrontFrogs.push_back(femaleFrog);
     allFrontFrogs.push_back(femaleFrog2);
 
+    //All the frog from the top
+    QImage * topM = new QImage(resources->getImages().at("frogM"));
+    QImage * topF = new QImage(resources->getImages().at("frogF"));
+    QImage * topN = new QImage(resources->getImages().at("frogN"));
+    //Push all in the vector
+    allMinFrogs.push_back(topM);
+    allMinFrogs.push_back(topF);
+    allMinFrogs.push_back(topN);
+
 
     /*
 
@@ -150,7 +159,7 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
     }
     if(event->key() == Qt::Key_Return){
         //When the frog is choosen switch to the game
-        QImage * firstFrog = allFrontFrogs.at(index);
+        QImage * firstFrog = allMinFrogs.at(index);
         //Change the widget that displayed
         game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources,firstFrog);
         //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs

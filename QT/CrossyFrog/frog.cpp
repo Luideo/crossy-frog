@@ -1,13 +1,11 @@
 #include "frog.h"
 
-Frog::Frog(int width, int height,Resources *resources)
+Frog::Frog(int width, int height,Resources *resources,QImage shape)
 {
     //Set the width of the frog
     this->width = width;
     //Set the hight of the frog
     this->height = height;
-    //Load the basic Image from files
-    QImage shape = resources->getImages().at("frogM");
     //Resize
     shape = shape.scaled(QSize(width,height));
     //Set the shape to the frog

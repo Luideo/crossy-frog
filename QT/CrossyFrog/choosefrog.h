@@ -39,6 +39,10 @@ private:
     ///
     vector<QImage *> allFrontFrogs;
     ///
+    /// \brief allMinFrogs from the top
+    ///
+        vector<QImage *> allMinFrogs;
+    ///
     /// \brief index (the index is the num of the frog at the front)
     ///
     int index=0;

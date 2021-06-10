@@ -7,7 +7,7 @@
 class Frog
 {
 public:
-    Frog(int width,int height,Resources *resources);
+    Frog(int width,int height,Resources *resources,QImage shape);
 
     ///
     /// \brief Get the shape of the frog (its an Image)

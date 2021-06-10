@@ -20,7 +20,7 @@ class GameMode00 : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChoosen=nullptr);
+    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChosen=nullptr);
     ~GameMode00();
     ///
     /// \brief paintEvent method (paint all the elements of the widget)
@@ -107,6 +107,10 @@ public:
     /// \param itsPainter
     ///
     void drawPartyFinished(QPainter * itsPainter);
+    ///
+    /// \brief saveGame
+    ///
+    void saveGame();
 
 private:
     Ui::GameMode00 *ui;
@@ -196,6 +200,10 @@ private:
     ///
     int tickRepaint=0;
     ///
+    /// \brief tickAnim is the same as tick, it count every tick of the timer even when the gme is loose or paused
+    ///
+    int tickAnim=0;
+    ///
     /// \brief speedOfTheTime its the time in millis between every tick
     ///
     int speedOfTheTimer=1;
@@ -219,6 +227,10 @@ private:
     /// \brief partyFinished
     ///
     bool partyFinished=false;
+    ///
+    /// \brief frogChosen
+    ///
+    QImage frogChosen;
 
 private slots:
     ///

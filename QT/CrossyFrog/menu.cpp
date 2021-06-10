@@ -14,8 +14,7 @@ Menu::Menu(QWidget *parent,Resources *resources)
     this->resources = resources;
 
     //Create the frog in the background
-    frog = new Frog(128,128,resources);
-    frog->setShape(resources->getImages().at("frogMenu1"));
+    frog = new Frog(128,128,resources,resources->getImages().at("frogMenu1"));
     frog->setPosX(0-128);
     frog->setPosY(grassRect.y()-128);
 

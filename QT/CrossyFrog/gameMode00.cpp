@@ -1,7 +1,8 @@
 #include "gameMode00.h"
 #include "ui_gameMode00.h"
+#include "menu.h"
 
-GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChoosen) :
+GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChosen) :
     QWidget(parent),
     ui(new Ui::GameMode00)
 {
@@ -16,6 +17,9 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     //Setup the interface of the widget
     ui->setupUi(this);
 
+    //Set the frog choosen image
+    this->frogChosen = *frogChosen;
+
     //Set the resources
     this->resources = resources;
 
@@ -29,7 +33,7 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
 
     //Create the player and his frog (1 player cause we're in solo)
     player1 = new Player("default1",resources);
-    frog1 = new Frog(sizeCase,sizeCase,resources);
+    frog1 = new Frog(sizeCase,sizeCase,resources,this->frogChosen);
 
     //Set the basic position
     // X
@@ -145,7 +149,7 @@ void GameMode00::paintEvent(QPaintEvent *event)
 void GameMode00::keyPressEvent(QKeyEvent *event)
 {
     //Start the game
-    if(event->key() == Qt::Key_Space){ //Spacebar pressed
+    if(event->key() == Qt::Key_Escape || event->key() == Qt::Key_Space){ //Spacebar pressed
         //Start the party if it's not
         if(!started){
             started=true;
@@ -223,6 +227,26 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             QImage newShape = player1->getItsFrog()->getOriginalShape().transformed(rotation);
             //Reset the shape with the newest rotation
             player1->getItsFrog()->setShape(newShape);
+        }
+    }else{
+        if(event->key() == Qt::Key_Escape){
+            //Creation of the menu widget
+            Menu *menu = new Menu(parentWidget(),resources);
+            //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
+            menu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+            //Show the menu
+            menu->show();
+            //Delete this
+            this->deleteLater();
+        }
+        if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+            //Save the game
+            saveGame();
+        }
+        if(event->key() == Qt::Key_R){
+            partyFinished=false;
+            restartGame();
+            repaint();
         }
     }
 }
@@ -362,7 +386,7 @@ void GameMode00::restartGame()
 {
     //Create the player and his frog (1 player cause we're in solo)
     player1 = new Player("default1",resources);
-    frog1 = new Frog(sizeCase,sizeCase,resources);
+    frog1 = new Frog(sizeCase,sizeCase,resources,frogChosen);
     //Set the basic position
     // X
     frog1->setPosX(OFFSETX+((WIDTHP/sizeCase/2)*sizeCase)); //Center on the X axe
@@ -460,6 +484,30 @@ void GameMode00::drawPartyFinished(QPainter *itsPainter)
     itsPainter->setPen(Tools::COLOR_BLACK());
     //Draw the game over text
     itsPainter->drawText(QRect(OFFSETX,OFFSETY+30,WIDTHP,200),"Game Over",QTextOption(Qt::AlignCenter));
+
+    //Draw white bar on the bottom with key
+    //Set to white
+    itsPainter->setPen(Tools::COLOR_WHITE());
+    b = itsPainter->brush();
+    b.setColor(Tools::COLOR_WHITE());
+    itsPainter->setBrush(b);
+    //Draw the items on it 1/2
+    if(tickAnim%1200>400){
+        //Draw it
+        itsPainter->drawRect(OFFSETX,OFFSETY+HEIGHTP-40,WIDTHP,40);
+        //Set the color to black
+        itsPainter->setPen(Tools::COLOR_BLACK());
+        //Set the good font and size
+        fontIn.setPointSize(17);
+        itsPainter->setFont(fontIn);
+        //Draw the text
+        itsPainter->drawText(QRect(OFFSETX,OFFSETY+HEIGHTP-40,WIDTHP,40),"Press Enter to save | Press Esc to quit | Press R to restart",QTextOption(Qt::AlignHCenter));
+    }
+}
+
+void GameMode00::saveGame()
+{
+
 }
 
 void GameMode00::gameLoop()
@@ -508,4 +556,5 @@ void GameMode00::gameLoop()
         tickSpeed++;
     }
     tickRepaint++;
+    tickAnim++;
 }

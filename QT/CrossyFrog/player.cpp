@@ -3,7 +3,7 @@
 Player::Player(string name,Resources *resources)
 {
     itsName = name;
-    new Frog(52,52,resources);
+    new Frog(52,52,resources,resources->getImages().at("frogM"));
 }
 
 string Player::getItsName() const
