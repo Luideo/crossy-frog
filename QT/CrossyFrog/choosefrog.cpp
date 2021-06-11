@@ -17,11 +17,12 @@ ChooseFrog::ChooseFrog(QWidget *parent,int numGame, int WIDTH, int HEIGHT, int O
     this->OFFSETY = OFFSETY;
     this->WIDTHP = WIDTHP;
     this->HEIGHTP = HEIGHTP;
+    this->numGame = numGame;
 
     //Add to the vector all the frog displayed
     QImage * maleFrog = new QImage(resources->getImages().at("frogMF"));
     QImage * femaleFrog = new QImage(resources->getImages().at("frogFF"));
-    QImage * femaleFrog2 = new QImage(resources->getImages().at("frogFF"));
+    QImage * femaleFrog2 = new QImage(resources->getImages().at("frogNBF"));
     //Push all in the vector
     allFrontFrogs.push_back(maleFrog);
     allFrontFrogs.push_back(femaleFrog);
@@ -99,6 +100,7 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
     //At the center
     //Set the dimension
     //qDebug() << index;
+    //Draw the centered image
     QImage currentImage = allFrontFrogs.at(index)->scaled(QSize(350,350));
     itsPainter->drawImage((WIDTHP-currentImage.width())/2+OFFSETX,(HEIGHTP-currentImage.height())/2+OFFSETY,currentImage);
     //Draw the image at the right
@@ -120,6 +122,41 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
             currentImage = allFrontFrogs.back()->scaled(QSize(250,250));
             itsPainter->drawImage((WIDTHP-currentImage.width())/2+OFFSETX-WIDTHP/3,(HEIGHTP-currentImage.height())/2+OFFSETY,currentImage);
         }
+    }
+
+
+
+    //Draw the background of the line edit
+    //Change the color
+    itsPainter->setPen(Tools::COLOR_GRAY80());
+    QBrush b = itsPainter->brush();
+    b.setColor(Tools::COLOR_GRAY80());
+    itsPainter->setBrush(b);
+    //Draw it
+    itsPainter->drawRect(OFFSETX+200,(HEIGHTP+currentImage.height())/2+OFFSETY+150,WIDTHP-400,50);
+    qDebug() << "Text : " << QString::fromStdString(playerName);
+    //Set the color to white
+    itsPainter->setPen(Tools::COLOR_WHITE());
+    //Change the font and the size
+    QFont f = itsPainter->font();
+    f.setBold(true);
+    f.setFamily("8-bit Arcade In");
+    f.setPointSize(30);
+    itsPainter->setFont(f);
+    //Draw the text line edit
+    itsPainter->drawText(QRect(OFFSETX+200+20,(HEIGHTP+currentImage.height())/2+OFFSETY+150,WIDTHP-400-40,50),QString::fromStdString(playerName),QTextOption(Qt::AlignLeft));
+
+    //Draw a red text if the name is invalid
+    if(errorNameNotValid){
+        //Set the pen on red
+        itsPainter->setPen(Tools::COLOR_RED());
+        //Set the size and font
+        QFont f = itsPainter->font();
+        f.setFamily("8-bit Arcade In");
+        f.setPointSize(25);
+        itsPainter->setFont(f);
+        //Draw the text
+        itsPainter->drawText(QRect(OFFSETX,(HEIGHTP+currentImage.height())/2+OFFSETY+250,WIDTHP,50),"Please enter your name",QTextOption(Qt::AlignHCenter));
     }
 
     //Draw the border of UI
@@ -145,29 +182,49 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
 {
     Q_UNUSED(event);
 
-    if(event->key() == Qt::Key_D){
+    //Add the letter to the string if the letter match with the regex
+    QRegExp rexp("^[a-zA-Z0-9-]$");
+    if(rexp.exactMatch(QChar(event->key()))){
+        //qDebug() << "HERE";
+        playerName+=QString(event->key()).toStdString();
+    }
+    //Delete the last letter
+    if(event->key() == Qt::Key_Delete){
+        playerName.pop_back();
+    }
+
+    if(event->key() == Qt::Key_Right){
         index++;
         if(index>(int)allFrontFrogs.size()-1){
             index=0;
         }
     }
-    if(event->key() == Qt::Key_Q){
+    if(event->key() == Qt::Key_Left){
         index--;
         if(index<0){
             index=allFrontFrogs.size()-1;
         }
     }
     if(event->key() == Qt::Key_Return){
-        //When the frog is choosen switch to the game
-        QImage * firstFrog = allMinFrogs.at(index);
-        //Change the widget that displayed
-        game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources,firstFrog);
-        //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
-        game->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-        //Show the current widget (game)
-        game->show();
-        //Delete this widget after calling the other
-        this->deleteLater();
+        //Add the letter to the string if the letter match with the regex
+        QRegExp rexp("^[[:space:]]*$");
+        if(!rexp.exactMatch(QString::fromStdString(playerName))){
+            //Launch the good game
+            if(numGame==0){
+                //When the frog is choosen switch to the game
+                QImage * firstFrog = allMinFrogs.at(index);
+                //Change the widget that displayed
+                game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources,firstFrog,playerName);
+                //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
+                game->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                //Show the current widget (game)
+                game->show();
+                //Delete this widget after calling the other
+                this->deleteLater();
+            }
+        }else{
+            errorNameNotValid=true;
+        }
     }
 }
 

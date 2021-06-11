@@ -2,7 +2,7 @@
 #include "ui_gameMode00.h"
 #include "menu.h"
 
-GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChosen) :
+GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChosen,string playerName) :
     QWidget(parent),
     ui(new Ui::GameMode00)
 {
@@ -16,6 +16,9 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
 
     //Setup the interface of the widget
     ui->setupUi(this);
+
+    //The the player name
+    this->playerName = playerName;
 
     //Set the frog choosen image
     this->frogChosen = *frogChosen;
@@ -31,8 +34,11 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
     this->WIDTHP = WIDTHP;
     this->HEIGHTP = HEIGHTP;
 
+    //Init the database
+    initDatabase();
+
     //Create the player and his frog (1 player cause we're in solo)
-    player1 = new Player("default1",resources);
+    player1 = new Player(playerName,resources);
     frog1 = new Frog(sizeCase,sizeCase,resources,this->frogChosen);
 
     //Set the basic position
@@ -161,7 +167,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
     //Verifiy that's not in pause or not started
     if(!paused && started && !partyFinished){
         //Go Up
-        if(event->key() == Qt::Key_Z  && event->isAutoRepeat()==false){ //Z Pressed and not maintained
+        if(event->key() == Qt::Key_Up  && event->isAutoRepeat()==false){ //Z Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),0,-sizeCase)){
                 //Move the frog
@@ -179,7 +185,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
         //Go Left
-        if(event->key() == Qt::Key_Q && event->isAutoRepeat()==false){//Q Pressed and not maintained
+        if(event->key() == Qt::Key_Left && event->isAutoRepeat()==false){//Q Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),-sizeCase,0)){
                 //Move the frog
@@ -195,7 +201,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
         //Go Down
-        if(event->key() == Qt::Key_S && event->isAutoRepeat()==false){//S Pressed and not maintained
+        if(event->key() == Qt::Key_Down && event->isAutoRepeat()==false){//S Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),0,+sizeCase)){
                 //Move the frog
@@ -213,7 +219,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
         //Go Right
-        if(event->key() == Qt::Key_D && event->isAutoRepeat()==false){//D Pressed and not maintained
+        if(event->key() == Qt::Key_Right && event->isAutoRepeat()==false){//D Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),+sizeCase,0)){
                 //Move the frog
@@ -238,6 +244,8 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             menu->show();
             //Delete this
             this->deleteLater();
+            //Delete the bash
+            bash->deleteLater();
         }
         if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
             //Save the game
@@ -385,7 +393,7 @@ void GameMode00::displayUiDevTools(QPainter *itsPainter)
 void GameMode00::restartGame()
 {
     //Create the player and his frog (1 player cause we're in solo)
-    player1 = new Player("default1",resources);
+    player1 = new Player(playerName,resources);
     frog1 = new Frog(sizeCase,sizeCase,resources,frogChosen);
     //Set the basic position
     // X
@@ -475,7 +483,7 @@ void GameMode00::drawPartyFinished(QPainter *itsPainter)
     //Draw the game over text
     itsPainter->drawText(QRect(OFFSETX,OFFSETY+30,WIDTHP,200),"Game Over",QTextOption(Qt::AlignCenter));
     //Draw the score
-    itsPainter->drawText(QRect(OFFSETX,OFFSETY+260,WIDTHP,150),QString::number(player1->getItsScore()),QTextOption(Qt::AlignCenter));
+    itsPainter->drawText(QRect(OFFSETX,OFFSETY+150,WIDTHP,150),QString::number(player1->getItsScore()),QTextOption(Qt::AlignCenter));
     //Draw black on it
     itsPainter->setFont(fontOut);
     b = itsPainter->brush();
@@ -484,6 +492,8 @@ void GameMode00::drawPartyFinished(QPainter *itsPainter)
     itsPainter->setPen(Tools::COLOR_BLACK());
     //Draw the game over text
     itsPainter->drawText(QRect(OFFSETX,OFFSETY+30,WIDTHP,200),"Game Over",QTextOption(Qt::AlignCenter));
+    //Draw the database
+    drawDatabase(itsPainter);
 
     //Draw white bar on the bottom with key
     //Set to white
@@ -507,7 +517,13 @@ void GameMode00::drawPartyFinished(QPainter *itsPainter)
 
 void GameMode00::saveGame()
 {
+    addNew();
+    save();
+}
 
+bool GameMode00::sortByVal(const pair<string, int> &a, const pair<string, int> &b)
+{
+        return (a.second < b.second);
 }
 
 void GameMode00::gameLoop()
@@ -522,7 +538,7 @@ void GameMode00::gameLoop()
         repaint();
         //Do the interaction just after the repaint
         interactElement(frog1);
-        qDebug() << "Repaint took " << chrono.elapsed() << "ms";
+        //qDebug() << "Repaint took " << chrono.elapsed() << "ms";
     }
     //If the game is not paused or not started
     if(!paused && started && !partyFinished){
@@ -557,4 +573,86 @@ void GameMode00::gameLoop()
     }
     tickRepaint++;
     tickAnim++;
+}
+
+bool GameMode00::initDatabase()
+{
+    // Création de la base de données
+    db=QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("../CrossyFrog/res/sqlDB/scoreList.db");
+    if(db.open()){
+        //qDebug() << "database file:opened";
+    }else{
+        qDebug() << "database file:error while opening file";
+    }
+    // Initialisation de la vue à partir des informations de la base de données
+    model=new QSqlTableModel(0,db);
+    model->setTable("scoreList");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+
+    //Delete all row
+    QSqlQuery query;
+    query.exec("DELETE FROM scoreList");
+    save();
+
+    return db.open();
+}
+
+void GameMode00::drawDatabase(QPainter * itsPainter)
+{
+    //Change the font color and size
+    itsPainter->setPen(Tools::COLOR_WHITE());
+    QBrush b = itsPainter->brush();
+    b.setColor(Tools::COLOR_WHITE());
+    itsPainter->setBrush(b);
+    QFont font = itsPainter->font();
+    font.setFamily("8-bit Arcade In");
+    font.setPointSize(40);
+    itsPainter->setFont(font);
+
+    //qDebug() << "Draw Database";
+    QSqlQuery query;
+    query.exec("SELECT name, score FROM scoreList");
+
+    //Create the vector with the scores
+    vector<pair<string,int>> scores;
+
+    //Create a int to display only 3 score (the bests)
+    int i =0;
+    while (query.next()) {
+        string name = query.value(0).toString().toStdString();
+        int score = query.value(1).toInt();
+       // qDebug() << name << score;
+       //Store the score in a vector
+        scores.push_back(make_pair(name,score));
+    i++;
+    }
+    //Sort the scores
+    sort(scores.rbegin(),scores.rend(),sortByVal);
+    //Display the 3 first text
+    for(int i =0 ;i < 3 && i<(int)scores.size() ; i++){
+        itsPainter->drawText(QRect(OFFSETX,OFFSETY+350 + i*50,WIDTHP,50),QString::fromStdString(scores.at(i).first)+" : "+QString::number(scores.at(i).second),QTextOption(Qt::AlignCenter));
+    }
+}
+
+void GameMode00::addNew()
+{
+    // Ajout d'un élément
+    int row=0;
+    model->insertRows(row,1);
+    model->setData(model->index(row,0), QString::fromStdString(player1->getItsName()));
+    model->setData(model->index(row,1), player1->getItsMaxScore());
+    //qDebug() << "Add new !";
+}
+
+void GameMode00::save()
+{
+    // Sauvegarde des informations dans la base de données
+    bool flag=model->submitAll();
+    if(!flag){
+        QMessageBox::critical(0,"Error", "Modification cannot be saved.");
+    }else{
+        //qDebug() << "Saved !";
+    }
 }

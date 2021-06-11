@@ -43,6 +43,13 @@ Resources::Resources()
     images["frogFF"]=frogFF;
     //Increase the index
     index++;
+    QImage frogNBF;
+    frogNBF.load("../CrossyFrog/res/Frog/full/frogNB.png");
+    //Verify if the image is loaded
+    Q_ASSERT(!frogNBF.isNull());
+    images["frogNBF"]=frogNBF;
+    //Increase the index
+    index++;
 
     //Load all blocks
     //Dirt

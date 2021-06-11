@@ -20,7 +20,7 @@ class GameMode00 : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChosen=nullptr);
+    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChosen=nullptr,string playerName="empty");
     ~GameMode00();
     ///
     /// \brief paintEvent method (paint all the elements of the widget)
@@ -111,6 +111,13 @@ public:
     /// \brief saveGame
     ///
     void saveGame();
+    ///
+    /// \brief sortByVal used with the algorithm sort function
+    /// \param a
+    /// \param b
+    /// \return
+    ///
+    static bool sortByVal(const pair<string, int> &a,const pair<string, int> &b);
 
 private:
     Ui::GameMode00 *ui;
@@ -231,12 +238,43 @@ private:
     /// \brief frogChosen
     ///
     QImage frogChosen;
+    ///
+    /// \brief data base
+    ///
+    QSqlDatabase db;
+    ///
+    /// \brief model of the database
+    ///
+    QSqlTableModel *model;
+    ///
+    /// \brief playerName
+    ///
+    string playerName;
 
 private slots:
     ///
     /// \brief Private slots method call every 10millis (by the timer)
     ///
     void gameLoop();
+
+public slots:
+    ///
+    /// \brief initDatabase
+    /// \return
+    ///
+    bool initDatabase();
+    ///
+    /// \brief populateDataItem
+    ///
+    void drawDatabase(QPainter * itsPainter);
+    ///
+    /// \brief addNew
+    ///
+    void addNew();
+    ///
+    /// \brief save
+    ///
+    void save();
 };
 
 #endif // GAMEMODE00_H

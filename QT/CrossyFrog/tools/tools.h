@@ -15,6 +15,7 @@ public:
     static QColor COLOR_CYANSKY(){ return QColor(100,153,255,255); };
     static QColor COLOR_RED(){ return QColor(255,0,0,255); };
     static QColor COLOR_GREEN(){ return QColor(0,255,0,255); }
+        static QColor COLOR_GRAY80(){ return QColor(204,204,204,255); }
     ///
     /// \brief method to split a text with a separator
     /// \param s

@@ -46,6 +46,9 @@ private:
     /// \brief index (the index is the num of the frog at the front)
     ///
     int index=0;
+    ///
+    /// \brief WIDTH of the screen
+    ///
     int WIDTH = 1200;
     ///
     /// \brief Height of the screen
@@ -71,6 +74,18 @@ private:
     /// \brief All the resources we need
     ///
     Resources * resources;
+    ///
+    /// \brief playerName
+    ///
+    string playerName;
+    ///
+    /// \brief errorNameNotValid is false but put on true if the name is empty, used in the paint event
+    ///
+    bool errorNameNotValid=false;
+    ///
+    /// \brief numGame
+    ///
+    int numGame;
 
 private slots:
     void timerLoop();

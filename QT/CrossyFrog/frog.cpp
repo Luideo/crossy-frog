@@ -2,6 +2,7 @@
 
 Frog::Frog(int width, int height,Resources *resources,QImage shape)
 {
+    Q_UNUSED(resources);
     //Set the width of the frog
     this->width = width;
     //Set the hight of the frog

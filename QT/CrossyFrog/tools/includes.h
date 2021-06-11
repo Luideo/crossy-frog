@@ -18,8 +18,13 @@
 #include <QPushButton>
 #include <QElapsedTimer>
 #include <QPixmap>
+#include <QSqlTableModel>
+#include <QMessageBox>
+#include <QLineEdit>
+#include <QSqlQuery>
 #include <map>
 #include <fstream>
+#include <algorithm>
 #include "tools/tools.h"
 using namespace std;
 
