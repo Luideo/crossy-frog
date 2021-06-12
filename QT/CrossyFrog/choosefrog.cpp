@@ -133,10 +133,13 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
     b.setColor(Tools::COLOR_GRAY80());
     itsPainter->setBrush(b);
     //Draw it
-    itsPainter->drawRect(OFFSETX+200,(HEIGHTP+currentImage.height())/2+OFFSETY+150,WIDTHP-400,50);
+    QPainterPath path;
+    path.setFillRule( Qt::WindingFill );
+    path.addRoundedRect( QRect(OFFSETX+200,(HEIGHTP+currentImage.height())/2+OFFSETY+100,WIDTHP-400,50), 20, 20 );
+    itsPainter->drawPath(path);
     qDebug() << "Text : " << QString::fromStdString(playerName);
     //Set the color to white
-    itsPainter->setPen(Tools::COLOR_WHITE());
+    itsPainter->setPen(Tools::COLOR_BLACK());
     //Change the font and the size
     QFont f = itsPainter->font();
     f.setBold(true);
@@ -144,10 +147,11 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
     f.setPointSize(30);
     itsPainter->setFont(f);
     //Draw the text line edit
-    itsPainter->drawText(QRect(OFFSETX+200+20,(HEIGHTP+currentImage.height())/2+OFFSETY+150,WIDTHP-400-40,50),QString::fromStdString(playerName),QTextOption(Qt::AlignLeft));
+    itsPainter->drawText(QRect(OFFSETX+200+20,(HEIGHTP+currentImage.height())/2+OFFSETY+100,WIDTHP-400-40,50),QString::fromStdString(playerName),QTextOption(Qt::AlignCenter));
 
     //Draw a red text if the name is invalid
     if(errorNameNotValid){
+        //qDebug() << "draw";
         //Set the pen on red
         itsPainter->setPen(Tools::COLOR_RED());
         //Set the size and font
@@ -156,7 +160,7 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
         f.setPointSize(25);
         itsPainter->setFont(f);
         //Draw the text
-        itsPainter->drawText(QRect(OFFSETX,(HEIGHTP+currentImage.height())/2+OFFSETY+250,WIDTHP,50),"Please enter your name",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(OFFSETX,(HEIGHTP+currentImage.height())/2+OFFSETY+170,WIDTHP,50),"Please enter a valid name (3-9 char)",QTextOption(Qt::AlignHCenter));
     }
 
     //Draw the border of UI
@@ -189,8 +193,10 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
         playerName+=QString(event->key()).toStdString();
     }
     //Delete the last letter
-    if(event->key() == Qt::Key_Delete){
-        playerName.pop_back();
+    if(event->key() == Qt::Key_Backspace){
+        if(playerName.size()>0){
+            playerName.pop_back();
+        }
     }
 
     if(event->key() == Qt::Key_Right){
@@ -207,8 +213,9 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
     }
     if(event->key() == Qt::Key_Return){
         //Add the letter to the string if the letter match with the regex
-        QRegExp rexp("^[[:space:]]*$");
-        if(!rexp.exactMatch(QString::fromStdString(playerName))){
+        //        QRegExp rexp("^[[:space:]]*$");
+        //        if(!rexp.exactMatch(QString::fromStdString(playerName))){
+        if(playerName.size()>=3 && playerName.size()<10){
             //Launch the good game
             if(numGame==0){
                 //When the frog is choosen switch to the game

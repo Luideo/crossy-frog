@@ -167,7 +167,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
     //Verifiy that's not in pause or not started
     if(!paused && started && !partyFinished){
         //Go Up
-        if(event->key() == Qt::Key_Up  && event->isAutoRepeat()==false){ //Z Pressed and not maintained
+        if((event->key() == Qt::Key_Up|| event->key() == Qt::Key_Z)  && event->isAutoRepeat()==false){ //Z Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),0,-sizeCase)){
                 //Move the frog
@@ -185,7 +185,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
         //Go Left
-        if(event->key() == Qt::Key_Left && event->isAutoRepeat()==false){//Q Pressed and not maintained
+        if((event->key() == Qt::Key_Left || event->key() == Qt::Key_Q)&& event->isAutoRepeat()==false){//Q Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),-sizeCase,0)){
                 //Move the frog
@@ -201,7 +201,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
         //Go Down
-        if(event->key() == Qt::Key_Down && event->isAutoRepeat()==false){//S Pressed and not maintained
+        if((event->key() == Qt::Key_Down|| event->key() == Qt::Key_S) && event->isAutoRepeat()==false){//S Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),0,+sizeCase)){
                 //Move the frog
@@ -219,7 +219,7 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
         //Go Right
-        if(event->key() == Qt::Key_Right && event->isAutoRepeat()==false){//D Pressed and not maintained
+        if((event->key() == Qt::Key_Right || event->key() == Qt::Key_D) && event->isAutoRepeat()==false){//D Pressed and not maintained
             //Is a valide move
             if(validMove(player1->getItsFrog(),+sizeCase,0)){
                 //Move the frog
@@ -523,7 +523,7 @@ void GameMode00::saveGame()
 
 bool GameMode00::sortByVal(const pair<string, int> &a, const pair<string, int> &b)
 {
-        return (a.second < b.second);
+    return (a.second < b.second);
 }
 
 void GameMode00::gameLoop()
@@ -590,11 +590,12 @@ bool GameMode00::initDatabase()
     model->setTable("scoreList");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 
-
+    /*
     //Delete all row
     QSqlQuery query;
     query.exec("DELETE FROM scoreList");
     save();
+    */
 
     return db.open();
 }
@@ -623,10 +624,10 @@ void GameMode00::drawDatabase(QPainter * itsPainter)
     while (query.next()) {
         string name = query.value(0).toString().toStdString();
         int score = query.value(1).toInt();
-       // qDebug() << name << score;
-       //Store the score in a vector
+        // qDebug() << name << score;
+        //Store the score in a vector
         scores.push_back(make_pair(name,score));
-    i++;
+        i++;
     }
     //Sort the scores
     sort(scores.rbegin(),scores.rend(),sortByVal);

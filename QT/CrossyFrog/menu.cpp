@@ -201,7 +201,7 @@ void Menu::paintEvent(QPaintEvent *event)
 void Menu::keyPressEvent(QKeyEvent *event)
 {
     //Down
-    if(event->key() == Qt::Key_S && !animationPlay){
+    if(event->key() == Qt::Key_Down && !animationPlay){
         //+1 index to go down
         index++;
         //Reset to the first
@@ -210,7 +210,7 @@ void Menu::keyPressEvent(QKeyEvent *event)
         }
     }
     //Up
-    if(event->key() == Qt::Key_Z && !animationPlay){
+    if(event->key() == Qt::Key_Up && !animationPlay){
         // -1 index to go up
         index--;
         //Reset to the last

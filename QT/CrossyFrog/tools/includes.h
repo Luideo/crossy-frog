@@ -21,6 +21,7 @@
 #include <QSqlTableModel>
 #include <QMessageBox>
 #include <QLineEdit>
+#include <QRegExp>
 #include <QSqlQuery>
 #include <map>
 #include <fstream>

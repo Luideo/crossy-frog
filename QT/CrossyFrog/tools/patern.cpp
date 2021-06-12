@@ -206,8 +206,12 @@ void Patern::setItems()
             //Create the item
             Item * log1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
             Item * log2 = new Item(OFFSETX+rand()%WIDTHP+WIDTHP/2,OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
-            log1->setItsSpeedX(-1);
-            log2->setItsSpeedX(-1);
+            //Positive or negative
+            int speed;
+            rand()%2==0?speed=-1:speed=1;
+            speed==-1?speed=-(rand()%2+1):rand()%2+1;
+            log1->setItsSpeedX(speed);
+            log2->setItsSpeedX(speed);
             allItems.push_back(log1);
             allItems.push_back(log2);
         }
@@ -232,7 +236,7 @@ void Patern::setItems()
                 QImage background = resources->getImages().at("car");
                 //Create the item
                 Item * car1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
-                Item * car2 = new Item(OFFSETX+rand()%WIDTHP+WIDTHP/2,OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+                Item * car2 = new Item(OFFSETX+rand()%WIDTHP+WIDTHP/2,OFFSETY+(y*52),background,"car",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
                 car1->setItsSpeedX(-2);
                 car2->setItsSpeedX(-2);
                 allItems.push_back(car1);

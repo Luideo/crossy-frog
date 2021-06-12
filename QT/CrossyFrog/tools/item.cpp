@@ -52,12 +52,23 @@ QImage Item::getItsBackground() const
 void Item::moveFrame()
 {
     //qDebug() <<itsPosx << ":" << itsSpeedX << ":" << itsBackground.width();
-    if(itsPosx+itsSpeedX+itsBackground.width() >=OFFSETX){
-    itsPosx+=itsSpeedX;
-    itsPosy+=itsSpeedY;
-    //qDebug() << "Move frame : " << itsPosy;
-    }else{
-        itsPosx = OFFSETX+WIDTHP;
+    //if(itsPosx+itsSpeedX+itsBackground.width() >=OFFSETX && itsPosx+itsSpeedX <= OFFSETX+WIDTHP){
+    if(itsSpeedX>0){
+        if(itsPosx+itsSpeedX<OFFSETX+WIDTHP){
+            itsPosx+=itsSpeedX;
+            itsPosy+=itsSpeedY;
+            //qDebug() << "Move frame : " << itsPosy;
+        }else{
+            itsPosx = OFFSETX-itsBackground.width();
+        }
+    }if(itsSpeedX<0){
+        if(itsPosx+itsSpeedX+itsBackground.width()>OFFSETX){
+            itsPosx+=itsSpeedX;
+            itsPosy+=itsSpeedY;
+            //qDebug() << "Move frame : " << itsPosy;
+        }else{
+            itsPosx = OFFSETX+WIDTHP;
+        }
     }
 }
 
