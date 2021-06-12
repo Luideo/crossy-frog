@@ -517,8 +517,11 @@ void GameMode00::drawPartyFinished(QPainter *itsPainter)
 
 void GameMode00::saveGame()
 {
+    if(!gameSaved){
     addNew();
     save();
+    gameSaved=true;
+    }
 }
 
 bool GameMode00::sortByVal(const pair<string, int> &a, const pair<string, int> &b)
