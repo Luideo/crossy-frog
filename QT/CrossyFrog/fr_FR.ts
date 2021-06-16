@@ -19,7 +19,7 @@
     <message>
         <location filename="choosefrog.cpp" line="170"/>
         <source>Please enter a valid name (3-9 char)</source>
-        <translation type="unfinished"></translation>
+        <translation>Veuillez entrez un nom valide (3-9 car)</translation>
     </message>
 </context>
 <context>
@@ -32,12 +32,12 @@
     <message>
         <location filename="gameMode00.cpp" line="536"/>
         <source>Press Enter to save | Press Esc to quit | Press R to restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Entree pour sauvegarder | Esc pour quitter | R pour recommencer</translation>
     </message>
     <message>
         <location filename="gameMode00.cpp" line="578"/>
         <source>PAUSED</source>
-        <translation >PAUSE</translation>
+        <translation>PAUSE</translation>
     </message>
 </context>
 <context>
@@ -100,6 +100,56 @@
         <location filename="menu.cpp" line="179"/>
         <source>Exit</source>
         <translation>Quitter</translation>
+    </message>
+</context>
+<context>
+    <name>Settings</name>
+    <message>
+        <location filename="settings.cpp" line="95"/>
+        <source>SETTINGS</source>
+        <translation>PARAMETRES</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="102"/>
+        <source>Language</source>
+        <oldsource>Language</oldsource>
+        <translation>Langue</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="105"/>
+        <source>Game mode</source>
+        <oldsource>Game mode</oldsource>
+        <translation>Mode de jeu</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="113"/>
+        <source>English</source>
+        <translation>Anglais</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="114"/>
+        <source>French</source>
+        <translation>Francais</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="118"/>
+        <source>Solo Endless</source>
+        <translation>Solo infini</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="119"/>
+        <source>2 Players</source>
+        <translation>2 Joueurs</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="129"/>
+        <source>Rules</source>
+        <translation>Regles</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="130"/>
+        <source>Credits</source>
+        <translation>Credits</translation>
     </message>
 </context>
 <context>

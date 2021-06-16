@@ -202,6 +202,13 @@ Resources::Resources(QTranslator *translator)
     images["cloud"]=cloud;
     //Increase the index
     index++;
+    QImage sign;
+    sign.load(":/resources/blocks/res/Menu/sign.png");
+    //Verify if the image is correctly loaded
+    Q_ASSERT(!sign.isNull());
+    images["sign"]=sign;
+    //Increase the index
+    index++;
 
     //All items are loaded here
     QImage woodLog;
@@ -216,7 +223,7 @@ Resources::Resources(QTranslator *translator)
     train.load(":/resources/blocks/res/Items/train.png");
     //Verify if the image is correctly loaded
     Q_ASSERT(!train.isNull());
-        train = train.scaled(QSize(700,52));
+        train = train.scaled(QSize(1200,52));
     images["train"]=train;
     //Increase the index
     index++;

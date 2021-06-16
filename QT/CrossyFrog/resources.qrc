@@ -53,5 +53,8 @@
         <file>res/Items/car4.png</file>
         <file>res/Items/car5.png</file>
         <file>res/Items/woodlog.png</file>
+        <file>fr_FR.qm</file>
+        <file>fr_FR.ts</file>
+        <file>res/Menu/sign.png</file>
     </qresource>
 </RCC>

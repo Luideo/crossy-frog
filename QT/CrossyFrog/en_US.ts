@@ -6,7 +6,7 @@
     <message>
         <location filename="bash.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -14,7 +14,7 @@
     <message>
         <location filename="choosefrog.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="choosefrog.cpp" line="170"/>
@@ -27,7 +27,7 @@
     <message>
         <location filename="gameMode00.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="gameMode00.cpp" line="536"/>
@@ -53,12 +53,12 @@
     <message>
         <location filename="menu.ui" line="32"/>
         <source>Menu</source>
-        <translation>Menu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="menu.cpp" line="109"/>
         <source>CROSSY FROG</source>
-        <translation>CROSSY FROG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="menu.cpp" line="116"/>
@@ -69,7 +69,7 @@
         <location filename="menu.cpp" line="172"/>
         <location filename="menu.cpp" line="175"/>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="menu.cpp" line="121"/>
@@ -79,7 +79,7 @@
         <location filename="menu.cpp" line="164"/>
         <location filename="menu.cpp" line="177"/>
         <source>Hall Of Fame</source>
-        <translation>Hall Of Fame</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="menu.cpp" line="122"/>
@@ -89,7 +89,7 @@
         <location filename="menu.cpp" line="165"/>
         <location filename="menu.cpp" line="178"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="menu.cpp" line="123"/>
@@ -99,7 +99,57 @@
         <location filename="menu.cpp" line="161"/>
         <location filename="menu.cpp" line="179"/>
         <source>Exit</source>
-        <translation>Exit</translation>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Settings</name>
+    <message>
+        <location filename="settings.cpp" line="95"/>
+        <source>SETTINGS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="102"/>
+        <source>Language</source>
+        <oldsource>Language:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="105"/>
+        <source>Game mode</source>
+        <oldsource>Game mode:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="113"/>
+        <source>English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="114"/>
+        <source>French</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="118"/>
+        <source>Solo Endless</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="119"/>
+        <source>2 Players</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="129"/>
+        <source>Rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="130"/>
+        <source>Credits</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -107,7 +157,7 @@
     <message>
         <location filename="splash.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

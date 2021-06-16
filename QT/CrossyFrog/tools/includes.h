@@ -23,6 +23,7 @@
 #include <QLineEdit>
 #include <QRegExp>
 #include <QSqlQuery>
+#include <QPainterPath>
 #include <QTranslator>
 #include <QStackedWidget>
 #include <map>

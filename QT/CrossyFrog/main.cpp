@@ -1,3 +1,5 @@
+/// \author Satari
+
 #include "splash.h"
 
 #include <QApplication>

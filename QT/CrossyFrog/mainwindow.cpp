@@ -54,3 +54,21 @@ void MainWindow::exitGame()
 {
     this->deleteLater();
 }
+
+void MainWindow::launchSettings(MainWindow *parent,Resources *resources, Frog * frog,int frogState,QImage *cloud,int cloudX, QRect grassRect)
+{
+    Settings *settings = new Settings(parent,resources,frog,frogState,cloud,cloudX,grassRect);
+    setCentralWidget(settings);
+    settings->setFocus();
+    settings->activateWindow();
+    settings->show();
+}
+
+void MainWindow::launchHallOfFame(MainWindow *parent, Resources *resources, Frog *frog, int frogState, QImage *cloud, int cloudX, QRect grassRect)
+{
+    HallOfFame *hallOfFame = new HallOfFame(parent,resources,frog,frogState,cloud,cloudX,grassRect);
+    setCentralWidget(hallOfFame);
+    hallOfFame->setFocus();
+    hallOfFame->activateWindow();
+    hallOfFame->show();
+}

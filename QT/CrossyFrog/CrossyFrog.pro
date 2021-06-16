@@ -13,6 +13,7 @@ SOURCES += \
     choosefrog.cpp \
     frog.cpp \
     gameMode00.cpp \
+    halloffame.cpp \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
@@ -24,13 +25,15 @@ SOURCES += \
     tools/block.cpp \
     tools/ground.cpp \
     tools/item.cpp \
-    tools/patern.cpp
+    tools/patern.cpp \
+    settings.cpp
 
 HEADERS += \
     bash.h \
     choosefrog.h \
     frog.h \
     gameMode00.h \
+    halloffame.h \
     mainwindow.h \
     menu.h \
     player.h \
@@ -43,12 +46,14 @@ HEADERS += \
     tools/includes.h \
     tools/item.h \
     tools/patern.h \
-    tools/tools.h
+    tools/tools.h \
+        settings.h
 
 FORMS += \
     bash.ui \
     choosefrog.ui \
     gameMode00.ui \
+    halloffame.ui \
     mainwindow.ui \
     menu.ui \
     splash.ui

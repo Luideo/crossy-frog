@@ -243,11 +243,18 @@ void Menu::keyPressEvent(QKeyEvent *event)
             break;
         case 1:
         {
-
+            //Launch settings
+            parent->launchHallOfFame(parent,resources,frog,frogState,cloud,cloudX,grassRect);
+            //Close this
+            this->deleteLater();
         }
             break;
         case 2:
         {
+            //Launch settings
+            parent->launchSettings(parent,resources,frog,frogState,cloud,cloudX,grassRect);
+            //Close this
+            this->deleteLater();
         }
             break;
         case 3:

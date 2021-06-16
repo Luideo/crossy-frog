@@ -5,6 +5,8 @@
 #include "tools/includes.h"
 #include "tools/tools.h"
 #include "choosefrog.h"
+#include "settings.h"
+#include "halloffame.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }

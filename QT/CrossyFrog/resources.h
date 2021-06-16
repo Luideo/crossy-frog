@@ -67,7 +67,7 @@ private:
     ///
     /// \brief the language selected
     ///
-    string language="../CrossyFrog/en_US.qm";
+    string language="../CrossyFrog/settings.txt";
 };
 
 #endif // RESOURCES_H

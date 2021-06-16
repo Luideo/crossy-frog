@@ -32,6 +32,28 @@ public:
     /// \brief exitGame
     ///
     void exitGame();
+    ///
+    /// \brief launchSettings
+    /// \param parent
+    /// \param resources
+    /// \param frog
+    /// \param frogState
+    /// \param cloud
+    /// \param cloudX
+    /// \param grassRect
+    ///
+    void launchSettings(MainWindow *parent,Resources *resources, Frog * frog,int frogState,QImage *cloud,int cloudX, QRect grassRect);
+    ///
+    /// \brief launchHallOfFame
+    /// \param parent
+    /// \param resources
+    /// \param frog
+    /// \param frogState
+    /// \param cloud
+    /// \param cloudX
+    /// \param grassRect
+    ///
+     void launchHallOfFame(MainWindow *parent,Resources *resources, Frog * frog,int frogState,QImage *cloud,int cloudX, QRect grassRect);
 
 private:
     Ui::MainWindow *ui;

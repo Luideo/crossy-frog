@@ -3,6 +3,7 @@ INPUT(
 ./release\choosefrog.o
 ./release\frog.o
 ./release\gameMode00.o
+./release\halloffame.o
 ./release\main.o
 ./release\mainwindow.o
 ./release\menu.o
@@ -15,11 +16,14 @@ INPUT(
 ./release\ground.o
 ./release\item.o
 ./release\patern.o
+./release\settings.o
 ./release\qrc_resources.o
 ./release\moc_bash.o
 ./release\moc_choosefrog.o
 ./release\moc_gameMode00.o
+./release\moc_halloffame.o
 ./release\moc_mainwindow.o
 ./release\moc_menu.o
 ./release\moc_splash.o
+./release\moc_settings.o
 );
