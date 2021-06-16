@@ -29,6 +29,16 @@ public:
     /// \return
     ///
     Block *getRoad() const;
+    ///
+    /// \brief getRail
+    /// \return
+    ///
+    Block *getRail() const;
+    ///
+    /// \brief getBush
+    /// \return
+    ///
+    Block *getBush() const;
 
 private:
     ///
@@ -40,7 +50,7 @@ private:
     /// \brief dirt
     /// \return
     ///
-    Block *dirt;
+    vector<Block *> dirt;
     ///
     /// \brief grass
     /// \return
@@ -50,11 +60,19 @@ private:
     /// \brief water
     /// \return
     ///
-    Block *water;
+    vector<Block *> water;
     ///
     /// \brief road
     ///
     Block *road;
+    ///
+    /// \brief rail
+    ///
+    Block *rail;
+    ///
+    /// \brief bush
+    ///
+    Block *bush;
 };
 
 #endif // ALLBLOCKS_H

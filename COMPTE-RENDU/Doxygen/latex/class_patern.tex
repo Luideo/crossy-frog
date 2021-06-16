@@ -1,0 +1,157 @@
+\hypertarget{class_patern}{}\doxysection{Patern Class Reference}
+\label{class_patern}\index{Patern@{Patern}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_patern_a66e97e9cf7f8413651bccae7580184c3}\label{class_patern_a66e97e9cf7f8413651bccae7580184c3}} 
+{\bfseries Patern} (int posX, int posY, int width, int height, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP, int size\+Case, \mbox{\hyperlink{class_all_grounds}{All\+Grounds}} atg, string name, \mbox{\hyperlink{class_resources}{Resources}} $\ast$\mbox{\hyperlink{class_patern_a3d526be4a7beb72af959bd8fac5f207b}{resources}})
+\item 
+\mbox{\Hypertarget{class_patern_a9d0ab9f5f57a090840a814603ae4c4b9}\label{class_patern_a9d0ab9f5f57a090840a814603ae4c4b9}} 
+void \mbox{\hyperlink{class_patern_a9d0ab9f5f57a090840a814603ae4c4b9}{rand\+Ground}} ()
+\begin{DoxyCompactList}\small\item\em generate a random ground \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_patern_a53693f6d7b82a5b6641b9e7238701da6}\label{class_patern_a53693f6d7b82a5b6641b9e7238701da6}} 
+void \mbox{\hyperlink{class_patern_a53693f6d7b82a5b6641b9e7238701da6}{default\+Ground}} ()
+\begin{DoxyCompactList}\small\item\em generate the default ground (dirt) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_patern_ab463e2bb48db28b2fea1e537a126deb2}{draw}} (QPainter $\ast$its\+Painter)
+\begin{DoxyCompactList}\small\item\em mehtod to draw all the blocks \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_patern_aac772ff872994deb30c8415d73e49cc9}{draw\+Grid}} (QPainter $\ast$its\+Painter)
+\begin{DoxyCompactList}\small\item\em method to draw the grid on the patern \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_patern_a922bdc406e60b350bacd8a06163c56c5}{get\+PosY}} () const
+\begin{DoxyCompactList}\small\item\em Get the position Y of this patern. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_patern_a631fff09f8e202823c8965e0ddb407e7}{set\+PosY}} (int value)
+\begin{DoxyCompactList}\small\item\em Set the position Y of this patern. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_patern_ae0b255148a636e87b70aa524c1d358ae}{move\+Bottom}} (int speed)
+\begin{DoxyCompactList}\small\item\em move\+Bottom method call each tick, replace top if necessary \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ground}{Ground}} $\ast$ \mbox{\hyperlink{class_patern_a7aea61525d33ac1211844d4558291cd4}{get\+Ground}} () const
+\begin{DoxyCompactList}\small\item\em Get the ground of this patern. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_patern_a463c1f60bd7c342bd470ef27bd441674}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em get\+Name \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_item}{Item}} $\ast$ $>$ \mbox{\hyperlink{class_patern_ad6332e8f135aa244dc8791f1a287d230}{get\+All\+Items}} () const
+\begin{DoxyCompactList}\small\item\em get\+All\+Items \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_patern_a3d526be4a7beb72af959bd8fac5f207b}\label{class_patern_a3d526be4a7beb72af959bd8fac5f207b}} 
+\mbox{\hyperlink{class_resources}{Resources}} $\ast$ \mbox{\hyperlink{class_patern_a3d526be4a7beb72af959bd8fac5f207b}{resources}}
+\begin{DoxyCompactList}\small\item\em the resources of the game \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_patern_ab463e2bb48db28b2fea1e537a126deb2}\label{class_patern_ab463e2bb48db28b2fea1e537a126deb2}} 
+\index{Patern@{Patern}!draw@{draw}}
+\index{draw@{draw}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Patern\+::draw (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{its\+Painter }\end{DoxyParamCaption})}
+
+
+
+mehtod to draw all the blocks 
+
+
+\begin{DoxyParams}{Parameters}
+{\em its\+Painter} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_patern_aac772ff872994deb30c8415d73e49cc9}\label{class_patern_aac772ff872994deb30c8415d73e49cc9}} 
+\index{Patern@{Patern}!drawGrid@{drawGrid}}
+\index{drawGrid@{drawGrid}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{drawGrid()}{drawGrid()}}
+{\footnotesize\ttfamily void Patern\+::draw\+Grid (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{its\+Painter }\end{DoxyParamCaption})}
+
+
+
+method to draw the grid on the patern 
+
+
+\begin{DoxyParams}{Parameters}
+{\em its\+Painter} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_patern_ad6332e8f135aa244dc8791f1a287d230}\label{class_patern_ad6332e8f135aa244dc8791f1a287d230}} 
+\index{Patern@{Patern}!getAllItems@{getAllItems}}
+\index{getAllItems@{getAllItems}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{getAllItems()}{getAllItems()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_item}{Item}} $\ast$ $>$ Patern\+::get\+All\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+All\+Items 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_patern_a7aea61525d33ac1211844d4558291cd4}\label{class_patern_a7aea61525d33ac1211844d4558291cd4}} 
+\index{Patern@{Patern}!getGround@{getGround}}
+\index{getGround@{getGround}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{getGround()}{getGround()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ground}{Ground}} $\ast$ Patern\+::get\+Ground (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the ground of this patern. 
+
+\begin{DoxyReturn}{Returns}
+the ground 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_patern_a463c1f60bd7c342bd470ef27bd441674}\label{class_patern_a463c1f60bd7c342bd470ef27bd441674}} 
+\index{Patern@{Patern}!getName@{getName}}
+\index{getName@{getName}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Patern\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Name 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_patern_a922bdc406e60b350bacd8a06163c56c5}\label{class_patern_a922bdc406e60b350bacd8a06163c56c5}} 
+\index{Patern@{Patern}!getPosY@{getPosY}}
+\index{getPosY@{getPosY}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{getPosY()}{getPosY()}}
+{\footnotesize\ttfamily int Patern\+::get\+PosY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the position Y of this patern. 
+
+\begin{DoxyReturn}{Returns}
+the position Y (int) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_patern_ae0b255148a636e87b70aa524c1d358ae}\label{class_patern_ae0b255148a636e87b70aa524c1d358ae}} 
+\index{Patern@{Patern}!moveBottom@{moveBottom}}
+\index{moveBottom@{moveBottom}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{moveBottom()}{moveBottom()}}
+{\footnotesize\ttfamily void Patern\+::move\+Bottom (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+
+
+move\+Bottom method call each tick, replace top if necessary 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & speed in px \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_patern_a631fff09f8e202823c8965e0ddb407e7}\label{class_patern_a631fff09f8e202823c8965e0ddb407e7}} 
+\index{Patern@{Patern}!setPosY@{setPosY}}
+\index{setPosY@{setPosY}!Patern@{Patern}}
+\doxysubsubsection{\texorpdfstring{setPosY()}{setPosY()}}
+{\footnotesize\ttfamily void Patern\+::set\+PosY (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Set the position Y of this patern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & position Y (int) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/louid/\+One\+Drive/\+Documents/\+Espace\+\_\+de\+\_\+travail/\+POO-\/\+BCOO2-\/\+IHM/\+Crossy\+Frog/crossy-\/frog/\+QT/\+Crossy\+Frog/tools/patern.\+h\item 
+C\+:/\+Users/louid/\+One\+Drive/\+Documents/\+Espace\+\_\+de\+\_\+travail/\+POO-\/\+BCOO2-\/\+IHM/\+Crossy\+Frog/crossy-\/frog/\+QT/\+Crossy\+Frog/tools/patern.\+cpp\end{DoxyCompactItemize}

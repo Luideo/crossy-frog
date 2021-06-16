@@ -2,16 +2,30 @@
 #include "ui_menu.h"
 
 #include "splash.h"
+#include "mainwindow.h"
 
-Menu::Menu(QWidget *parent,Resources *resources)
+Menu::Menu(MainWindow *parent,Resources *resources)
     : QWidget(parent)
     , ui(new Ui::Menu)
 {
     //Setup the interface of the widget
     ui->setupUi(this);
 
+    //Set the menu
+    this->parent = parent;
+
+    //Set the focus
+    this->raise();
+    this->activateWindow();
+    this->setFocusPolicy(Qt::StrongFocus);
+    this->setFocus();
+
     //Set the var resources
     this->resources = resources;
+
+    //Laod the translator
+    //qDebug() << resources->getTranslator()->load(QString::fromStdString(resources->getLanguage()));
+    resources->getTranslator()->load(QString::fromStdString(resources->getLanguage()));
 
     //Create the frog in the background
     frog = new Frog(128,128,resources,resources->getImages().at("frogMenu1"));
@@ -92,77 +106,77 @@ void Menu::paintEvent(QPaintEvent *event)
     //Set the font
     itsPainter->setFont(fontInBig);
     //Draw the title
-    itsPainter->drawText(QRect(0,120,WIDTH,120),"CROSSY FROG",QTextOption(Qt::AlignHCenter));
+    itsPainter->drawText(QRect(0,120,WIDTH,120),tr("CROSSY FROG"),QTextOption(Qt::AlignHCenter));
     //Draw the rect of the selected item in the menu
     itsPainter->setFont(fontIn);
     switch (index) {
     case 0: {
         //Redraw all the text with the correct color and font
         itsPainter->setPen(Tools::COLOR_WHITE());
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
         itsPainter->setPen(Tools::COLOR_BLACK());
         itsPainter->setFont(fontOut);
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
         itsPainter->setFont(fontIn);
-        itsPainter->drawText(QRect(0,360,WIDTH,360),"Hall Of Fame",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,420,WIDTH,420),"Settings",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,360,WIDTH,360),tr("Hall Of Fame"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,420,WIDTH,420),tr("Settings"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,480,WIDTH,480),tr("Exit"),QTextOption(Qt::AlignHCenter));
     }
         break;
     case 1:
     {
         //Redraw all the text with the correct color and font
         itsPainter->setPen(Tools::COLOR_WHITE());
-        itsPainter->drawText(QRect(0,360,WIDTH,360),"Hall Of Fame",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,360,WIDTH,360),tr("Hall Of Fame"),QTextOption(Qt::AlignHCenter));
         itsPainter->setPen(Tools::COLOR_BLACK());
         itsPainter->setFont(fontOut);
-        itsPainter->drawText(QRect(0,360,WIDTH,360),"Hall Of Fame",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,360,WIDTH,360),tr("Hall Of Fame"),QTextOption(Qt::AlignHCenter));
         itsPainter->setFont(fontIn);
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,420,WIDTH,420),"Settings",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,420,WIDTH,420),tr("Settings"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,480,WIDTH,480),tr("Exit"),QTextOption(Qt::AlignHCenter));
     }
         break;
     case 2:
     {
         //Redraw all the text with the correct color and font
         itsPainter->setPen(Tools::COLOR_WHITE());
-        itsPainter->drawText(QRect(0,420,WIDTH,420),"Settings",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,420,WIDTH,420),tr("Settings"),QTextOption(Qt::AlignHCenter));
         itsPainter->setPen(Tools::COLOR_BLACK());
         itsPainter->setFont(fontOut);
-        itsPainter->drawText(QRect(0,420,WIDTH,420),"Settings",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,420,WIDTH,420),tr("Settings"),QTextOption(Qt::AlignHCenter));
         itsPainter->setFont(fontIn);
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,360,WIDTH,360),"Hall Of Fame",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,360,WIDTH,360),tr("Hall Of Fame"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,480,WIDTH,480),tr("Exit"),QTextOption(Qt::AlignHCenter));
     }
         break;
     case 3:
     {
         //Redraw all the text with the correct color and font
         itsPainter->setPen(Tools::COLOR_WHITE());
-        itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,480,WIDTH,480),tr("Exit"),QTextOption(Qt::AlignHCenter));
         itsPainter->setPen(Tools::COLOR_BLACK());
         itsPainter->setFont(fontOut);
-        itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,480,WIDTH,480),tr("Exit"),QTextOption(Qt::AlignHCenter));
         itsPainter->setFont(fontIn);
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,360,WIDTH,360),"Hall Of Fame",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,420,WIDTH,420),"Settings",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,360,WIDTH,360),tr("Hall Of Fame"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,420,WIDTH,420),tr("Settings"),QTextOption(Qt::AlignHCenter));
     }
         break;
     default:
     {
         //Redraw all the text with the correct color and font
         itsPainter->setPen(Tools::COLOR_WHITE());
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
         itsPainter->setPen(Tools::COLOR_BLACK());
         itsPainter->setFont(fontOut);
-        itsPainter->drawText(QRect(0,300,WIDTH,300),"Play",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,300,WIDTH,300),tr("Play"),QTextOption(Qt::AlignHCenter));
         itsPainter->setFont(fontIn);
-        itsPainter->drawText(QRect(0,360,WIDTH,360),"Hall Of Fame",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,420,WIDTH,420),"Settings",QTextOption(Qt::AlignHCenter));
-        itsPainter->drawText(QRect(0,480,WIDTH,480),"Exit",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,360,WIDTH,360),tr("Hall Of Fame"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,420,WIDTH,420),tr("Settings"),QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(0,480,WIDTH,480),tr("Exit"),QTextOption(Qt::AlignHCenter));
     }
     }
 
@@ -238,6 +252,7 @@ void Menu::keyPressEvent(QKeyEvent *event)
             break;
         case 3:
         {
+            parent->exitGame();
             this->deleteLater();
         }
             break;
@@ -254,12 +269,7 @@ void Menu::animatePlayPressed()
     if(grassRect2.y()<=OFFSETY && animationPlay){
         animationPlay = false;
         //Change to the selection of the frog widget
-        //Change the widget that displayed
-        choose = new ChooseFrog(parentWidget(),0,WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
-        //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
-        choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-        //Show the current widget (game)
-        choose->show();
+        parent->launchChooseFrog();
         //Delete this widget after calling the other
         this->deleteLater();
 
@@ -276,19 +286,19 @@ void Menu::animatePlayPressed()
             int basis=4;
             if(grassRect2.y()>650){
                 grassRect2.setY(grassRect2.y()-(basis));
-                               frog->setPosY(frog->getPosY()-(basis));
+                frog->setPosY(frog->getPosY()-(basis));
             }else if(grassRect2.y()>500){
                 grassRect2.setY(grassRect2.y()-(basis+1));
-                          frog->setPosY(frog->getPosY()-(basis+1));
+                frog->setPosY(frog->getPosY()-(basis+1));
             }else if(grassRect2.y()>350){
                 grassRect2.setY(grassRect2.y()-(basis+2));
-                               frog->setPosY(frog->getPosY()-(basis+2));
+                frog->setPosY(frog->getPosY()-(basis+2));
             }else if(grassRect2.y()>200){
                 grassRect2.setY(grassRect2.y()-(basis+3));
-                               frog->setPosY(frog->getPosY()-(basis+3));
+                frog->setPosY(frog->getPosY()-(basis+3));
             }else{
                 grassRect2.setY(grassRect2.y()-(basis+4));
-                               frog->setPosY(frog->getPosY()-(basis+4));
+                frog->setPosY(frog->getPosY()-(basis+4));
             }
             grassRect2.setHeight(grassRect2.height());
         }
@@ -329,7 +339,7 @@ void Menu::animationTick(){
     if(cloudX>WIDTH){
         cloudX=0;
     }else{
-    cloudX++;
+        cloudX++;
     }
 }
 

@@ -28,6 +28,13 @@ AllGrounds::AllGrounds(Resources * resources)
     allGround.push_back(g9);
     Ground *g10 = new Ground("../CrossyFrog/res/ground/g10.txt",allBlocks);
     allGround.push_back(g10);
+    Ground *g11 = new Ground("../CrossyFrog/res/ground/g11.txt",allBlocks);
+    allGround.push_back(g11);
+
+    //Put here new patterns to add
+    /*Ground *gn= new Ground("../CrossyFrog/res/ground/gn.txt",allBlocks);
+    allGround.push_back(gn);*/
+
     qDebug() << "Chargement des maps en : " << timer->elapsed() << "ms";
 }
 

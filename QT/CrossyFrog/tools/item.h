@@ -2,11 +2,13 @@
 #define ITEM_H
 
 #include "tools/includes.h"
+#include "resources.h"
+#include "frog.h"
 
 class Item
 {
 public:
-    Item(int posx,int posy,QImage background,string name,bool crossable,int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP);
+    Item(int posx,int posy,QImage background,string name,bool crossable,int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources);
     ///
     /// \brief getItsSpeedX
     /// \return
@@ -97,6 +99,10 @@ private:
     /// \brief Width of the playgorund
     ///
     int HEIGHTP = 728;
+    ///
+    /// \brief resources
+    ///
+    Resources *resources;
 };
 
 #endif // ITEM_H

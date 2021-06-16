@@ -12,6 +12,8 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class GameMode00; }
 QT_END_NAMESPACE
 
+class MainWindow;
+
 ///
 /// \brief The class of the first game mode (solo endless)
 ///
@@ -20,7 +22,7 @@ class GameMode00 : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameMode00(QWidget *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChosen=nullptr,string playerName="empty");
+    explicit GameMode00(MainWindow *parent = nullptr, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr,QImage * frogChosen=nullptr,string playerName="empty");
     ~GameMode00();
     ///
     /// \brief paintEvent method (paint all the elements of the widget)
@@ -118,9 +120,18 @@ public:
     /// \return
     ///
     static bool sortByVal(const pair<string, int> &a,const pair<string, int> &b);
+    ///
+    /// \brief drawPaused
+    /// \param itsPainter
+    ///
+    void drawPaused(QPainter * itsPainter);
 
 private:
     Ui::GameMode00 *ui;
+    ///
+    /// \brief parent
+    ///
+    MainWindow *parent;
     ///
     /// \brief The main timer of the game
     ///
@@ -250,6 +261,10 @@ private:
     /// \brief playerName
     ///
     string playerName;
+    ///
+    /// \brief gameSaved
+    ///
+    bool gameSaved=false;
 
 private slots:
     ///

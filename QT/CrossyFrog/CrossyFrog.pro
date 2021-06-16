@@ -14,6 +14,7 @@ SOURCES += \
     frog.cpp \
     gameMode00.cpp \
     main.cpp \
+    mainwindow.cpp \
     menu.cpp \
     player.cpp \
     resources.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     choosefrog.h \
     frog.h \
     gameMode00.h \
+    mainwindow.h \
     menu.h \
     player.h \
     resources.h \
@@ -47,13 +49,24 @@ FORMS += \
     bash.ui \
     choosefrog.ui \
     gameMode00.ui \
+    mainwindow.ui \
     menu.ui \
     splash.ui
 
 TRANSLATIONS += \
-    CrossyFrog_en_150.ts
+    fr_FR.ts \
+    en_US.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    en_US.qm \
+    en_US.ts \
+    fr_FR.qm \
+    fr_FR.ts
+
+RESOURCES += \
+    resources.qrc

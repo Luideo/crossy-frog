@@ -4,6 +4,7 @@ INPUT(
 ./debug\frog.o
 ./debug\gameMode00.o
 ./debug\main.o
+./debug\mainwindow.o
 ./debug\menu.o
 ./debug\player.o
 ./debug\resources.o
@@ -14,9 +15,11 @@ INPUT(
 ./debug\ground.o
 ./debug\item.o
 ./debug\patern.o
+./debug\qrc_resources.o
 ./debug\moc_bash.o
 ./debug\moc_choosefrog.o
 ./debug\moc_gameMode00.o
+./debug\moc_mainwindow.o
 ./debug\moc_menu.o
 ./debug\moc_splash.o
 );

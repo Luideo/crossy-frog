@@ -1,6 +1,6 @@
 #include "item.h"
 
-Item::Item(int posx, int posy, QImage background, string name, bool crossable, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP)
+Item::Item(int posx, int posy, QImage background, string name, bool crossable, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources)
 {
     //Set all the variables
     itsPosx = posx;
@@ -12,6 +12,7 @@ Item::Item(int posx, int posy, QImage background, string name, bool crossable, i
     this->OFFSETY = OFFSETY;
     this->WIDTHP = WIDTHP;
     this->HEIGHTP = HEIGHTP;
+    this->resources = resources;
 }
 
 int Item::getItsSpeedX() const
@@ -53,21 +54,64 @@ void Item::moveFrame()
 {
     //qDebug() <<itsPosx << ":" << itsSpeedX << ":" << itsBackground.width();
     //if(itsPosx+itsSpeedX+itsBackground.width() >=OFFSETX && itsPosx+itsSpeedX <= OFFSETX+WIDTHP){
-    if(itsSpeedX>0){
-        if(itsPosx+itsSpeedX<OFFSETX+WIDTHP){
-            itsPosx+=itsSpeedX;
-            itsPosy+=itsSpeedY;
-            //qDebug() << "Move frame : " << itsPosy;
-        }else{
-            itsPosx = OFFSETX-itsBackground.width();
+    if(itsName=="car"){
+        if(itsSpeedX>0){
+            if(itsPosx+itsSpeedX<OFFSETX+WIDTHP){
+                itsPosx+=itsSpeedX;
+                itsPosy+=itsSpeedY;
+                //qDebug() << "Move frame : " << itsPosy;
+            }else{
+                itsPosx = OFFSETX-itsBackground.width();
+                int r = rand()%5+1;
+                itsBackground = resources->getImages().at("car"+to_string(r));
+            }
+        }if(itsSpeedX<0){
+            if(itsPosx+itsSpeedX+itsBackground.width()>OFFSETX){
+                itsPosx+=itsSpeedX;
+                itsPosy+=itsSpeedY;
+                //qDebug() << "Move frame : " << itsPosy;
+            }else{
+                itsPosx = OFFSETX+WIDTHP;
+                int r = rand()%5+1;
+                itsBackground = resources->getImages().at("car"+to_string(r));
+            }
         }
-    }if(itsSpeedX<0){
-        if(itsPosx+itsSpeedX+itsBackground.width()>OFFSETX){
-            itsPosx+=itsSpeedX;
-            itsPosy+=itsSpeedY;
-            //qDebug() << "Move frame : " << itsPosy;
-        }else{
-            itsPosx = OFFSETX+WIDTHP;
+    }
+    else if(itsName!="train"){
+        if(itsSpeedX>0){
+            if(itsPosx+itsSpeedX<OFFSETX+WIDTHP){
+                itsPosx+=itsSpeedX;
+                itsPosy+=itsSpeedY;
+                //qDebug() << "Move frame : " << itsPosy;
+            }else{
+                itsPosx = OFFSETX-itsBackground.width();
+            }
+        }if(itsSpeedX<0){
+            if(itsPosx+itsSpeedX+itsBackground.width()>OFFSETX){
+                itsPosx+=itsSpeedX;
+                itsPosy+=itsSpeedY;
+                //qDebug() << "Move frame : " << itsPosy;
+            }else{
+                itsPosx = OFFSETX+WIDTHP;
+            }
+        }
+    }else{
+        if(itsSpeedX>0){
+            if(itsPosx+itsSpeedX<OFFSETX+WIDTHP){
+                itsPosx+=itsSpeedX;
+                itsPosy+=itsSpeedY;
+                //qDebug() << "Move frame : " << itsPosy;
+            }else{
+                itsPosx = OFFSETX-itsBackground.width()-3000;
+            }
+        }if(itsSpeedX<0){
+            if(itsPosx+itsSpeedX+itsBackground.width()>OFFSETX){
+                itsPosx+=itsSpeedX;
+                itsPosy+=itsSpeedY;
+                //qDebug() << "Move frame : " << itsPosy;
+            }else{
+                itsPosx = OFFSETX+WIDTHP+3000;
+            }
         }
     }
 }

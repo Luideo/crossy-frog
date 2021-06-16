@@ -1,0 +1,334 @@
+\hypertarget{class_game_mode00}{}\doxysection{Game\+Mode00 Class Reference}
+\label{class_game_mode00}\index{GameMode00@{GameMode00}}
+
+
+The class of the first game mode (solo endless)  
+
+
+
+
+{\ttfamily \#include $<$game\+Mode00.\+h$>$}
+
+Inheritance diagram for Game\+Mode00\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_mode00}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_game_mode00_ae72ba9b357addeec710acbc5b37fd2d5}{init\+Database}} ()
+\begin{DoxyCompactList}\small\item\em init\+Database \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_add01046bb3219aa6dbf3bb33e5b2acb9}\label{class_game_mode00_add01046bb3219aa6dbf3bb33e5b2acb9}} 
+void \mbox{\hyperlink{class_game_mode00_add01046bb3219aa6dbf3bb33e5b2acb9}{draw\+Database}} (QPainter $\ast$its\+Painter)
+\begin{DoxyCompactList}\small\item\em populate\+Data\+Item \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_a24f9f29ab3bffadf28798669b9d940ad}\label{class_game_mode00_a24f9f29ab3bffadf28798669b9d940ad}} 
+void \mbox{\hyperlink{class_game_mode00_a24f9f29ab3bffadf28798669b9d940ad}{add\+New}} ()
+\begin{DoxyCompactList}\small\item\em add\+New \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_a0776a2cb285c5a859ccf5a4ce47b9b88}\label{class_game_mode00_a0776a2cb285c5a859ccf5a4ce47b9b88}} 
+void \mbox{\hyperlink{class_game_mode00_a0776a2cb285c5a859ccf5a4ce47b9b88}{save}} ()
+\begin{DoxyCompactList}\small\item\em save \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_mode00_ae3cb91e4afc29c64c6bfdbffc96828b7}\label{class_game_mode00_ae3cb91e4afc29c64c6bfdbffc96828b7}} 
+{\bfseries Game\+Mode00} (\mbox{\hyperlink{class_main_window}{Main\+Window}} $\ast$parent=nullptr, int WIDTH=1200, int HEIGHT=800, int OFFSETX=158, int OFFSETY=36, int WIDTHP=884, int HEIGHTP=728, \mbox{\hyperlink{class_resources}{Resources}} $\ast$resources=nullptr, QImage $\ast$frog\+Chosen=nullptr, string player\+Name=\char`\"{}empty\char`\"{})
+\item 
+void \mbox{\hyperlink{class_game_mode00_a3c6ea33b9e4fb90ac71cf6a56532f3c0}{paint\+Event}} (QPaint\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em paint\+Event method (paint all the elements of the widget) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_a9dffa7810b9b74bb2fd37a73ad19f188}{key\+Press\+Event}} (QKey\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em key\+Press\+Event method (call when a key is pressed) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_mode00_afa30c2038f72c7d155cf58ecfdaf3107}{valid\+Move}} (\mbox{\hyperlink{class_frog}{Frog}} $\ast$frog, int moveX, int moveY)
+\begin{DoxyCompactList}\small\item\em this method verify if the move is possible (if it\textquotesingle{}s in the playground) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_mode00_a8c324732521ca0de0563321a13f7ee32}{get\+Display\+Grid}} () const
+\begin{DoxyCompactList}\small\item\em get\+Display\+Grid \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_ab52e7cf4ce375ac09691fc0dc5f1f0ab}{set\+Display\+Grid}} (bool value)
+\begin{DoxyCompactList}\small\item\em set\+Display\+Grid \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_mode00_a7295dc6626ebc7145d87607398481448}{get\+Paused}} () const
+\begin{DoxyCompactList}\small\item\em get\+Paused \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_a468994e25c705ec2fb60df973bfceabd}{set\+Paused}} (bool value)
+\begin{DoxyCompactList}\small\item\em set\+Paused \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_ab88a9c5e02bddd60459bc00848e531c9}\label{class_game_mode00_ab88a9c5e02bddd60459bc00848e531c9}} 
+void \mbox{\hyperlink{class_game_mode00_ab88a9c5e02bddd60459bc00848e531c9}{interact\+Element}} (\mbox{\hyperlink{class_frog}{Frog}} $\ast$frog)
+\begin{DoxyCompactList}\small\item\em interact\+Element method is call every tick and it\textquotesingle{}s do the interaction between frog and element \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_mode00_a5c68625a92d981de73cd4b640ea88681}{get\+Display\+Ui}} () const
+\begin{DoxyCompactList}\small\item\em get\+Display\+Ui \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_a3e83ffe9891578eb74f070b2dee4d21a}{set\+Display\+Ui}} (bool value)
+\begin{DoxyCompactList}\small\item\em set\+Display\+Ui \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_af29fa3f9806441b051e9b65e68849439}{display\+Ui\+Dev\+Tools}} (QPainter $\ast$its\+Painter)
+\begin{DoxyCompactList}\small\item\em diplay\+Ui\+Dev\+Tools method called on paint event if the boolean is on true to display a lot of tools on the playground \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_a03ce121774e2a29b71c3afa5a7b2f2d2}\label{class_game_mode00_a03ce121774e2a29b71c3afa5a7b2f2d2}} 
+void \mbox{\hyperlink{class_game_mode00_a03ce121774e2a29b71c3afa5a7b2f2d2}{restart\+Game}} ()
+\begin{DoxyCompactList}\small\item\em this method restart the game from the beginning \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_a84e69ad9fca281b2592e81273ee040b2}\label{class_game_mode00_a84e69ad9fca281b2592e81273ee040b2}} 
+void \mbox{\hyperlink{class_game_mode00_a84e69ad9fca281b2592e81273ee040b2}{advancement\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em advancement\+Speed is a method call every second that change the speed in function of the advancement \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} $\ast$ \mbox{\hyperlink{class_game_mode00_a64176e5c65484cae3341c1ffdd8a2e74}{get\+Player1}} () const
+\begin{DoxyCompactList}\small\item\em get\+Player1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_a03b601f7b2cb835c1657ff6679feb6e1}{set\+Player1}} (\mbox{\hyperlink{class_player}{Player}} $\ast$value)
+\begin{DoxyCompactList}\small\item\em set\+Player1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_mode00_ab9b2f0c22786b305980ad48776fd0a4b}{draw\+Party\+Finished}} (QPainter $\ast$its\+Painter)
+\begin{DoxyCompactList}\small\item\em draw\+Party\+Finished screen with score etc etc \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_mode00_a10d152451a59a729350ff367413a3db5}\label{class_game_mode00_a10d152451a59a729350ff367413a3db5}} 
+void \mbox{\hyperlink{class_game_mode00_a10d152451a59a729350ff367413a3db5}{save\+Game}} ()
+\begin{DoxyCompactList}\small\item\em save\+Game \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_game_mode00_ae5b6fd2f4efcb3f17908e980c7457226}{get\+Size\+Case}} ()
+\begin{DoxyCompactList}\small\item\em get\+Size\+Case \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_game_mode00_a4c33c9ab6c2bab08d247de7bfcf3c01d}{sort\+By\+Val}} (const pair$<$ string, int $>$ \&a, const pair$<$ string, int $>$ \&b)
+\begin{DoxyCompactList}\small\item\em sort\+By\+Val used with the algorithm sort function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class of the first game mode (solo endless) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_mode00_af29fa3f9806441b051e9b65e68849439}\label{class_game_mode00_af29fa3f9806441b051e9b65e68849439}} 
+\index{GameMode00@{GameMode00}!displayUiDevTools@{displayUiDevTools}}
+\index{displayUiDevTools@{displayUiDevTools}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{displayUiDevTools()}{displayUiDevTools()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::display\+Ui\+Dev\+Tools (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{its\+Painter }\end{DoxyParamCaption})}
+
+
+
+diplay\+Ui\+Dev\+Tools method called on paint event if the boolean is on true to display a lot of tools on the playground 
+
+
+\begin{DoxyParams}{Parameters}
+{\em its\+Painter} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_ab9b2f0c22786b305980ad48776fd0a4b}\label{class_game_mode00_ab9b2f0c22786b305980ad48776fd0a4b}} 
+\index{GameMode00@{GameMode00}!drawPartyFinished@{drawPartyFinished}}
+\index{drawPartyFinished@{drawPartyFinished}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{drawPartyFinished()}{drawPartyFinished()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::draw\+Party\+Finished (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{its\+Painter }\end{DoxyParamCaption})}
+
+
+
+draw\+Party\+Finished screen with score etc etc 
+
+
+\begin{DoxyParams}{Parameters}
+{\em its\+Painter} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_a8c324732521ca0de0563321a13f7ee32}\label{class_game_mode00_a8c324732521ca0de0563321a13f7ee32}} 
+\index{GameMode00@{GameMode00}!getDisplayGrid@{getDisplayGrid}}
+\index{getDisplayGrid@{getDisplayGrid}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{getDisplayGrid()}{getDisplayGrid()}}
+{\footnotesize\ttfamily bool Game\+Mode00\+::get\+Display\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Display\+Grid 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_a5c68625a92d981de73cd4b640ea88681}\label{class_game_mode00_a5c68625a92d981de73cd4b640ea88681}} 
+\index{GameMode00@{GameMode00}!getDisplayUi@{getDisplayUi}}
+\index{getDisplayUi@{getDisplayUi}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{getDisplayUi()}{getDisplayUi()}}
+{\footnotesize\ttfamily bool Game\+Mode00\+::get\+Display\+Ui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Display\+Ui 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_a7295dc6626ebc7145d87607398481448}\label{class_game_mode00_a7295dc6626ebc7145d87607398481448}} 
+\index{GameMode00@{GameMode00}!getPaused@{getPaused}}
+\index{getPaused@{getPaused}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{getPaused()}{getPaused()}}
+{\footnotesize\ttfamily bool Game\+Mode00\+::get\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Paused 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_a64176e5c65484cae3341c1ffdd8a2e74}\label{class_game_mode00_a64176e5c65484cae3341c1ffdd8a2e74}} 
+\index{GameMode00@{GameMode00}!getPlayer1@{getPlayer1}}
+\index{getPlayer1@{getPlayer1}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{getPlayer1()}{getPlayer1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} $\ast$ Game\+Mode00\+::get\+Player1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Player1 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_ae5b6fd2f4efcb3f17908e980c7457226}\label{class_game_mode00_ae5b6fd2f4efcb3f17908e980c7457226}} 
+\index{GameMode00@{GameMode00}!getSizeCase@{getSizeCase}}
+\index{getSizeCase@{getSizeCase}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{getSizeCase()}{getSizeCase()}}
+{\footnotesize\ttfamily int Game\+Mode00\+::get\+Size\+Case (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get\+Size\+Case 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_ae72ba9b357addeec710acbc5b37fd2d5}\label{class_game_mode00_ae72ba9b357addeec710acbc5b37fd2d5}} 
+\index{GameMode00@{GameMode00}!initDatabase@{initDatabase}}
+\index{initDatabase@{initDatabase}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{initDatabase}{initDatabase}}
+{\footnotesize\ttfamily bool Game\+Mode00\+::init\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+init\+Database 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_a9dffa7810b9b74bb2fd37a73ad19f188}\label{class_game_mode00_a9dffa7810b9b74bb2fd37a73ad19f188}} 
+\index{GameMode00@{GameMode00}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{QKey\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+key\+Press\+Event method (call when a key is pressed) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_a3c6ea33b9e4fb90ac71cf6a56532f3c0}\label{class_game_mode00_a3c6ea33b9e4fb90ac71cf6a56532f3c0}} 
+\index{GameMode00@{GameMode00}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+paint\+Event method (paint all the elements of the widget) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_ab52e7cf4ce375ac09691fc0dc5f1f0ab}\label{class_game_mode00_ab52e7cf4ce375ac09691fc0dc5f1f0ab}} 
+\index{GameMode00@{GameMode00}!setDisplayGrid@{setDisplayGrid}}
+\index{setDisplayGrid@{setDisplayGrid}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{setDisplayGrid()}{setDisplayGrid()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::set\+Display\+Grid (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Display\+Grid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_a3e83ffe9891578eb74f070b2dee4d21a}\label{class_game_mode00_a3e83ffe9891578eb74f070b2dee4d21a}} 
+\index{GameMode00@{GameMode00}!setDisplayUi@{setDisplayUi}}
+\index{setDisplayUi@{setDisplayUi}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{setDisplayUi()}{setDisplayUi()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::set\+Display\+Ui (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Display\+Ui 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_a468994e25c705ec2fb60df973bfceabd}\label{class_game_mode00_a468994e25c705ec2fb60df973bfceabd}} 
+\index{GameMode00@{GameMode00}!setPaused@{setPaused}}
+\index{setPaused@{setPaused}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{setPaused()}{setPaused()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::set\+Paused (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Paused 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_a03b601f7b2cb835c1657ff6679feb6e1}\label{class_game_mode00_a03b601f7b2cb835c1657ff6679feb6e1}} 
+\index{GameMode00@{GameMode00}!setPlayer1@{setPlayer1}}
+\index{setPlayer1@{setPlayer1}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{setPlayer1()}{setPlayer1()}}
+{\footnotesize\ttfamily void Game\+Mode00\+::set\+Player1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Player1 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_mode00_a4c33c9ab6c2bab08d247de7bfcf3c01d}\label{class_game_mode00_a4c33c9ab6c2bab08d247de7bfcf3c01d}} 
+\index{GameMode00@{GameMode00}!sortByVal@{sortByVal}}
+\index{sortByVal@{sortByVal}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{sortByVal()}{sortByVal()}}
+{\footnotesize\ttfamily bool Game\+Mode00\+::sort\+By\+Val (\begin{DoxyParamCaption}\item[{const pair$<$ string, int $>$ \&}]{a,  }\item[{const pair$<$ string, int $>$ \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+sort\+By\+Val used with the algorithm sort function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_mode00_afa30c2038f72c7d155cf58ecfdaf3107}\label{class_game_mode00_afa30c2038f72c7d155cf58ecfdaf3107}} 
+\index{GameMode00@{GameMode00}!validMove@{validMove}}
+\index{validMove@{validMove}!GameMode00@{GameMode00}}
+\doxysubsubsection{\texorpdfstring{validMove()}{validMove()}}
+{\footnotesize\ttfamily bool Game\+Mode00\+::valid\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_frog}{Frog}} $\ast$}]{frog,  }\item[{int}]{moveX,  }\item[{int}]{moveY }\end{DoxyParamCaption})}
+
+
+
+this method verify if the move is possible (if it\textquotesingle{}s in the playground) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & frog (to get his position) \\
+\hline
+{\em The} & move on X \\
+\hline
+{\em The} & move on Y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if the move is valid (true) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/louid/\+One\+Drive/\+Documents/\+Espace\+\_\+de\+\_\+travail/\+POO-\/\+BCOO2-\/\+IHM/\+Crossy\+Frog/crossy-\/frog/\+QT/\+Crossy\+Frog/game\+Mode00.\+h\item 
+C\+:/\+Users/louid/\+One\+Drive/\+Documents/\+Espace\+\_\+de\+\_\+travail/\+POO-\/\+BCOO2-\/\+IHM/\+Crossy\+Frog/crossy-\/frog/\+QT/\+Crossy\+Frog/game\+Mode00.\+cpp\end{DoxyCompactItemize}

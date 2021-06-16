@@ -1,18 +1,22 @@
 #include "gameMode00.h"
 #include "ui_gameMode00.h"
 #include "menu.h"
+#include "mainwindow.h"
 
-GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChosen,string playerName) :
+GameMode00::GameMode00(MainWindow *parent, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources,QImage * frogChosen,string playerName) :
     QWidget(parent),
     ui(new Ui::GameMode00)
 {
     //Display the bash
     //Creation of the bash widget
-    bash = new Bash(parentWidget(),this);
+    bash = new Bash(nullptr,this);
     //Change the name
     bash->setWindowTitle("Bash");
     //Show the bash
     bash->show();
+
+    //Set the focus
+    setFocusPolicy(Qt::StrongFocus);
 
     //Setup the interface of the widget
     ui->setupUi(this);
@@ -25,6 +29,9 @@ GameMode00::GameMode00(QWidget *parent, int WIDTH, int HEIGHT, int OFFSETX, int 
 
     //Set the resources
     this->resources = resources;
+
+    //set the main window
+    this->parent = parent;
 
     //Set the value passed
     this->WIDTH = WIDTH;
@@ -126,9 +133,12 @@ void GameMode00::paintEvent(QPaintEvent *event)
     if(displayUi){
         displayUiDevTools(itsPainter);
     }
+
     //Draw the game over screen
     if(partyFinished){
         drawPartyFinished(itsPainter);
+    }else if(paused){
+        drawPaused(itsPainter);
     }
 
     //Draw the border of UI
@@ -154,14 +164,38 @@ void GameMode00::paintEvent(QPaintEvent *event)
 
 void GameMode00::keyPressEvent(QKeyEvent *event)
 {
+    if(paused && event->key() == Qt::Key_Q){
+        //Creation of the menu widget
+        parent->launchMenu();
+        //Delete this
+        this->deleteLater();
+        //Delete the bash
+        bash->deleteLater();
+    }
+    if(partyFinished && event->key() == Qt::Key_Escape){
+        //Creation of the menu widget
+        parent->launchMenu();
+        //Delete this
+        this->deleteLater();
+        //Delete the bash
+        bash->deleteLater();
+    }
+
+    if((paused || partyFinished) && (event->key() == Qt::Key_R)){
+        //Restart the game
+        restartGame();
+    }
     //Start the game
-    if(event->key() == Qt::Key_Escape || event->key() == Qt::Key_Space){ //Spacebar pressed
+    if(event->key() == Qt::Key_Escape){ //Escape pressed
+        //Start the party if it's not
+        if(started){
+            paused = !paused;
+        }
+    }
+    if(event->key() == Qt::Key_Space){ //Escape pressed
         //Start the party if it's not
         if(!started){
             started=true;
-        }//If already the pause
-        else{
-            paused = !paused;
         }
     }
     //Verifiy that's not in pause or not started
@@ -235,18 +269,6 @@ void GameMode00::keyPressEvent(QKeyEvent *event)
             player1->getItsFrog()->setShape(newShape);
         }
     }else{
-        if(event->key() == Qt::Key_Escape){
-            //Creation of the menu widget
-            Menu *menu = new Menu(parentWidget(),resources);
-            //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
-            menu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-            //Show the menu
-            menu->show();
-            //Delete this
-            this->deleteLater();
-            //Delete the bash
-            bash->deleteLater();
-        }
         if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
             //Save the game
             saveGame();
@@ -297,10 +319,10 @@ void GameMode00::interactElement(Frog *frog)
             for(int y=0; y<7; ++y){ //Line of block
                 Block block = paterns[index]->getGround()->getBlocks()->at(y).at(x); //Create a local block to simplify the code
                 /*
-                if(block.getCrossable()==false){
-                    qDebug() << "name : " << QString::fromStdString(paterns[index]->getName()) << " | block : " << block.getPosX() << " | " << block.getPosY() << " | adresse : " << paterns[index]->getGround();
-                }
-                */
+                           if(block.getCrossable()==false){
+                               qDebug() << "name : " << QString::fromStdString(paterns[index]->getName()) << " | block : " << block.getPosX() << " | " << block.getPosY() << " | adresse : " << paterns[index]->getGround();
+                           }
+                           */
                 //Verify if the frog is not in a non crossable type
                 if(frog->getPosX()== block.getPosX() && //Check the X pos
                         frog->getPosY()== block.getPosY() && //Check the Y pos
@@ -333,11 +355,11 @@ void GameMode00::interactElement(Frog *frog)
         repaint();
         partyFinished=true;
         /*
-        //Restart the game
-        restartGame();
-        //Repaint after restart
-        repaint();
-        */
+                   //Restart the game
+                   restartGame();
+                   //Repaint after restart
+                   repaint();
+                   */
     }
     //Verify that the frog is not out of map, if it's invincible the replace it
     if(frog->getPosY()>OFFSETY+HEIGHTP){
@@ -346,11 +368,11 @@ void GameMode00::interactElement(Frog *frog)
             repaint();
             partyFinished=true;
             /*
-            //Restart the game
-            restartGame();
-            //Repaint after restart
-            repaint();
-            */
+                       //Restart the game
+                       restartGame();
+                       //Repaint after restart
+                       repaint();
+                       */
         }else{
             //Change it's posY
             player1->getItsFrog()->setPosY(player1->getItsFrog()->getPosY()-sizeCase);
@@ -511,22 +533,49 @@ void GameMode00::drawPartyFinished(QPainter *itsPainter)
         fontIn.setPointSize(17);
         itsPainter->setFont(fontIn);
         //Draw the text
-        itsPainter->drawText(QRect(OFFSETX,OFFSETY+HEIGHTP-40,WIDTHP,40),"Press Enter to save | Press Esc to quit | Press R to restart",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(OFFSETX,OFFSETY+HEIGHTP-40,WIDTHP,40),tr("Press Enter to save | Press Esc to quit | Press R to restart"),QTextOption(Qt::AlignHCenter));
     }
 }
 
 void GameMode00::saveGame()
 {
     if(!gameSaved){
-    addNew();
-    save();
-    gameSaved=true;
+        addNew();
+        save();
+        gameSaved=true;
+        QMessageBox msgBox;
+        msgBox.setText("Your score is successfully saved !");
+        msgBox.exec();
     }
 }
 
 bool GameMode00::sortByVal(const pair<string, int> &a, const pair<string, int> &b)
 {
     return (a.second < b.second);
+}
+
+void GameMode00::drawPaused(QPainter *itsPainter)
+{
+    //Set the color 80%transparent
+    QColor c = Tools::COLOR_GRAY80();
+    c.setAlpha(255*0.7);
+    itsPainter->setPen(c);
+    QBrush b = itsPainter->brush();
+    b.setColor(c);
+    itsPainter->setBrush(b);
+
+    //Draw the rect
+    itsPainter->drawRect(OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+
+
+    //Set the font and the color
+    itsPainter->setPen(Tools::COLOR_BLACK());
+    QFont f;
+    f.setFamily("8-bit Arcade In");
+    f.setPointSize(60);
+    itsPainter->setFont(f);
+    //Draw text
+    itsPainter->drawText(QRect(OFFSETX,50,WIDTHP,200),tr("PAUSED"),QTextOption(Qt::AlignHCenter));
 }
 
 void GameMode00::gameLoop()
@@ -580,9 +629,10 @@ void GameMode00::gameLoop()
 
 bool GameMode00::initDatabase()
 {
+    //qDebug() << "initDataBase";
     // Création de la base de données
     db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("../CrossyFrog/res/sqlDB/scoreList.db");
+    db.setDatabaseName("../CrossyFrog/res/sqlDB/scoreList.db"); //DOES'NT WORK ON MAC
     if(db.open()){
         //qDebug() << "database file:opened";
     }else{
@@ -594,17 +644,18 @@ bool GameMode00::initDatabase()
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 
     /*
-    //Delete all row
-    QSqlQuery query;
-    query.exec("DELETE FROM scoreList");
-    save();
-    */
+               //Delete all row
+               QSqlQuery query;
+               query.exec("DELETE FROM scoreList");
+               save();
+               */
 
     return db.open();
 }
 
 void GameMode00::drawDatabase(QPainter * itsPainter)
 {
+    //qDebug() << "drawDatabase";
     //Change the font color and size
     itsPainter->setPen(Tools::COLOR_WHITE());
     QBrush b = itsPainter->brush();
@@ -614,6 +665,21 @@ void GameMode00::drawDatabase(QPainter * itsPainter)
     font.setFamily("8-bit Arcade In");
     font.setPointSize(40);
     itsPainter->setFont(font);
+
+    //Before drawing scores, drawing a white bg on the future emplacement of it
+    //With a white quite transparent
+    QColor white70 = Tools::COLOR_WHITE();
+    white70.setAlpha(255*0.7);
+    b = itsPainter->brush();
+    b.setColor(white70);
+    itsPainter->setBrush(b);
+    //Draw it
+    itsPainter->drawRect(QRect(OFFSETX+150,OFFSETY+320,WIDTHP-300,220));
+
+    //Set the scores in black
+    itsPainter->setPen(Tools::COLOR_BLACK());
+    b = itsPainter->brush();
+    b.setColor(Tools::COLOR_BLACK());
 
     //qDebug() << "Draw Database";
     QSqlQuery query;
@@ -635,13 +701,14 @@ void GameMode00::drawDatabase(QPainter * itsPainter)
     //Sort the scores
     sort(scores.rbegin(),scores.rend(),sortByVal);
     //Display the 3 first text
-    for(int i =0 ;i < 3 && i<(int)scores.size() ; i++){
-        itsPainter->drawText(QRect(OFFSETX,OFFSETY+350 + i*50,WIDTHP,50),QString::fromStdString(scores.at(i).first)+" : "+QString::number(scores.at(i).second),QTextOption(Qt::AlignCenter));
+    for(int i =0 ;i < 4 && i<(int)scores.size() ; i++){
+        itsPainter->drawText(QRect(OFFSETX,OFFSETY+320 + i*50,WIDTHP,50),QString::fromStdString(scores.at(i).first)+" : "+QString::number(scores.at(i).second),QTextOption(Qt::AlignCenter));
     }
 }
 
 void GameMode00::addNew()
 {
+    //qDebug() << "addDataBase";
     // Ajout d'un élément
     int row=0;
     model->insertRows(row,1);
@@ -652,6 +719,7 @@ void GameMode00::addNew()
 
 void GameMode00::save()
 {
+    //qDebug() << "saveData";
     // Sauvegarde des informations dans la base de données
     bool flag=model->submitAll();
     if(!flag){

@@ -2,7 +2,7 @@
 
 Ground::Ground(string path,AllBlocks *allBlocks)
 {
-    qDebug() << "Chargement d'un ground";
+    qDebug() << "Chargement du ground : " << QString::fromStdString(path);
     //Initialize allBlocks
     this->allBlocks = allBlocks;
     //Create the variable that load the file
@@ -58,6 +58,10 @@ vector<Block> Ground::stringToBlock(vector<string> vec)
             finalVector.push_back(*allBlocks->getDirt());
         }else if(*it=="R"){
             finalVector.push_back(*allBlocks->getRoad());
+        }else if(*it=="T"){
+            finalVector.push_back(*allBlocks->getRail());
+        }else if(*it=="B"){
+            finalVector.push_back(*allBlocks->getBush());
         }
     }
     return finalVector;

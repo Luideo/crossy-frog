@@ -6,7 +6,7 @@
 class Resources
 {
 public:
-    Resources();
+    Resources(QTranslator *translator);
 
     ///
     /// \brief getImages
@@ -23,10 +23,29 @@ public:
     /// \param itsPainter
     ///
     void draw(QPainter *itsPainter,QRect progress);
+    ///
+    /// \brief getTranslator
+    /// \return
+    ///
+    QTranslator *getTranslator() const;
+    ///
+    /// \brief getLanguage
+    /// \return
+    ///
+    string getLanguage() const;
+    ///
+    /// \brief setLanguage
+    /// \param value
+    ///
+    void setLanguage(const string &value);
+    ///
+    /// \brief loadSettings method
+    ///
+    void loadSettings();
 
 private:
     ///
-    /// \brief blocksBaground is the map tha contain all the background of all blocks and the frog ... etc etc
+    /// \brief blocksBaground is the map that contain all the background of all blocks and the frog ... etc etc
     ///
     map<string,QImage> images;
     ///
@@ -41,6 +60,14 @@ private:
     /// \brief progress bar (not a pointer because we don't want to change the initial value)
     ///
     QRect progress;
+    ///
+    /// \brief The translator of the game
+    ///
+    QTranslator *translator;
+    ///
+    /// \brief the language selected
+    ///
+    string language="../CrossyFrog/en_US.qm";
 };
 
 #endif // RESOURCES_H

@@ -1,0 +1,57 @@
+<RCC>
+    <qresource prefix="/resources/blocks">
+        <file>res/blocks/bush.png</file>
+        <file>res/blocks/dirt1.png</file>
+        <file>res/blocks/dirt2.png</file>
+        <file>res/blocks/grass1.png</file>
+        <file>res/blocks/grass2.png</file>
+        <file>res/blocks/grass3.png</file>
+        <file>res/blocks/grass4.png</file>
+        <file>res/blocks/grass5.png</file>
+        <file>res/blocks/rail.png</file>
+        <file>res/blocks/road.png</file>
+        <file>res/blocks/water1.png</file>
+        <file>res/blocks/water2.png</file>
+        <file>res/blocks/water3.png</file>
+        <file>res/8_bit_arcade/8-bit Arcade.png</file>
+        <file>res/8_bit_arcade/8-bit Arcade.txt</file>
+        <file>res/8_bit_arcade/8-bit_In.ttf</file>
+        <file>res/8_bit_arcade/8-bit_Out.ttf</file>
+        <file>res/Audio/Sounds/fastSwish.wav</file>
+        <file>res/Audio/Sounds/frogVictorySoun.wav</file>
+        <file>res/Audio/Sounds/jumpSoundEffect.wav</file>
+        <file>res/Audio/Sounds/menuClick.wav</file>
+        <file>res/Frog/full/frogF.png</file>
+        <file>res/Frog/full/frogM.png</file>
+        <file>res/Frog/full/frogNB.png</file>
+        <file>res/Frog/top/frogF.png</file>
+        <file>res/Frog/top/frogM.png</file>
+        <file>res/Frog/top/frogN.png</file>
+        <file>res/ground/g1.txt</file>
+        <file>res/ground/g10.txt</file>
+        <file>res/ground/g11.txt</file>
+        <file>res/ground/g2.txt</file>
+        <file>res/ground/g3.txt</file>
+        <file>res/ground/g4.txt</file>
+        <file>res/ground/g5.txt</file>
+        <file>res/ground/g6.txt</file>
+        <file>res/ground/g7.txt</file>
+        <file>res/ground/g8.txt</file>
+        <file>res/ground/g9.txt</file>
+        <file>res/Items/train.png</file>
+        <file>res/Menu/1.png</file>
+        <file>res/Menu/2.png</file>
+        <file>res/Menu/cloud.png</file>
+        <file>res/Menu/leftArrow.png</file>
+        <file>res/Menu/Rec1.png</file>
+        <file>res/Menu/rightArrow.png</file>
+        <file>res/sqlDB/scoreList.db</file>
+        <file>res/Audio/Sounds/menuSelection.wav</file>
+        <file>res/Items/car1.png</file>
+        <file>res/Items/car2.png</file>
+        <file>res/Items/car3.png</file>
+        <file>res/Items/car4.png</file>
+        <file>res/Items/car5.png</file>
+        <file>res/Items/woodlog.png</file>
+    </qresource>
+</RCC>

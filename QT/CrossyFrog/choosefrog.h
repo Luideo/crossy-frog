@@ -14,7 +14,7 @@ class ChooseFrog : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChooseFrog(QWidget *parent = nullptr, int numGame=0, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr);
+    explicit ChooseFrog(MainWindow *parent = nullptr, int numGame=0, int WIDTH = 1200, int HEIGHT = 800, int OFFSETX = 158, int OFFSETY = 36, int WIDTHP = 884, int HEIGHTP = 728,Resources *resources=nullptr);
     ~ChooseFrog();
 
     ///
@@ -30,6 +30,10 @@ public:
 
 private:
     Ui::ChooseFrog *ui;
+    ///
+    /// \brief parent
+    ///
+    MainWindow *parent;
     ///
     /// \brief The Widget Game that will be display when the play button is clicked
     ///

@@ -23,6 +23,8 @@
 #include <QLineEdit>
 #include <QRegExp>
 #include <QSqlQuery>
+#include <QTranslator>
+#include <QStackedWidget>
 #include <map>
 #include <fstream>
 #include <algorithm>

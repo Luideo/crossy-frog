@@ -1,7 +1,8 @@
 #include "choosefrog.h"
 #include "ui_choosefrog.h"
+#include "mainwindow.h"
 
-ChooseFrog::ChooseFrog(QWidget *parent,int numGame, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources) :
+ChooseFrog::ChooseFrog(MainWindow *parent,int numGame, int WIDTH, int HEIGHT, int OFFSETX, int OFFSETY, int WIDTHP, int HEIGHTP,Resources *resources) :
     QWidget(parent),
     ui(new Ui::ChooseFrog)
 {
@@ -9,6 +10,9 @@ ChooseFrog::ChooseFrog(QWidget *parent,int numGame, int WIDTH, int HEIGHT, int O
 
     //Set the resources
     this->resources = resources;
+
+    //Set the main window
+    this->parent = parent;
 
     //Set the value passed
     this->WIDTH = WIDTH;
@@ -19,14 +23,20 @@ ChooseFrog::ChooseFrog(QWidget *parent,int numGame, int WIDTH, int HEIGHT, int O
     this->HEIGHTP = HEIGHTP;
     this->numGame = numGame;
 
+    //Set the focus
+    this->raise();
+    this->activateWindow();
+    this->setFocusPolicy(Qt::StrongFocus);
+    this->setFocus();
+
     //Add to the vector all the frog displayed
     QImage * maleFrog = new QImage(resources->getImages().at("frogMF"));
     QImage * femaleFrog = new QImage(resources->getImages().at("frogFF"));
-    QImage * femaleFrog2 = new QImage(resources->getImages().at("frogNBF"));
+    QImage * nonBinary = new QImage(resources->getImages().at("frogNBF"));
     //Push all in the vector
     allFrontFrogs.push_back(maleFrog);
     allFrontFrogs.push_back(femaleFrog);
-    allFrontFrogs.push_back(femaleFrog2);
+    allFrontFrogs.push_back(nonBinary);
 
     //All the frog from the top
     QImage * topM = new QImage(resources->getImages().at("frogM"));
@@ -133,11 +143,8 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
     b.setColor(Tools::COLOR_GRAY80());
     itsPainter->setBrush(b);
     //Draw it
-    QPainterPath path;
-    path.setFillRule( Qt::WindingFill );
-    path.addRoundedRect( QRect(OFFSETX+200,(HEIGHTP+currentImage.height())/2+OFFSETY+100,WIDTHP-400,50), 20, 20 );
-    itsPainter->drawPath(path);
-    qDebug() << "Text : " << QString::fromStdString(playerName);
+    itsPainter->drawImage(OFFSETX+200,(HEIGHTP+currentImage.height())/2+OFFSETY+100,resources->getImages().at("Rec1"));
+    //qDebug() << "Text : " << QString::fromStdString(playerName);
     //Set the color to white
     itsPainter->setPen(Tools::COLOR_BLACK());
     //Change the font and the size
@@ -160,8 +167,13 @@ void ChooseFrog::paintEvent(QPaintEvent *event)
         f.setPointSize(25);
         itsPainter->setFont(f);
         //Draw the text
-        itsPainter->drawText(QRect(OFFSETX,(HEIGHTP+currentImage.height())/2+OFFSETY+170,WIDTHP,50),"Please enter a valid name (3-9 char)",QTextOption(Qt::AlignHCenter));
+        itsPainter->drawText(QRect(OFFSETX,(HEIGHTP+currentImage.height())/2+OFFSETY+170,WIDTHP,50),tr("Please enter a valid name (3-9 char)"),QTextOption(Qt::AlignHCenter));
     }
+
+    //Paint the arrow
+    //HEIGHTP+resources->getImages().at("arrowLeft").size().width()/2
+    itsPainter->drawImage(420,OFFSETY + (HEIGHTP-resources->getImages().at("arrowLeft").size().height())/2,resources->getImages().at("arrowLeft"));
+    itsPainter->drawImage((420-OFFSETX)+WIDTHP/2,OFFSETY + (HEIGHTP-resources->getImages().at("arrowRight").size().height())/2,resources->getImages().at("arrowRight"));
 
     //Draw the border of UI
     //Change color
@@ -211,6 +223,10 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
             index=allFrontFrogs.size()-1;
         }
     }
+    if(event->key() == Qt::Key_Escape){
+       parent->launchMenu();
+       this->deleteLater();
+    }
     if(event->key() == Qt::Key_Return){
         //Add the letter to the string if the letter match with the regex
         //        QRegExp rexp("^[[:space:]]*$");
@@ -221,11 +237,7 @@ void ChooseFrog::keyPressEvent(QKeyEvent *event)
                 //When the frog is choosen switch to the game
                 QImage * firstFrog = allMinFrogs.at(index);
                 //Change the widget that displayed
-                game = new GameMode00(parentWidget(),WIDTH,HEIGHT,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources,firstFrog,playerName);
-                //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
-                game->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-                //Show the current widget (game)
-                game->show();
+                parent->launchGameMode00(firstFrog,playerName);
                 //Delete this widget after calling the other
                 this->deleteLater();
             }

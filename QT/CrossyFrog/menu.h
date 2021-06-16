@@ -11,6 +11,7 @@ namespace Ui { class Menu; }
 QT_END_NAMESPACE
 
 class Splash;
+class MainWindow;
 
 ///
 /// \brief The main class on startup
@@ -19,7 +20,7 @@ class Menu : public QWidget
 {
     Q_OBJECT
 public:
-    Menu(QWidget *parent = nullptr,Resources *resources=nullptr);
+    Menu(MainWindow *parent = nullptr,Resources *resources=nullptr);
     ~Menu();
 
     ///
@@ -40,6 +41,10 @@ public:
 
 private:
     Ui::Menu *ui;
+    ///
+    /// \brief parent
+    ///
+    MainWindow *parent;
     ///
     /// \brief The Widget ChooseFrog that will be display when the play button is clicked
     ///

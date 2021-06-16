@@ -5,6 +5,7 @@
 #include "tools/includes.h"
 #include "menu.h"
 #include "resources.h"
+#include "mainwindow.h"
 
 namespace Ui {
 class Splash;
@@ -17,7 +18,7 @@ class Splash : public QWidget
     Q_OBJECT
 
 public:
-    explicit Splash(QWidget *parent = nullptr);
+    explicit Splash(QWidget *parent = nullptr,QTranslator *translator=nullptr);
     ~Splash();
 
     ///
@@ -49,6 +50,10 @@ private:
     /// \brief itsTimer
     ///
     QTimer * itsTimer;
+    ///
+    /// \brief The translator of the game
+    ///
+    QTranslator *translator;
 
 private slots:
     void gameLoop();

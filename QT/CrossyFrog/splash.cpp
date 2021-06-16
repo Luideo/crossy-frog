@@ -1,11 +1,14 @@
 #include "splash.h"
 #include "ui_splash.h"
 
-Splash::Splash(QWidget *parent) :
+Splash::Splash(QWidget *parent, QTranslator *translator) :
     QWidget(parent),
     ui(new Ui::Splash)
 {
     ui->setupUi(this);
+
+    //Set the translator
+    this->translator = translator;
 
     //Set the background of the loading progress bar
     backgroundProgress = QRect(100,800-100,1000,20);
@@ -22,16 +25,17 @@ Splash::Splash(QWidget *parent) :
     connect(itsTimer,SIGNAL(timeout()),this,SLOT(gameLoop()));
 
     //Loading all the resources
-    resources = new Resources();
+    resources = new Resources(translator);
 
-    //qDebug() << "Chargement des ressources en : " << timer->elapsed() << "ms";
-    //Wen the splash is loaded set the menu
-    //Creation of the menu widget
-    Menu *menu = new Menu(parentWidget(),resources);
+    qDebug() << "Chargement des ressources en : " << timer->elapsed() << "ms";
+
+        //Wen the splash is loaded set the menu
+    //Main window
+    MainWindow *mainWindow = new MainWindow(nullptr,translator,resources);
     //Remove the action/title bar, let the choice to the machine to upgrade the compatibilty and avoir bugs
-    menu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    //Show the menu
-    menu->show();
+    mainWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    //Show it
+    mainWindow->show();
 
     //Delete the parent widget
     this->deleteLater();

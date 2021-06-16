@@ -204,8 +204,9 @@ void Patern::setItems()
             //Load the image
             QImage background = resources->getImages().at("log");
             //Create the item
-            Item * log1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
-            Item * log2 = new Item(log1->getItsPosx()+WIDTHP/2,OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+            Item * log1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
+            Item * log2 = new Item(log1->getItsPosx()+WIDTHP/2,OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
+            //Item * log2 = new Item(log1->getItsPosx(),OFFSETY+(y*52),background,"log",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
             //Positive or negative
             int speed;
             rand()%2==0?speed=-1:speed=1;
@@ -233,18 +234,24 @@ void Patern::setItems()
             //Car
             if(b.getName()=="road"){
                 //Load the image
-                QImage background = resources->getImages().at("car");
+                int r = rand()%5+1;
+                QImage background = resources->getImages().at("car"+to_string(r));
                 //Create the item
-                Item * car1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
-                Item * car2 = new Item(car1->getItsPosx()%WIDTHP+WIDTHP/2,OFFSETY+(y*52),background,"car",true,OFFSETX,OFFSETY,WIDTHP,HEIGHTP);
+                Item * car1 = new Item(OFFSETX+rand()%WIDTHP,OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
+                Item * car2 = new Item(car1->getItsPosx()%WIDTHP+WIDTHP/2,OFFSETY+(y*52),background,"car",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
                 car1->setItsSpeedX(-2);
                 car2->setItsSpeedX(-2);
                 allItems.push_back(car1);
                 allItems.push_back(car2);
             }
             //Train
-            else if(b.getName()=="railway"){
-
+            else if(b.getName()=="rail"){
+                //Load the image
+                QImage background = resources->getImages().at("train");
+                //Create the item
+                Item * train = new Item(OFFSETX+rand()%(WIDTHP+1500),OFFSETY+(y*52),background,"train",false,OFFSETX,OFFSETY,WIDTHP,HEIGHTP,resources);
+                train->setItsSpeedX(-20);
+                allItems.push_back(train);
             }
         }
     }

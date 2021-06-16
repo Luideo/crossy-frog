@@ -4,6 +4,7 @@ INPUT(
 ./release\frog.o
 ./release\gameMode00.o
 ./release\main.o
+./release\mainwindow.o
 ./release\menu.o
 ./release\player.o
 ./release\resources.o
@@ -14,9 +15,11 @@ INPUT(
 ./release\ground.o
 ./release\item.o
 ./release\patern.o
+./release\qrc_resources.o
 ./release\moc_bash.o
 ./release\moc_choosefrog.o
 ./release\moc_gameMode00.o
+./release\moc_mainwindow.o
 ./release\moc_menu.o
 ./release\moc_splash.o
 );
