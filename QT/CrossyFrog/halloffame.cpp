@@ -22,6 +22,17 @@ HallOfFame::HallOfFame(MainWindow *parent,Resources *resources, Frog * frog,int 
     this->setFocusPolicy(Qt::StrongFocus);
     this->setFocus();
 
+    //Create the scroll area
+    scrollArea = new QScrollArea(this);
+    scrollArea->setGeometry(OFFSETX+(WIDTHP-resources->getImages().at("sign").size().width())/2+25,220+30,550,320);
+    scrollArea->setStyleSheet("background-color:transparent;");
+    //scrollArea->setFrameShape(QFrame::NoFrame);
+    //Init this
+    layout = new QVBoxLayout();
+    scrollArea->setLayout(layout);
+    //Add the db
+    initDatabase();
+
     //Timer of the menu, each 10millis it call mainTimer (private slots method)
     itsTimer = new QTimer();
     //Connect the timer to the mainTimer method
@@ -65,14 +76,15 @@ void HallOfFame::paintEvent(QPaintEvent *event)
     //Draw the playground rect
     itsPainter->drawRect(QRect(OFFSETX,OFFSETY,WIDTHP,HEIGHTP));
 
-    //Draw the background animated frog
-    itsPainter->drawImage(frog->getPosX(),frog->getPosY(),frog->getShape());
     //Draw background animated cloud
     itsPainter->drawImage(cloudX,100,*cloud);
 
     //Draw the sign
     itsPainter->setPen(Qt::transparent);
     itsPainter->drawImage(OFFSETX+(WIDTHP-resources->getImages().at("sign").size().width())/2,220,resources->getImages().at("sign"));
+
+    //Draw the background animated frog
+    itsPainter->drawImage(frog->getPosX(),frog->getPosY(),frog->getShape());
 
     //Draw the ui
     //Change colors
@@ -97,6 +109,9 @@ void HallOfFame::paintEvent(QPaintEvent *event)
     //Draw the title
     itsPainter->drawText(QRect(0,120,WIDTH,120),tr("HALL OF FAME"),QTextOption(Qt::AlignHCenter));
 
+
+    //Draw all the bests scores
+    drawDatabase(itsPainter);
 
     //Draw the border of UI
     //Change color
@@ -162,4 +177,91 @@ void HallOfFame::animationTick(){
     }else{
         cloudX++;
     }
+}
+
+bool HallOfFame::initDatabase()
+{
+    //qDebug() << "initDataBase";
+    // Création de la base de données
+    db=QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("../CrossyFrog/res/sqlDB/scoreList.db"); //DOES'NT WORK ON MAC
+    if(db.open()){
+        //qDebug() << "database file:opened";
+    }else{
+        qDebug() << "database file:error while opening file";
+    }
+    // Initialisation de la vue à partir des informations de la base de données
+    model=new QSqlTableModel(0,db);
+    model->setTable("scoreList");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+    /*
+               //Delete all row
+               QSqlQuery query;
+               query.exec("DELETE FROM scoreList");
+               save();
+               */
+
+    return db.open();
+}
+
+void HallOfFame::drawDatabase(QPainter * itsPainter)
+{
+    //qDebug() << "drawDatabase";
+    //Change the font color and size
+    itsPainter->setPen(Tools::COLOR_WHITE());
+    QBrush b = itsPainter->brush();
+    b.setColor(Tools::COLOR_WHITE());
+    itsPainter->setBrush(b);
+    QFont font = itsPainter->font();
+    font.setFamily("8-bit Arcade In");
+    font.setPointSize(40);
+    itsPainter->setFont(font);
+
+    //Before drawing scores, drawing a white bg on the future emplacement of it
+    //With a white quite transparent
+    QColor white70 = Tools::COLOR_WHITE();
+    white70.setAlpha(255*0.7);
+    b = itsPainter->brush();
+    b.setColor(white70);
+    itsPainter->setBrush(b);
+    //Draw it
+    itsPainter->drawRect(QRect(OFFSETX+150,OFFSETY+320,WIDTHP-300,220));
+
+    //Set the scores in black
+    itsPainter->setPen(Tools::COLOR_BLACK());
+    b = itsPainter->brush();
+    b.setColor(Tools::COLOR_BLACK());
+
+    //qDebug() << "Draw Database";
+    QSqlQuery query;
+    query.exec("SELECT name, score FROM scoreList");
+
+    //Create the vector with the scores
+    vector<pair<string,int>> scores;
+
+    //Create a int to display only 3 score (the bests)
+    int i =0;
+    while (query.next()) {
+        string name = query.value(0).toString().toStdString();
+        int score = query.value(1).toInt();
+        // qDebug() << name << score;
+        //Store the score in a vector
+        scores.push_back(make_pair(name,score));
+        i++;
+    }
+    //Sort the scores
+    sort(scores.rbegin(),scores.rend(),sortByVal);
+
+    //Display the 3 first text
+    for(int i =0 ;i < 4 && i<(int)scores.size() ; i++){
+        //itsPainter->drawText(QRect(OFFSETX,OFFSETY+320 + i*50,WIDTHP,50),QString::fromStdString(scores.at(i).first)+" : "+QString::number(scores.at(i).second),QTextOption(Qt::AlignCenter));
+        QLabel *label = new QLabel(QString::fromStdString(scores.at(i).first)+ " : " + QString::number(scores.at(i).second));
+        layout->addWidget(label);
+    }
+}
+
+bool HallOfFame::sortByVal(const pair<string, int> &a, const pair<string, int> &b)
+{
+    return (a.second < b.second);
 }

@@ -24,6 +24,9 @@
 #include <QRegExp>
 #include <QSqlQuery>
 #include <QPainterPath>
+#include <QScrollArea>
+#include <QVBoxLayout>
+#include <QTextBlock>
 #include <QTranslator>
 #include <QStackedWidget>
 #include <map>

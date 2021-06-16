@@ -28,6 +28,13 @@ public:
     /// \param event
     ///
     void keyPressEvent(QKeyEvent * event);
+    ///
+    /// \brief sortByVal used with the algorithm sort function
+    /// \param a
+    /// \param b
+    /// \return
+    ///
+    static bool sortByVal(const pair<string, int> &a,const pair<string, int> &b);
 
 private:
     Ui::HallOfFame *ui;
@@ -96,6 +103,22 @@ private:
     /// \brief timerAnimTick +1 every tick
     ///
     int timerAnimTick=0;
+    ///
+    /// \brief scrollArea
+    ///
+    QScrollArea *scrollArea;
+    ///
+    /// \brief data base
+    ///
+    QSqlDatabase db;
+    ///
+    /// \brief model of the database
+    ///
+    QSqlTableModel *model;
+    ///
+    /// \brief layout
+    ///
+    QVBoxLayout *layout;
 
 private slots:
     ///
@@ -106,6 +129,17 @@ private slots:
     /// \brief animationtic
     ///
     void animationTick();
+
+public slots:
+    ///
+    /// \brief initDatabase
+    /// \return
+    ///
+    bool initDatabase();
+    ///
+    /// \brief populateDataItem
+    ///
+    void drawDatabase(QPainter * itsPainter);
 };
 
 #endif // HALLOFFAME_H
