@@ -20,6 +20,8 @@ Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSE
     this->resources = resources;
     //Assign a random ground
     ground = new Ground(alls.randGround());
+    //Assign the name
+    name = ground->getItsName();
 
     //Assign its item corresponding
     //Detect if a line need an item
@@ -32,7 +34,11 @@ Patern::Patern(int posX, int posY, int width, int height, int OFFSETX, int OFFSE
 void Patern::randGround()
 {
     //Assign a random ground
+    do{
     ground = new Ground(alls.randGround());
+    }while(ground->getItsName() == name);
+    //Assign the name
+    name = ground->getItsName();
 
     //Clear all items before
     allItems.clear();
@@ -44,6 +50,8 @@ void Patern::defaultGround()
 {
     //Assign the ground by default
     ground = new Ground(alls.defaultGround());
+    //Assign the name
+    name = ground->getItsName();
 
     //Clear all items before
     allItems.clear();

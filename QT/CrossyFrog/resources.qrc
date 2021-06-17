@@ -27,9 +27,6 @@
         <file>res/Frog/top/frogF.png</file>
         <file>res/Frog/top/frogM.png</file>
         <file>res/Frog/top/frogN.png</file>
-        <file>res/ground/g1.txt</file>
-        <file>res/ground/g10.txt</file>
-        <file>res/ground/g11.txt</file>
         <file>res/ground/g2.txt</file>
         <file>res/ground/g3.txt</file>
         <file>res/ground/g4.txt</file>
@@ -56,5 +53,6 @@
         <file>fr_FR.qm</file>
         <file>fr_FR.ts</file>
         <file>res/Menu/sign.png</file>
+        <file>res/ground/g1.txt</file>
     </qresource>
 </RCC>

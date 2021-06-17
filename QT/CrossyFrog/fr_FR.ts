@@ -30,14 +30,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="gameMode00.cpp" line="536"/>
+        <location filename="gameMode00.cpp" line="150"/>
+        <source>Press the SpaceBar to start | Press Esc to pause the game</source>
+        <translation>Espace pour lancer | Esc pour mettre en pause</translation>
+    </message>
+    <message>
+        <location filename="gameMode00.cpp" line="545"/>
         <source>Press Enter to save | Press Esc to quit | Press R to restart</source>
         <translation>Entree pour sauvegarder | Esc pour quitter | R pour recommencer</translation>
     </message>
     <message>
-        <location filename="gameMode00.cpp" line="578"/>
+        <location filename="gameMode00.cpp" line="587"/>
         <source>PAUSED</source>
         <translation>PAUSE</translation>
+    </message>
+    <message>
+        <location filename="gameMode00.cpp" line="595"/>
+        <source>Press Q to quit | Press R to restart | Press Esc to Resume</source>
+        <translation >Q pour quitter | R pour recommencer | Esc pour reprendre</translation>
     </message>
 </context>
 <context>

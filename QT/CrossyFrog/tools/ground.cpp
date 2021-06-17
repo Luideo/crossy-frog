@@ -15,6 +15,7 @@ Ground::Ground(string path,AllBlocks *allBlocks)
             throw QString("Error file does no exist : " + QString::fromStdString(path));
         }
         //We succesfully open the file so we read it and put all the blocks in the vector
+        itsName = path;
         do{
             string line;
             //Get the line
@@ -65,4 +66,9 @@ vector<Block> Ground::stringToBlock(vector<string> vec)
         }
     }
     return finalVector;
+}
+
+string Ground::getItsName() const
+{
+    return itsName;
 }

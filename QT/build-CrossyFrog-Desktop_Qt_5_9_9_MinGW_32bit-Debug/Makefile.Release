@@ -231,10 +231,8 @@ release/qrc_resources.cpp: ../CrossyFrog/resources.qrc \
 		../CrossyFrog/res/ground/g9.txt \
 		../CrossyFrog/res/ground/g4.txt \
 		../CrossyFrog/res/ground/g8.txt \
-		../CrossyFrog/res/ground/g11.txt \
 		../CrossyFrog/res/ground/g3.txt \
 		../CrossyFrog/res/ground/g7.txt \
-		../CrossyFrog/res/ground/g10.txt \
 		../CrossyFrog/res/ground/g2.txt
 	C:\Qt\5.9.9\mingw53_32\bin\rcc.exe -name resources ..\CrossyFrog\resources.qrc -o release\qrc_resources.cpp
 

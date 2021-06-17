@@ -26,6 +26,11 @@ public:
     /// \return
     ///
     vector<Block> stringToBlock(vector<string> vec);
+    ///
+    /// \brief getItsName
+    /// \return
+    ///
+    string getItsName() const;
 
 private:
     ///
@@ -36,6 +41,10 @@ private:
     /// \brief allBlocks
     ///
     AllBlocks *allBlocks;
+    ///
+    /// \brief itsName
+    ///
+    string itsName;
 };
 
 #endif // GROUND_H

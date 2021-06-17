@@ -141,6 +141,15 @@ void GameMode00::paintEvent(QPaintEvent *event)
         drawPaused(itsPainter);
     }
 
+    if(!started){
+        QFont font = itsPainter->font();
+        font.setFamily("8-bit Arcade In");
+        font.setPointSize(20);
+        itsPainter->setFont(font);
+        itsPainter->setPen(Tools::COLOR_WHITE());
+        itsPainter->drawText(QRect(OFFSETX,OFFSETY+HEIGHTP-80,WIDTHP,50),tr("Press the SpaceBar to start | Press Esc to pause the game"),QTextOption(Qt::AlignHCenter));
+    }
+
     //Draw the border of UI
     //Change color
     itsPainter->setPen(Tools::COLOR_NIGHT());
@@ -576,6 +585,14 @@ void GameMode00::drawPaused(QPainter *itsPainter)
     itsPainter->setFont(f);
     //Draw text
     itsPainter->drawText(QRect(OFFSETX,50,WIDTHP,200),tr("PAUSED"),QTextOption(Qt::AlignHCenter));
+
+
+    QFont font = itsPainter->font();
+    font.setFamily("8-bit Arcade In");
+    font.setPointSize(20);
+    itsPainter->setFont(font);
+    itsPainter->setPen(Tools::COLOR_BLACK());
+    itsPainter->drawText(QRect(OFFSETX,OFFSETY+HEIGHTP-80,WIDTHP,50),tr("Press Q to quit | Press R to restart | Press Esc to Resume"),QTextOption(Qt::AlignHCenter));
 }
 
 void GameMode00::gameLoop()
