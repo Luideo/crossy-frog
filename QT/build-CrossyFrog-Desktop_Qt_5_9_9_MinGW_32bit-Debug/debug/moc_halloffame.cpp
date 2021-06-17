@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_HallOfFame_t {
-    QByteArrayData data[8];
-    char stringdata0[83];
+    QByteArrayData data[6];
+    char stringdata0[62];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,14 +36,11 @@ QT_MOC_LITERAL(1, 11, 9), // "mainTimer"
 QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 13), // "animationTick"
 QT_MOC_LITERAL(4, 36, 12), // "initDatabase"
-QT_MOC_LITERAL(5, 49, 12), // "drawDatabase"
-QT_MOC_LITERAL(6, 62, 9), // "QPainter*"
-QT_MOC_LITERAL(7, 72, 10) // "itsPainter"
+QT_MOC_LITERAL(5, 49, 12) // "drawDatabase"
 
     },
     "HallOfFame\0mainTimer\0\0animationTick\0"
-    "initDatabase\0drawDatabase\0QPainter*\0"
-    "itsPainter"
+    "initDatabase\0drawDatabase"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,13 +61,13 @@ static const uint qt_meta_data_HallOfFame[] = {
        1,    0,   34,    2, 0x08 /* Private */,
        3,    0,   35,    2, 0x08 /* Private */,
        4,    0,   36,    2, 0x0a /* Public */,
-       5,    1,   37,    2, 0x0a /* Public */,
+       5,    0,   37,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Bool,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -85,7 +82,7 @@ void HallOfFame::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->animationTick(); break;
         case 2: { bool _r = _t->initDatabase();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 3: _t->drawDatabase((*reinterpret_cast< QPainter*(*)>(_a[1]))); break;
+        case 3: _t->drawDatabase(); break;
         default: ;
         }
     }

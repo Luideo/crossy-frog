@@ -41,6 +41,19 @@
     </message>
 </context>
 <context>
+    <name>HallOfFame</name>
+    <message>
+        <location filename="halloffame.ui" line="32"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="halloffame.cpp" line="129"/>
+        <source>HALL OF FAME</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="26"/>
@@ -150,6 +163,45 @@
         <location filename="settings.cpp" line="130"/>
         <source>Credits</source>
         <translation>Credits</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="183"/>
+        <source>Puisque le jeu est un endless runner, vous ne pouvez pas gagner. En effet, la partie se termine des que vous perdez ! C est a dire des que votre grenouille touche un obstacle ou sort de la carte. Les obstacles entrainant une fin de partie sont les suivants : les voitures  l eau  le train les buissons. A la fin de la partie votre score peut etre enregistre, les 4 meilleurs scores sont affiches dans le tableau</source>
+        <oldsource>Puisque le jeu est un endless runner, vous ne pouvez pas gagner. En effet, la partie se termine des que vous perdez ! C est a dire des que votre grenouille touche un obstacle ou sort de la carte. Les obstacles entrainant une fin de partie sont les suivants : les voitures  l eau  le train les buissons. A la fin de la partie votre score peux etre enregistre, les 4 meilleurs scores sont affichées dans le tableau</oldsource>
+        <translation>Puisque le jeu est un endless runner, vous ne pouvez pas gagner. En effet, la partie se termine des que vous perdez ! C est a dire des que votre grenouille touche un obstacle ou sort de la carte. Les obstacles entrainant une fin de partie sont les suivants : les voitures  l eau  le train les buissons. A la fin de la partie votre score peut etre enregistre, les 4 meilleurs scores sont affiches dans le tableau</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="211"/>
+        <source>Createur de la police : Damien GAUSSET
+
+Graphiste : Gregoire DOLIDON
+
+Developpeur : Louis HUORT
+Gestion de projet : 
+	- Hakim IZM 
+	- Mathis GUESSARD 
+	- Gregoire DOLIDON 
+	- Louis HUORT</source>
+        <oldsource>Createur de la police : Damien GAUSSET
+
+Graphise : Gregoire DOLIDON
+
+Developpeur : Louis HUORT
+Gestion de projet : 
+	- Hakim IZM 
+	- Mathis GUESSARD 
+	- Gregoire DOLIDON 
+	- Louis HUORT</oldsource>
+        <translation>Createur de la police : Damien GAUSSET
+
+Graphiste : Gregoire DOLIDON
+
+Developpeur : Louis HUORT
+Gestion de projet :
+        - Hakim IZM
+        - Mathis GUESSARD
+        - Gregoire DOLIDON
+        - Louis HUORT</translation>
     </message>
 </context>
 <context>

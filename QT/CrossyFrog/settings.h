@@ -98,6 +98,10 @@ private:
     ///
     int timerAnimTick=0;
     ///
+    /// \brief timerSecondAnim
+    ///
+    int timerSecondAnim=0;
+    ///
     /// \brief line selected
     ///
     int line=0;
@@ -105,6 +109,14 @@ private:
     /// \brief column selected
     ///
     int column=0;
+    ///
+    /// \brief rules
+    ///
+    bool rules=false;
+    ///
+    /// \brief credits
+    ///
+    bool credits=false;
 
 private slots:
     ///

@@ -131,7 +131,7 @@ void Settings::paintEvent(QPaintEvent *event)
 
     //Draw the selected item
     //Change the color
-            itsPainter->setPen(QPen(Tools::COLOR_WHITE(),5));
+    itsPainter->setPen(QPen(Tools::COLOR_WHITE(),5));
     b = itsPainter->brush();
     b.setColor(Qt::transparent);
     itsPainter->setBrush(b);
@@ -152,6 +152,64 @@ void Settings::paintEvent(QPaintEvent *event)
         }
     }
 
+
+
+    //Draw the rules
+    if(rules){
+        //Background rect
+        if(timerSecondAnim%50>=25){
+            if(timerSecondAnim==50){
+                timerSecondAnim=0;
+            }
+        itsPainter->setPen(Tools::COLOR_BLACK());
+        QBrush b = itsPainter->brush();
+        b.setColor(Tools::COLOR_BLACK());
+        itsPainter->setBrush(b);
+        itsPainter->drawRect(OFFSETX+90,OFFSETY+90,WIDTHP-185,HEIGHTP-185);
+        }
+        itsPainter->setPen(Tools::COLOR_WHITE());
+        b = itsPainter->brush();
+        b.setColor(Tools::COLOR_WHITE());
+        itsPainter->setBrush(b);
+        itsPainter->drawRect(OFFSETX+95,OFFSETY+95,WIDTHP-195,HEIGHTP-195);
+
+        //Color
+        itsPainter->setPen(Tools::COLOR_BLACK());
+        //Size
+        QFont f = itsPainter->font();
+        f.setPointSize(22);
+        itsPainter->setFont(f);
+        //Text
+        itsPainter->drawText(QRect(OFFSETX+105,OFFSETY+105,WIDTHP-210,HEIGHTP-210),tr("Puisque le jeu est un endless runner, vous ne pouvez pas gagner. En effet, la partie se termine des que vous perdez ! C est a dire des que votre grenouille touche un obstacle ou sort de la carte. Les obstacles entrainant une fin de partie sont les suivants : les voitures  l eau  le train les buissons. A la fin de la partie votre score peut etre enregistre, les 4 meilleurs scores sont affiches dans le tableau"),QTextOption(Qt::AlignJustify));
+    }
+    //Draw the credits
+    if(credits){
+        //Background rect
+        if(timerSecondAnim%50>=25){
+            if(timerSecondAnim==50){
+                timerSecondAnim=0;
+            }
+        itsPainter->setPen(Tools::COLOR_BLACK());
+        QBrush b = itsPainter->brush();
+        b.setColor(Tools::COLOR_BLACK());
+        itsPainter->setBrush(b);
+        itsPainter->drawRect(OFFSETX+90,OFFSETY+90,WIDTHP-185,HEIGHTP-185);
+        }
+        itsPainter->setPen(Tools::COLOR_WHITE());
+        b = itsPainter->brush();
+        b.setColor(Tools::COLOR_WHITE());
+        itsPainter->setBrush(b);
+        itsPainter->drawRect(OFFSETX+95,OFFSETY+95,WIDTHP-195,HEIGHTP-195);
+
+        //Color
+        itsPainter->setPen(Tools::COLOR_BLACK());
+        //Size
+        QFont f = itsPainter->font();
+        f.setPointSize(22);
+        itsPainter->setFont(f);
+        //Text
+        itsPainter->drawText(QRect(OFFSETX+105,OFFSETY+105,WIDTHP-210,HEIGHTP-210),tr("Createur de la police : Damien GAUSSET\n\nGraphiste : Gregoire DOLIDON\n\nDeveloppeur : Louis HUORT\nGestion de projet : \n\t- Hakim IZM \n\t- Mathis GUESSARD \n\t- Gregoire DOLIDON \n\t- Louis HUORT"),QTextOption(Qt::AlignLeft));
+    }
 
     //Draw the border of UI
     //Change color
@@ -176,35 +234,38 @@ void Settings::paintEvent(QPaintEvent *event)
 
 void Settings::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_Escape){
+    if((event->key() == Qt::Key_Escape) && !rules && !credits){
         parent->launchMenu();
         this->deleteLater();
+    }else if(event->key() == Qt::Key_Escape){
+        rules =false;
+        credits = false;
     }
-    if(event->key() == Qt::Key_Left){
+    if(event->key() == Qt::Key_Left && !rules && !credits){
         column--;
         if(column<0){
             column=1;
         }
     }
-    if(event->key() == Qt::Key_Right){
+    if(event->key() == Qt::Key_Right && !rules && !credits){
         column++;
         column = column%2;
     }
-    if(event->key() == Qt::Key_Up){
+    if(event->key() == Qt::Key_Up && !rules && !credits){
         line--;
         if(line<0){
             line=1;
         }
     }
-    if(event->key() == Qt::Key_Down){
+    if(event->key() == Qt::Key_Down && !rules && !credits){
         line++;
         line = line%2;
     }
-    if(event->key() == Qt::Key_Return){
+    if(event->key() == Qt::Key_Return && !rules && !credits){
         //Save this
         ofstream save;
-        save.open("../CrossyFrog/settings.txt");
         if(line==0){
+                    save.open("../CrossyFrog/settings.txt");
             if(column==0){
                 save << "US";
                 resources->setLanguage("../CrossyFrog/en_US.qm");
@@ -214,8 +275,14 @@ void Settings::keyPressEvent(QKeyEvent *event)
                 resources->setLanguage("../CrossyFrog/fr_FR.qm");
                 qDebug() << "FR save";
             }
+                        save.close();
+        }else if(line==1){
+            if(column==0){
+                rules=true;
+            }else if(column==1){
+                credits=true;
+            }
         }
-        save.close();
         resources->loadSettings();
         //Laod the translator
         resources->getTranslator()->load(QString::fromStdString(resources->getLanguage()));
@@ -230,6 +297,7 @@ void Settings::mainTimer()
 
 void Settings::animationTick(){
     timerAnimTick++;
+    timerSecondAnim++;
     //Change the frog state and position
     if(timerAnimTick%7==0){
         timerAnimTick=0;

@@ -26,12 +26,32 @@ HallOfFame::HallOfFame(MainWindow *parent,Resources *resources, Frog * frog,int 
     scrollArea = new QScrollArea(this);
     scrollArea->setGeometry(OFFSETX+(WIDTHP-resources->getImages().at("sign").size().width())/2+25,220+30,550,320);
     scrollArea->setStyleSheet("background-color:transparent;");
-    //scrollArea->setFrameShape(QFrame::NoFrame);
+    scrollArea->setFrameShape(QFrame::NoFrame);
     //Init this
-    layout = new QVBoxLayout();
+    //layout = new QVBoxLayout();
+    layout = new QVBoxLayout(scrollArea);
+    /*
+    QWidget* w = new QWidget(this);
+    w->setLayout(layout);
+   scrollArea->setWidget(w);
+   */
     scrollArea->setLayout(layout);
+
+    player = new QMediaPlayer(this);
+    player->setMedia(QUrl::fromLocalFile("../CrossyFrog/res/Audio/music.mp3"));
+
+
+    /*
+     * QWidget* w = new QWidget( this );
+w->setLayout(ui->verticalLayout);
+QScrollArea *area = new QScrollArea(this);
+area->setWidget(w);
+     */
+
     //Add the db
     initDatabase();
+    //Draw all the bests scores
+    drawDatabase();
 
     //Timer of the menu, each 10millis it call mainTimer (private slots method)
     itsTimer = new QTimer();
@@ -82,7 +102,6 @@ void HallOfFame::paintEvent(QPaintEvent *event)
     //Draw the sign
     itsPainter->setPen(Qt::transparent);
     itsPainter->drawImage(OFFSETX+(WIDTHP-resources->getImages().at("sign").size().width())/2,220,resources->getImages().at("sign"));
-
     //Draw the background animated frog
     itsPainter->drawImage(frog->getPosX(),frog->getPosY(),frog->getShape());
 
@@ -108,10 +127,6 @@ void HallOfFame::paintEvent(QPaintEvent *event)
     itsPainter->setFont(fontInBig);
     //Draw the title
     itsPainter->drawText(QRect(0,120,WIDTH,120),tr("HALL OF FAME"),QTextOption(Qt::AlignHCenter));
-
-
-    //Draw all the bests scores
-    drawDatabase(itsPainter);
 
     //Draw the border of UI
     //Change color
@@ -139,6 +154,13 @@ void HallOfFame::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_Escape){
         parent->launchMenu();
         this->deleteLater();
+    }
+    if(event->key() == Qt::Key_Return && event->isAutoRepeat()==false){
+        count++;
+        if(count==20){
+            player->play();
+            //qDebug() << "PLAY";
+        }
     }
 }
 
@@ -205,33 +227,8 @@ bool HallOfFame::initDatabase()
     return db.open();
 }
 
-void HallOfFame::drawDatabase(QPainter * itsPainter)
+void HallOfFame::drawDatabase()
 {
-    //qDebug() << "drawDatabase";
-    //Change the font color and size
-    itsPainter->setPen(Tools::COLOR_WHITE());
-    QBrush b = itsPainter->brush();
-    b.setColor(Tools::COLOR_WHITE());
-    itsPainter->setBrush(b);
-    QFont font = itsPainter->font();
-    font.setFamily("8-bit Arcade In");
-    font.setPointSize(40);
-    itsPainter->setFont(font);
-
-    //Before drawing scores, drawing a white bg on the future emplacement of it
-    //With a white quite transparent
-    QColor white70 = Tools::COLOR_WHITE();
-    white70.setAlpha(255*0.7);
-    b = itsPainter->brush();
-    b.setColor(white70);
-    itsPainter->setBrush(b);
-    //Draw it
-    itsPainter->drawRect(QRect(OFFSETX+150,OFFSETY+320,WIDTHP-300,220));
-
-    //Set the scores in black
-    itsPainter->setPen(Tools::COLOR_BLACK());
-    b = itsPainter->brush();
-    b.setColor(Tools::COLOR_BLACK());
 
     //qDebug() << "Draw Database";
     QSqlQuery query;
@@ -254,9 +251,14 @@ void HallOfFame::drawDatabase(QPainter * itsPainter)
     sort(scores.rbegin(),scores.rend(),sortByVal);
 
     //Display the 3 first text
-    for(int i =0 ;i < 4 && i<(int)scores.size() ; i++){
+    for(int i =0 ;i < 5 && i<(int)scores.size() ; i++){
         //itsPainter->drawText(QRect(OFFSETX,OFFSETY+320 + i*50,WIDTHP,50),QString::fromStdString(scores.at(i).first)+" : "+QString::number(scores.at(i).second),QTextOption(Qt::AlignCenter));
         QLabel *label = new QLabel(QString::fromStdString(scores.at(i).first)+ " : " + QString::number(scores.at(i).second));
+        label->setAlignment(Qt::AlignCenter);
+        QFont font;
+        font.setFamily("8-bit Arcade In");
+        font.setPointSize(35);
+        label->setFont(font);
         layout->addWidget(label);
     }
 }

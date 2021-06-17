@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Debug
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -W -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -W -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\CrossyFrog -I. -IC:\Qt\5.9.9\mingw53_32\include -IC:\Qt\5.9.9\mingw53_32\include\QtWidgets -IC:\Qt\5.9.9\mingw53_32\include\QtGui -IC:\Qt\5.9.9\mingw53_32\include\QtANGLE -IC:\Qt\5.9.9\mingw53_32\include\QtSql -IC:\Qt\5.9.9\mingw53_32\include\QtCore -Idebug -I. -IC:\Qt\5.9.9\mingw53_32\mkspecs\win32-g++ 
+INCPATH       = -I..\CrossyFrog -I. -IC:\Qt\5.9.9\mingw53_32\include -IC:\Qt\5.9.9\mingw53_32\include\QtMultimedia -IC:\Qt\5.9.9\mingw53_32\include\QtWidgets -IC:\Qt\5.9.9\mingw53_32\include\QtGui -IC:\Qt\5.9.9\mingw53_32\include\QtANGLE -IC:\Qt\5.9.9\mingw53_32\include\QtSql -IC:\Qt\5.9.9\mingw53_32\include\QtNetwork -IC:\Qt\5.9.9\mingw53_32\include\QtCore -Idebug -I. -IC:\Qt\5.9.9\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LC:\Qt\5.9.9\mingw53_32\lib C:\Qt\5.9.9\mingw53_32\lib\libqtmaind.a -LC:\openssl\lib -LC:\Utils\my_sql\my_sql\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 C:\Qt\5.9.9\mingw53_32\lib\libQt5Widgetsd.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Guid.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Sqld.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Cored.a 
+LIBS        =        -lmingw32 -LC:\Qt\5.9.9\mingw53_32\lib C:\Qt\5.9.9\mingw53_32\lib\libqtmaind.a -LC:\openssl\lib -LC:\Utils\my_sql\my_sql\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 C:\Qt\5.9.9\mingw53_32\lib\libQt5Multimediad.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Widgetsd.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Guid.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Sqld.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Networkd.a C:\Qt\5.9.9\mingw53_32\lib\libQt5Cored.a 
 QMAKE         = C:\Qt\5.9.9\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -157,7 +157,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) CrossyFrog.zip $(SOURCES) $(DIST) ..\CrossyFrog\CrossyFrog.pro C:\Qt\5.9.9\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\5.9.9\mingw53_32\mkspecs\qdevice.pri C:\Qt\5.9.9\mingw53_32\mkspecs\features\device_config.prf C:\Qt\5.9.9\mingw53_32\mkspecs\common\sanitize.conf C:\Qt\5.9.9\mingw53_32\mkspecs\common\gcc-base.conf C:\Qt\5.9.9\mingw53_32\mkspecs\common\g++-base.conf C:\Qt\5.9.9\mingw53_32\mkspecs\common\angle.conf C:\Qt\5.9.9\mingw53_32\mkspecs\qconfig.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_script.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\5.9.9\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\5.9.9\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\default_post.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qt.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\resources.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\moc.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\uic.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qmake_use.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\yacc.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\lex.prf ..\CrossyFrog\CrossyFrog.pro ..\CrossyFrog\resources.qrc C:\Qt\5.9.9\mingw53_32\lib\qtmaind.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Widgetsd.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Guid.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Sqld.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Cored.prl "fr_FR.ts en_US.ts" fr_FR.ts en_US.ts  ..\CrossyFrog\resources.qrc C:\Qt\5.9.9\mingw53_32\mkspecs\features\data\dummy.cpp ..\CrossyFrog\bash.h ..\CrossyFrog\choosefrog.h ..\CrossyFrog\frog.h ..\CrossyFrog\gameMode00.h ..\CrossyFrog\halloffame.h ..\CrossyFrog\mainwindow.h ..\CrossyFrog\menu.h ..\CrossyFrog\player.h ..\CrossyFrog\resources.h ..\CrossyFrog\splash.h ..\CrossyFrog\tools\allblocks.h ..\CrossyFrog\tools\allgrounds.h ..\CrossyFrog\tools\block.h ..\CrossyFrog\tools\ground.h ..\CrossyFrog\tools\includes.h ..\CrossyFrog\tools\item.h ..\CrossyFrog\tools\patern.h ..\CrossyFrog\tools\tools.h ..\CrossyFrog\settings.h ..\CrossyFrog\bash.cpp ..\CrossyFrog\choosefrog.cpp ..\CrossyFrog\frog.cpp ..\CrossyFrog\gameMode00.cpp ..\CrossyFrog\halloffame.cpp ..\CrossyFrog\main.cpp ..\CrossyFrog\mainwindow.cpp ..\CrossyFrog\menu.cpp ..\CrossyFrog\player.cpp ..\CrossyFrog\resources.cpp ..\CrossyFrog\splash.cpp ..\CrossyFrog\tools\allblocks.cpp ..\CrossyFrog\tools\allgrounds.cpp ..\CrossyFrog\tools\block.cpp ..\CrossyFrog\tools\ground.cpp ..\CrossyFrog\tools\item.cpp ..\CrossyFrog\tools\patern.cpp ..\CrossyFrog\settings.cpp ..\CrossyFrog\bash.ui ..\CrossyFrog\choosefrog.ui ..\CrossyFrog\gameMode00.ui ..\CrossyFrog\halloffame.ui ..\CrossyFrog\mainwindow.ui ..\CrossyFrog\menu.ui ..\CrossyFrog\splash.ui    
+	$(ZIP) CrossyFrog.zip $(SOURCES) $(DIST) ..\CrossyFrog\CrossyFrog.pro C:\Qt\5.9.9\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\5.9.9\mingw53_32\mkspecs\qdevice.pri C:\Qt\5.9.9\mingw53_32\mkspecs\features\device_config.prf C:\Qt\5.9.9\mingw53_32\mkspecs\common\sanitize.conf C:\Qt\5.9.9\mingw53_32\mkspecs\common\gcc-base.conf C:\Qt\5.9.9\mingw53_32\mkspecs\common\g++-base.conf C:\Qt\5.9.9\mingw53_32\mkspecs\common\angle.conf C:\Qt\5.9.9\mingw53_32\mkspecs\qconfig.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_script.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.9.9\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\5.9.9\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\5.9.9\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\default_post.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qt.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\resources.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\moc.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\uic.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\qmake_use.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\yacc.prf C:\Qt\5.9.9\mingw53_32\mkspecs\features\lex.prf ..\CrossyFrog\CrossyFrog.pro ..\CrossyFrog\resources.qrc C:\Qt\5.9.9\mingw53_32\lib\qtmaind.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Multimediad.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Widgetsd.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Guid.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Sqld.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Networkd.prl C:\Qt\5.9.9\mingw53_32\lib\Qt5Cored.prl "fr_FR.ts en_US.ts" fr_FR.ts en_US.ts  ..\CrossyFrog\resources.qrc C:\Qt\5.9.9\mingw53_32\mkspecs\features\data\dummy.cpp ..\CrossyFrog\bash.h ..\CrossyFrog\choosefrog.h ..\CrossyFrog\frog.h ..\CrossyFrog\gameMode00.h ..\CrossyFrog\halloffame.h ..\CrossyFrog\mainwindow.h ..\CrossyFrog\menu.h ..\CrossyFrog\player.h ..\CrossyFrog\resources.h ..\CrossyFrog\splash.h ..\CrossyFrog\tools\allblocks.h ..\CrossyFrog\tools\allgrounds.h ..\CrossyFrog\tools\block.h ..\CrossyFrog\tools\ground.h ..\CrossyFrog\tools\includes.h ..\CrossyFrog\tools\item.h ..\CrossyFrog\tools\patern.h ..\CrossyFrog\tools\tools.h ..\CrossyFrog\settings.h ..\CrossyFrog\bash.cpp ..\CrossyFrog\choosefrog.cpp ..\CrossyFrog\frog.cpp ..\CrossyFrog\gameMode00.cpp ..\CrossyFrog\halloffame.cpp ..\CrossyFrog\main.cpp ..\CrossyFrog\mainwindow.cpp ..\CrossyFrog\menu.cpp ..\CrossyFrog\player.cpp ..\CrossyFrog\resources.cpp ..\CrossyFrog\splash.cpp ..\CrossyFrog\tools\allblocks.cpp ..\CrossyFrog\tools\allgrounds.cpp ..\CrossyFrog\tools\block.cpp ..\CrossyFrog\tools\ground.cpp ..\CrossyFrog\tools\item.cpp ..\CrossyFrog\tools\patern.cpp ..\CrossyFrog\settings.cpp ..\CrossyFrog\bash.ui ..\CrossyFrog\choosefrog.ui ..\CrossyFrog\gameMode00.ui ..\CrossyFrog\halloffame.ui ..\CrossyFrog\mainwindow.ui ..\CrossyFrog\menu.ui ..\CrossyFrog\splash.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) debug\bash.o debug\choosefrog.o debug\frog.o debug\gameMode00.o debug\halloffame.o debug\main.o debug\mainwindow.o debug\menu.o debug\player.o debug\resources.o debug\splash.o debug\allblocks.o debug\allgrounds.o debug\block.o debug\ground.o debug\item.o debug\patern.o debug\settings.o debug\qrc_resources.o debug\moc_bash.o debug\moc_choosefrog.o debug\moc_gameMode00.o debug\moc_halloffame.o debug\moc_mainwindow.o debug\moc_menu.o debug\moc_splash.o debug\moc_settings.o
@@ -207,6 +207,7 @@ debug/qrc_resources.cpp: ../CrossyFrog/resources.qrc \
 		../CrossyFrog/res/Menu/2.png \
 		../CrossyFrog/res/Menu/Rec1.png \
 		../CrossyFrog/res/Menu/rightArrow.png \
+		../CrossyFrog/res/Menu/sign.png \
 		../CrossyFrog/res/Menu/1.png \
 		../CrossyFrog/res/Menu/cloud.png \
 		../CrossyFrog/res/Menu/leftArrow.png \
@@ -372,6 +373,25 @@ debug/moc_bash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -389,6 +409,20 @@ debug/moc_bash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -398,7 +432,7 @@ debug/moc_bash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		../CrossyFrog/bash.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\bash.h -o debug\moc_bash.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\bash.h -o debug\moc_bash.cpp
 
 debug/moc_choosefrog.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
@@ -526,6 +560,25 @@ debug/moc_choosefrog.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -543,6 +596,20 @@ debug/moc_choosefrog.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -563,7 +630,7 @@ debug/moc_choosefrog.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		../CrossyFrog/choosefrog.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\choosefrog.h -o debug\moc_choosefrog.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\choosefrog.h -o debug\moc_choosefrog.cpp
 
 debug/moc_gameMode00.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
@@ -691,6 +758,25 @@ debug/moc_gameMode00.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -708,6 +794,20 @@ debug/moc_gameMode00.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -727,7 +827,7 @@ debug/moc_gameMode00.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		../CrossyFrog/gameMode00.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\gameMode00.h -o debug\moc_gameMode00.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\gameMode00.h -o debug\moc_gameMode00.cpp
 
 debug/moc_halloffame.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
@@ -855,6 +955,25 @@ debug/moc_halloffame.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -872,6 +991,20 @@ debug/moc_halloffame.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -897,9 +1030,10 @@ debug/moc_halloffame.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		../CrossyFrog/tools/item.h \
 		../CrossyFrog/settings.h \
 		../CrossyFrog/halloffame.h \
+		../CrossyFrog/halloffame.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\halloffame.h -o debug\moc_halloffame.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\halloffame.h -o debug\moc_halloffame.cpp
 
 debug/moc_mainwindow.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
@@ -1029,6 +1163,25 @@ debug/moc_mainwindow.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -1046,6 +1199,20 @@ debug/moc_mainwindow.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -1068,10 +1235,11 @@ debug/moc_mainwindow.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		../CrossyFrog/tools/item.h \
 		../CrossyFrog/settings.h \
 		../CrossyFrog/mainwindow.h \
+		../CrossyFrog/halloffame.h \
 		../CrossyFrog/mainwindow.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_menu.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
@@ -1199,6 +1367,25 @@ debug/moc_menu.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -1216,6 +1403,20 @@ debug/moc_menu.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -1240,10 +1441,11 @@ debug/moc_menu.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../CrossyFrog/menu.h \
+		../CrossyFrog/halloffame.h \
 		../CrossyFrog/menu.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\menu.h -o debug\moc_menu.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\menu.h -o debug\moc_menu.cpp
 
 debug/moc_splash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
@@ -1371,6 +1573,25 @@ debug/moc_splash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -1388,6 +1609,20 @@ debug/moc_splash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -1412,10 +1647,11 @@ debug/moc_splash.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../CrossyFrog/halloffame.h \
 		../CrossyFrog/splash.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\splash.h -o debug\moc_splash.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\splash.h -o debug\moc_splash.cpp
 
 debug/moc_settings.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
@@ -1543,6 +1779,25 @@ debug/moc_settings.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -1560,6 +1815,20 @@ debug/moc_settings.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -1584,10 +1853,11 @@ debug/moc_settings.cpp: C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		../CrossyFrog/tools/block.h \
 		../CrossyFrog/tools/item.h \
 		../CrossyFrog/settings.h \
+		../CrossyFrog/halloffame.h \
 		../CrossyFrog/settings.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.9.9/mingw53_32/bin/moc.exe
-	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\settings.h -o debug\moc_settings.cpp
+	C:\Qt\5.9.9\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++ -IC:/Users/louid/OneDrive/Documents/Espace_de_travail/POO-BCOO2-IHM/CrossyFrog/crossy-frog/QT/CrossyFrog -IC:/Qt/5.9.9/mingw53_32/include -IC:/Qt/5.9.9/mingw53_32/include/QtMultimedia -IC:/Qt/5.9.9/mingw53_32/include/QtWidgets -IC:/Qt/5.9.9/mingw53_32/include/QtGui -IC:/Qt/5.9.9/mingw53_32/include/QtANGLE -IC:/Qt/5.9.9/mingw53_32/include/QtSql -IC:/Qt/5.9.9/mingw53_32/include/QtNetwork -IC:/Qt/5.9.9/mingw53_32/include/QtCore -I. -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\CrossyFrog\settings.h -o debug\moc_settings.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1761,6 +2031,25 @@ debug/bash.o: ../CrossyFrog/bash.cpp ../CrossyFrog/bash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -1778,6 +2067,20 @@ debug/bash.o: ../CrossyFrog/bash.cpp ../CrossyFrog/bash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -1785,7 +2088,6 @@ debug/bash.o: ../CrossyFrog/bash.cpp ../CrossyFrog/bash.h \
 		../CrossyFrog/tools/tools.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QColor \
 		ui_bash.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -1799,14 +2101,9 @@ debug/bash.o: ../CrossyFrog/bash.cpp ../CrossyFrog/bash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -1958,6 +2255,25 @@ debug/choosefrog.o: ../CrossyFrog/choosefrog.cpp ../CrossyFrog/choosefrog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -1975,6 +2291,20 @@ debug/choosefrog.o: ../CrossyFrog/choosefrog.cpp ../CrossyFrog/choosefrog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -1993,7 +2323,6 @@ debug/choosefrog.o: ../CrossyFrog/choosefrog.cpp ../CrossyFrog/choosefrog.h \
 		../CrossyFrog/tools/block.h \
 		../CrossyFrog/tools/item.h \
 		ui_choosefrog.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -2009,7 +2338,6 @@ debug/choosefrog.o: ../CrossyFrog/choosefrog.cpp ../CrossyFrog/choosefrog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -2026,7 +2354,8 @@ debug/choosefrog.o: ../CrossyFrog/choosefrog.cpp ../CrossyFrog/choosefrog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		../CrossyFrog/menu.h \
-		../CrossyFrog/settings.h
+		../CrossyFrog/settings.h \
+		../CrossyFrog/halloffame.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\choosefrog.o ..\CrossyFrog\choosefrog.cpp
 
 debug/frog.o: ../CrossyFrog/frog.cpp ../CrossyFrog/frog.h \
@@ -2155,6 +2484,25 @@ debug/frog.o: ../CrossyFrog/frog.cpp ../CrossyFrog/frog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -2172,6 +2520,20 @@ debug/frog.o: ../CrossyFrog/frog.cpp ../CrossyFrog/frog.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -2308,6 +2670,25 @@ debug/gameMode00.o: ../CrossyFrog/gameMode00.cpp ../CrossyFrog/gameMode00.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -2325,6 +2706,20 @@ debug/gameMode00.o: ../CrossyFrog/gameMode00.cpp ../CrossyFrog/gameMode00.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -2342,7 +2737,6 @@ debug/gameMode00.o: ../CrossyFrog/gameMode00.cpp ../CrossyFrog/gameMode00.h \
 		../CrossyFrog/tools/block.h \
 		../CrossyFrog/tools/item.h \
 		ui_gameMode00.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -2358,7 +2752,6 @@ debug/gameMode00.o: ../CrossyFrog/gameMode00.cpp ../CrossyFrog/gameMode00.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -2376,7 +2769,8 @@ debug/gameMode00.o: ../CrossyFrog/gameMode00.cpp ../CrossyFrog/gameMode00.h \
 		../CrossyFrog/settings.h \
 		../CrossyFrog/mainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../CrossyFrog/halloffame.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gameMode00.o ..\CrossyFrog\gameMode00.cpp
 
 debug/halloffame.o: ../CrossyFrog/halloffame.cpp ../CrossyFrog/halloffame.h \
@@ -2506,6 +2900,25 @@ debug/halloffame.o: ../CrossyFrog/halloffame.cpp ../CrossyFrog/halloffame.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -2523,6 +2936,20 @@ debug/halloffame.o: ../CrossyFrog/halloffame.cpp ../CrossyFrog/halloffame.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -2547,7 +2974,33 @@ debug/halloffame.o: ../CrossyFrog/halloffame.cpp ../CrossyFrog/halloffame.h \
 		../CrossyFrog/tools/block.h \
 		../CrossyFrog/tools/item.h \
 		../CrossyFrog/settings.h \
-		ui_halloffame.h
+		ui_halloffame.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qregularexpression.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qslider.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\halloffame.o ..\CrossyFrog\halloffame.cpp
 
 debug/main.o: ../CrossyFrog/main.cpp ../CrossyFrog/splash.h \
@@ -2677,6 +3130,25 @@ debug/main.o: ../CrossyFrog/main.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -2694,6 +3166,20 @@ debug/main.o: ../CrossyFrog/main.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -2718,6 +3204,7 @@ debug/main.o: ../CrossyFrog/main.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../CrossyFrog/halloffame.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -2856,6 +3343,25 @@ debug/mainwindow.o: ../CrossyFrog/mainwindow.cpp ../CrossyFrog/mainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -2873,6 +3379,20 @@ debug/mainwindow.o: ../CrossyFrog/mainwindow.cpp ../CrossyFrog/mainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -2894,8 +3414,8 @@ debug/mainwindow.o: ../CrossyFrog/mainwindow.cpp ../CrossyFrog/mainwindow.h \
 		../CrossyFrog/tools/block.h \
 		../CrossyFrog/tools/item.h \
 		../CrossyFrog/settings.h \
+		../CrossyFrog/halloffame.h \
 		ui_mainwindow.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -2911,7 +3431,6 @@ debug/mainwindow.o: ../CrossyFrog/mainwindow.cpp ../CrossyFrog/mainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -3052,6 +3571,25 @@ debug/menu.o: ../CrossyFrog/menu.cpp ../CrossyFrog/menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -3069,6 +3607,20 @@ debug/menu.o: ../CrossyFrog/menu.cpp ../CrossyFrog/menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -3092,9 +3644,9 @@ debug/menu.o: ../CrossyFrog/menu.cpp ../CrossyFrog/menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../CrossyFrog/halloffame.h \
 		ui_menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QLocale \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -3110,7 +3662,6 @@ debug/menu.o: ../CrossyFrog/menu.cpp ../CrossyFrog/menu.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -3251,6 +3802,25 @@ debug/player.o: ../CrossyFrog/player.cpp ../CrossyFrog/player.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -3268,6 +3838,20 @@ debug/player.o: ../CrossyFrog/player.cpp ../CrossyFrog/player.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -3404,6 +3988,25 @@ debug/resources.o: ../CrossyFrog/resources.cpp ../CrossyFrog/resources.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -3421,6 +4024,20 @@ debug/resources.o: ../CrossyFrog/resources.cpp ../CrossyFrog/resources.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -3556,6 +4173,25 @@ debug/splash.o: ../CrossyFrog/splash.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -3573,6 +4209,20 @@ debug/splash.o: ../CrossyFrog/splash.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -3597,8 +4247,8 @@ debug/splash.o: ../CrossyFrog/splash.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../CrossyFrog/halloffame.h \
 		ui_splash.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -3614,7 +4264,6 @@ debug/splash.o: ../CrossyFrog/splash.cpp ../CrossyFrog/splash.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -3754,6 +4403,25 @@ debug/allblocks.o: ../CrossyFrog/tools/allblocks.cpp ../CrossyFrog/tools/allbloc
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -3771,6 +4439,20 @@ debug/allblocks.o: ../CrossyFrog/tools/allblocks.cpp ../CrossyFrog/tools/allbloc
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -3906,6 +4588,25 @@ debug/allgrounds.o: ../CrossyFrog/tools/allgrounds.cpp ../CrossyFrog/tools/allgr
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -3923,6 +4624,20 @@ debug/allgrounds.o: ../CrossyFrog/tools/allgrounds.cpp ../CrossyFrog/tools/allgr
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -4060,6 +4775,25 @@ debug/block.o: ../CrossyFrog/tools/block.cpp ../CrossyFrog/tools/block.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -4077,6 +4811,20 @@ debug/block.o: ../CrossyFrog/tools/block.cpp ../CrossyFrog/tools/block.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -4222,6 +4970,25 @@ debug/ground.o: ../CrossyFrog/tools/ground.cpp ../CrossyFrog/tools/ground.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -4239,6 +5006,20 @@ debug/ground.o: ../CrossyFrog/tools/ground.cpp ../CrossyFrog/tools/ground.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -4375,6 +5156,25 @@ debug/item.o: ../CrossyFrog/tools/item.cpp ../CrossyFrog/tools/item.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -4392,6 +5192,20 @@ debug/item.o: ../CrossyFrog/tools/item.cpp ../CrossyFrog/tools/item.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -4528,6 +5342,25 @@ debug/patern.o: ../CrossyFrog/tools/patern.cpp ../CrossyFrog/tools/patern.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -4545,6 +5378,20 @@ debug/patern.o: ../CrossyFrog/tools/patern.cpp ../CrossyFrog/tools/patern.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -4687,6 +5534,25 @@ debug/settings.o: ../CrossyFrog/settings.cpp ../CrossyFrog/settings.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPixmap \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtCore/qmetaobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtMultimedia/qaudio.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlTableModel \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qtsqlglobal.h \
@@ -4704,6 +5570,20 @@ debug/settings.o: ../CrossyFrog/settings.cpp ../CrossyFrog/settings.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.9.9/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtGui/QPainterPath \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QScrollArea \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/QTextBlock \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextobject.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qtextlayout.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qglyphrun.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtGui/qrawfont.h \
+		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QLayout \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/QTranslator \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qtranslator.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QStackedWidget \
@@ -4727,8 +5607,8 @@ debug/settings.o: ../CrossyFrog/settings.cpp ../CrossyFrog/settings.h \
 		../CrossyFrog/tools/allblocks.h \
 		../CrossyFrog/tools/block.h \
 		../CrossyFrog/tools/item.h \
+		../CrossyFrog/halloffame.h \
 		ui_settings.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
@@ -4744,7 +5624,6 @@ debug/settings.o: ../CrossyFrog/settings.cpp ../CrossyFrog/settings.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \

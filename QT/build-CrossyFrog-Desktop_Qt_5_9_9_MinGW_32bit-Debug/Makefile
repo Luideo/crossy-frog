@@ -235,9 +235,11 @@ Makefile: ../CrossyFrog/CrossyFrog.pro C:/Qt/5.9.9/mingw53_32/mkspecs/win32-g++/
 		C:/Qt/5.9.9/mingw53_32/mkspecs/features/lex.prf \
 		../CrossyFrog/CrossyFrog.pro \
 		C:/Qt/5.9.9/mingw53_32/lib/qtmaind.prl \
+		C:/Qt/5.9.9/mingw53_32/lib/Qt5Multimedia.prl \
 		C:/Qt/5.9.9/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/5.9.9/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/5.9.9/mingw53_32/lib/Qt5Sql.prl \
+		C:/Qt/5.9.9/mingw53_32/lib/Qt5Network.prl \
 		C:/Qt/5.9.9/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\CrossyFrog\CrossyFrog.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt/5.9.9/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -414,9 +416,11 @@ C:/Qt/5.9.9/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/5.9.9/mingw53_32/mkspecs/features/lex.prf:
 ../CrossyFrog/CrossyFrog.pro:
 C:/Qt/5.9.9/mingw53_32/lib/qtmaind.prl:
+C:/Qt/5.9.9/mingw53_32/lib/Qt5Multimedia.prl:
 C:/Qt/5.9.9/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/5.9.9/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/5.9.9/mingw53_32/lib/Qt5Sql.prl:
+C:/Qt/5.9.9/mingw53_32/lib/Qt5Network.prl:
 C:/Qt/5.9.9/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\CrossyFrog\CrossyFrog.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

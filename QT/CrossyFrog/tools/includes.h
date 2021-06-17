@@ -18,6 +18,7 @@
 #include <QPushButton>
 #include <QElapsedTimer>
 #include <QPixmap>
+#include <QMediaPlayer>
 #include <QSqlTableModel>
 #include <QMessageBox>
 #include <QLineEdit>
@@ -27,6 +28,7 @@
 #include <QScrollArea>
 #include <QVBoxLayout>
 #include <QTextBlock>
+#include <QLayout>
 #include <QTranslator>
 #include <QStackedWidget>
 #include <map>

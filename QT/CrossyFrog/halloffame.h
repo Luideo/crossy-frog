@@ -119,6 +119,14 @@ private:
     /// \brief layout
     ///
     QVBoxLayout *layout;
+    ///
+    /// \brief count
+    ///
+    int count=0;
+    ///
+    /// \brief player
+    ///
+                QMediaPlayer *player;
 
 private slots:
     ///
@@ -139,7 +147,7 @@ public slots:
     ///
     /// \brief populateDataItem
     ///
-    void drawDatabase(QPainter * itsPainter);
+    void drawDatabase();
 };
 
 #endif // HALLOFFAME_H
